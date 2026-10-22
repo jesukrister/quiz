@@ -1,0 +1,587 @@
+{
+  "formato": "tombola-de-repaso",
+  "version": 1,
+  "title": "Razón y Revolución",
+  "course": "8° básico",
+  "unit": "Unidad 3 · Guía de estudio 8",
+  "createdAt": "2026-10-22T01:15:51.387Z",
+  "updatedAt": "2026-10-22T01:15:51.387Z",
+  "questions": [
+    {
+      "id": "q01",
+      "tema": "I · La Ilustración",
+      "q": "¿Por qué al siglo XVIII se le conoce como el «Siglo de las Luces»?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Porque se instaló alumbrado público en las grandes ciudades.",
+        "B": "Porque los reyes se presentaban como el sol que guiaba al pueblo.",
+        "C": "Porque se defendió la razón como luz para combatir la ignorancia.",
+        "D": "Porque la fe religiosa pasó a ser la principal guía del saber."
+      },
+      "ans": "C",
+      "why": "Los ilustrados usaron la imagen de la luz para hablar de la razón: así como la luz quita la oscuridad, la razón quita la ignorancia. Por eso el siglo XVIII, cuando estas ideas alcanzaron su mayor influencia, se conoce como el Siglo de las Luces.",
+      "notes": {
+        "A": "El nombre no se refiere a faroles ni lámparas: la «luz» es una metáfora de la razón.",
+        "B": "Esa imagen la usó Luis XIV, el «Rey Sol», y representa el absolutismo que la Ilustración criticó.",
+        "C": "",
+        "D": "Fue al revés: los ilustrados pusieron la razón por sobre las explicaciones tradicionales y religiosas."
+      },
+      "hint": "Sección I.a. Los ilustrados comparaban con la luz aquello que permite «alcanzar el conocimiento» y «cuestionar las injusticias»."
+    },
+    {
+      "id": "q02",
+      "tema": "I · La Ilustración",
+      "q": "En el absolutismo monárquico, el rey concentraba todo el poder. ¿Cómo se justificaba esa autoridad?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Por el derecho divino: se creía que su poder venía de Dios.",
+        "B": "Por el voto de los nobles, que elegían al rey en asambleas.",
+        "C": "Por un contrato social que el pueblo firmaba con el monarca.",
+        "D": "Por la separación de poderes, que le daba el control del Estado."
+      },
+      "ans": "A",
+      "why": "En el absolutismo el rey hacía las leyes, gobernaba y juzgaba. Para que nadie cuestionara ese poder, se decía que Dios se lo había entregado: es el derecho divino. La Ilustración puso en duda esta justificación.",
+      "notes": {
+        "A": "",
+        "B": "En el absolutismo el trono se heredaba; no se elegía.",
+        "C": "El contrato social es una idea de Rousseau que se opone al absolutismo: el poder nace del pueblo, no del rey.",
+        "D": "La separación de poderes fue la propuesta ilustrada para limitar al rey, no para darle más poder."
+      },
+      "hint": "Sección I.a, segundo párrafo. Busca cómo se «justificaba» la autoridad del rey. Tiene que ver con la religión."
+    },
+    {
+      "id": "q03",
+      "tema": "I · La Ilustración",
+      "q": "¿Qué propuesta de Montesquieu se expresa en esta frase?",
+      "ctx": {
+        "text": "Para que no se pueda abusar del poder es preciso que, por la disposición de las cosas, el poder frene al poder.",
+        "cite": "Montesquieu, El espíritu de las leyes (1748)"
+      },
+      "opts": {
+        "A": "Concentrar el poder en un rey ilustrado que gobierne con sabiduría.",
+        "B": "Reemplazar al rey por una asamblea con todo el poder del Estado.",
+        "C": "Que la Iglesia supervise al rey para evitar que cometa abusos.",
+        "D": "Dividir el poder del Estado en ejecutivo, legislativo y judicial."
+      },
+      "ans": "D",
+      "why": "«El poder frene al poder» significa repartirlo para que ninguna autoridad abuse. Montesquieu propuso tres poderes: el ejecutivo gobierna, el legislativo elabora las leyes y el judicial administra justicia. Cada uno controla a los demás. Chile hoy funciona así: Presidente, Congreso y tribunales.",
+      "notes": {
+        "A": "Un solo rey con todo el poder es justamente lo que Montesquieu quería evitar.",
+        "B": "Una asamblea con todo el poder también lo concentraría. Montesquieu quería repartirlo.",
+        "C": "Los ilustrados promovieron la secularización: menos influencia religiosa en la política, no más.",
+        "D": ""
+      },
+      "hint": "Secciones I.b y I.c. Montesquieu quería distribuir las funciones del Estado para «evitar los abusos». ¿En cuántas partes?"
+    },
+    {
+      "id": "q04",
+      "tema": "I · La Ilustración",
+      "q": "¿Qué fue la secularización que impulsó la Ilustración?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "La prohibición de las prácticas religiosas en Europa.",
+        "B": "La pérdida de influencia de la religión en la vida pública.",
+        "C": "La unión de la Iglesia y el Estado bajo la autoridad del rey.",
+        "D": "La expansión de las misiones religiosas hacia América y Asia."
+      },
+      "ans": "B",
+      "why": "Secularizar es separar lo religioso de lo público. Los ilustrados cuestionaron que las creencias religiosas decidieran sobre la política, la ciencia y la educación. Esto ayudó a la tolerancia religiosa y, más tarde, a la separación entre la Iglesia y el Estado.",
+      "notes": {
+        "A": "No se prohibieron las religiones. Al contrario, se promovió la tolerancia religiosa.",
+        "B": "",
+        "C": "Es lo contrario: la secularización llevó, más tarde, a separar la Iglesia del Estado.",
+        "D": "Expandir las misiones no es secularizar. Secularizar es reducir el peso de la religión en lo público."
+      },
+      "hint": "Sección I.b, último párrafo. Fíjate qué influencia «comenzó a disminuir»."
+    },
+    {
+      "id": "q05",
+      "tema": "I · La Ilustración",
+      "q": "¿Qué defendió principalmente el filósofo Voltaire?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "La separación de los poderes del Estado en tres.",
+        "B": "La soberanía popular basada en la voluntad general.",
+        "C": "La libertad de expresión y la tolerancia religiosa.",
+        "D": "El control de la Iglesia sobre la educación."
+      },
+      "ans": "C",
+      "why": "Voltaire criticó el fanatismo, la intolerancia y los abusos de las autoridades. Pensaba que cada persona debía poder pensar, expresarse y creer con libertad, y que el pensamiento crítico era la mejor arma contra la ignorancia.",
+      "notes": {
+        "A": "Esa fue la idea central de Montesquieu.",
+        "B": "Esa es la idea de Rousseau en El contrato social.",
+        "C": "",
+        "D": "Voltaire criticó el fanatismo y los abusos de las autoridades religiosas."
+      },
+      "hint": "Sección I.c, segundo párrafo. Voltaire criticó «el fanatismo, la intolerancia y los abusos»."
+    },
+    {
+      "id": "q06",
+      "tema": "I · La Ilustración",
+      "q": "Para Rousseau, ¿dónde debía residir la soberanía para que las personas fueran libres?",
+      "ctx": {
+        "text": "El hombre ha nacido libre y, sin embargo, vive en todas partes encadenado.",
+        "cite": "Jean-Jacques Rousseau, El contrato social (1762)"
+      },
+      "opts": {
+        "A": "En el pueblo, guiado por la voluntad general o bien común.",
+        "B": "En el rey, porque su autoridad provenía directamente de Dios.",
+        "C": "En los filósofos, por ser los más capacitados para razonar.",
+        "D": "En un Parlamento elegido por los grandes dueños de tierras."
+      },
+      "ans": "A",
+      "why": "Las «cadenas» de la frase son los gobiernos que no consideran al pueblo. La respuesta de Rousseau: la soberanía, el poder de decidir, debe estar en el pueblo, y las leyes deben buscar el bien común. Estas ideas inspiraron a las repúblicas modernas.",
+      "notes": {
+        "A": "",
+        "B": "Eso es el derecho divino del absolutismo, que Rousseau cuestionó.",
+        "C": "Rousseau no entregó el poder a un grupo selecto: la soberanía debía estar en todo el pueblo.",
+        "D": "Rousseau defendía la participación de todo el pueblo, no de un grupo de propietarios."
+      },
+      "hint": "Sección I.c, tercer párrafo. Busca la palabra «soberanía» en el párrafo de Rousseau."
+    },
+    {
+      "id": "q07",
+      "tema": "II · Revoluciones del siglo XVIII",
+      "q": "Según la guía, ¿qué es una revolución?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Un cambio gradual en la sociedad que se desarrolla durante siglos.",
+        "B": "Un conflicto armado entre dos países por el control de un territorio.",
+        "C": "Un cambio de gobernante que mantiene las mismas formas de poder.",
+        "D": "Un cambio profundo en la sociedad ocurrido en un período breve."
+      },
+      "ans": "D",
+      "why": "Revolución = cambio profundo + tiempo relativamente breve. Puede ser político, económico, social o cultural, y suele surgir cuando distintos grupos cuestionan a quienes tienen el poder. En el siglo XVIII, las ideas ilustradas impulsaron varias revoluciones.",
+      "notes": {
+        "A": "Un cambio lento y gradual no es una revolución: la revolución es profunda y relativamente rápida.",
+        "B": "No toda guerra es una revolución. La revolución transforma la sociedad desde dentro.",
+        "C": "Si todo sigue igual, no hay cambio profundo. Una revolución transforma las estructuras de poder.",
+        "D": ""
+      },
+      "hint": "Sección II, primer párrafo. Una revolución tiene dos rasgos: cómo es el cambio y cuánto tiempo tarda."
+    },
+    {
+      "id": "q08",
+      "tema": "II · Revoluciones del siglo XVIII",
+      "q": "¿Por qué protestaban los colonos de las trece colonias de Norteamérica contra Inglaterra?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Por la obligación de convertirse a la religión católica.",
+        "B": "Por pagar impuestos sin tener representantes en el Parlamento.",
+        "C": "Por la invasión de tropas francesas a sus ciudades del norte.",
+        "D": "Por la decisión de Inglaterra de ceder las colonias a la Corona española."
+      },
+      "ans": "B",
+      "why": "Los impuestos se decidían en Londres, en un Parlamento donde los colonos no tenían representantes. Por eso su consigna fue «no hay impuestos sin representación». Ese descontento llevó a la guerra de independencia (1775–1783).",
+      "notes": {
+        "A": "Inglaterra no obligó a los colonos a ser católicos. Muchos colonos eran protestantes.",
+        "B": "",
+        "C": "Francia no invadió las colonias. De hecho, las apoyó en su guerra contra Inglaterra.",
+        "D": "Inglaterra nunca entregó las trece colonias a España."
+      },
+      "hint": "Sección II.a, primer párrafo. El problema no eran solo los impuestos, sino quién los decidía."
+    },
+    {
+      "id": "q09",
+      "tema": "II · Revoluciones del siglo XVIII",
+      "q": "La Constitución de Estados Unidos (1787) creó una república con separación de poderes. ¿Cuál fue su principal contradicción?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Mantuvo al rey de Inglaterra como jefe de Estado de la nueva república.",
+        "B": "Eliminó el poder judicial y dejó al Congreso a cargo de los juicios.",
+        "C": "Mantuvo la esclavitud y dejó a las mujeres sin participación política.",
+        "D": "Prohibió las elecciones para evitar conflictos entre las excolonias."
+      },
+      "ans": "C",
+      "why": "Una contradicción es proclamar un ideal y no cumplirlo. La nueva república hablaba de libertad, pero mantuvo la esclavitud y dejó fuera de la participación política a las mujeres y a gran parte de las personas afrodescendientes.",
+      "notes": {
+        "A": "Estados Unidos se independizó y se organizó como república, sin rey.",
+        "B": "Es lo contrario: la Constitución estableció por separado los poderes ejecutivo, legislativo y judicial.",
+        "C": "",
+        "D": "La Constitución no prohibió las elecciones: organizó un gobierno republicano."
+      },
+      "hint": "Sección II.a, segundo párrafo. Una contradicción es decir una cosa y hacer otra. ¿Quiénes quedaron fuera?"
+    },
+    {
+      "id": "q10",
+      "tema": "II · Revoluciones del siglo XVIII",
+      "q": "¿Cuál de estas fue una causa de la Revolución francesa?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "La desigualdad social y los privilegios de la nobleza y el clero.",
+        "B": "La invasión de Napoleón a España y la captura del rey Fernando VII.",
+        "C": "La abolición de la monarquía y la proclamación de la república.",
+        "D": "La ejecución del rey Luis XVI por orden de la Asamblea."
+      },
+      "ans": "A",
+      "why": "En Francia la nobleza y el clero tenían privilegios, mientras la mayoría de la población vivía con dificultades. A eso se sumaron la crisis económica, el descontento con el rey Luis XVI y las ideas ilustradas de libertad e igualdad.",
+      "notes": {
+        "A": "",
+        "B": "Ocurrió en 1808, casi veinte años después del inicio de la revolución.",
+        "C": "Ocurrieron en 1792: fueron consecuencias de la revolución, no causas.",
+        "D": "Luis XVI fue ejecutado en 1793: fue una consecuencia, no una causa."
+      },
+      "hint": "Sección II.b, primer párrafo. Ojo: una causa ocurre antes de la revolución, no después."
+    },
+    {
+      "id": "q11",
+      "tema": "II · Revoluciones del siglo XVIII",
+      "q": "¿Qué acontecimiento del 14 de julio de 1789 se convirtió en el símbolo de la lucha contra el absolutismo?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "La ejecución del rey Luis XVI.",
+        "B": "El golpe de Estado de Napoleón.",
+        "C": "La firma de la Declaración de Independencia.",
+        "D": "La toma de la prisión de la Bastilla."
+      },
+      "ans": "D",
+      "why": "La Bastilla era una prisión de París que representaba el poder del rey. Su toma por el pueblo, el 14 de julio de 1789, se convirtió en el gran símbolo de la revolución. Hoy es el día nacional de Francia.",
+      "notes": {
+        "A": "Luis XVI fue ejecutado en 1793, en la segunda fase de la revolución.",
+        "B": "El golpe de Napoleón fue en 1799 y puso fin al período revolucionario.",
+        "C": "Esa declaración es de Estados Unidos, firmada el 4 de julio de 1776.",
+        "D": ""
+      },
+      "hint": "Sección II.b, segundo párrafo. Era una prisión de París."
+    },
+    {
+      "id": "q12",
+      "tema": "II · Revoluciones del siglo XVIII",
+      "q": "En la segunda fase de la Revolución francesa (1792–1794), ¿qué fue «el Terror»?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Una guerra entre Francia y Estados Unidos por las colonias.",
+        "B": "Una etapa de persecución y ejecución de opositores políticos.",
+        "C": "Una epidemia que provocó miles de muertes en la ciudad de París.",
+        "D": "El período en que Napoleón invadió España y Portugal."
+      },
+      "ans": "B",
+      "why": "Con conflictos internos y amenazas de otros países, los revolucionarios más radicales recurrieron a la persecución y ejecución de quienes consideraban enemigos. En esta segunda fase también se abolió la monarquía, se proclamó la república y se ejecutó a Luis XVI (1793).",
+      "notes": {
+        "A": "Francia no estuvo en guerra con Estados Unidos en esa etapa.",
+        "B": "",
+        "C": "El Terror fue una etapa política, no una enfermedad.",
+        "D": "La invasión de Napoleón a la península ibérica fue en 1807–1808, años después del Terror."
+      },
+      "hint": "Sección II.b, tercer párrafo. El nombre de la etapa dice mucho de cómo se gobernó."
+    },
+    {
+      "id": "q13",
+      "tema": "III · Independencias en Latinoamérica",
+      "q": "En 1808 Napoleón invadió España y el rey Fernando VII quedó cautivo en Francia. ¿Qué se formó en España y en América ante la falta de un rey legítimo?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Un gobierno de José Bonaparte reconocido por las colonias.",
+        "B": "Repúblicas independientes con constituciones propias ese mismo año.",
+        "C": "Juntas de gobierno que administraban en nombre de Fernando VII.",
+        "D": "Virreinatos nuevos dirigidos por generales enviados por Napoleón."
+      },
+      "ans": "C",
+      "why": "Las juntas gobernaban «en nombre del rey» mientras estuviera cautivo. Pero en América les dieron a los criollos la experiencia de tomar decisiones por sí mismos. Por eso fueron uno de los principales antecedentes de la independencia.",
+      "notes": {
+        "A": "Napoleón impuso a su hermano José, pero gran parte de la población no lo consideraba un rey legítimo.",
+        "B": "Las independencias se declararon años después. La de Chile, en 1818.",
+        "C": "",
+        "D": "Napoleón no llegó a controlar las colonias americanas. Allí se formaron juntas locales."
+      },
+      "hint": "Sección III, primer párrafo. Estas instituciones gobernaban «en nombre del rey» mientras estaba cautivo."
+    },
+    {
+      "id": "q14",
+      "tema": "III · Independencias en Latinoamérica",
+      "q": "¿Cuál de estas causas de la independencia era de tipo económico?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "La difusión de las ideas ilustradas entre los criollos.",
+        "B": "El desarrollo de una identidad local entre los criollos.",
+        "C": "El ejemplo de la independencia de Estados Unidos.",
+        "D": "El monopolio comercial y el aumento de los impuestos."
+      },
+      "ans": "D",
+      "why": "España obligaba a las colonias a comerciar solo con ella (monopolio comercial) y además subió los impuestos. Eso perjudicaba a los criollos, que también eran excluidos de los principales cargos políticos.",
+      "notes": {
+        "A": "También fue una causa, pero de tipo político e ideológico, no económico.",
+        "B": "También fue una causa, pero cultural: el sentimiento de pertenencia a su tierra.",
+        "C": "También influyó, pero como ejemplo político externo, no como causa económica.",
+        "D": ""
+      },
+      "hint": "Sección III, segundo párrafo. Todas las alternativas fueron causas. Busca la que habla de comercio y dinero."
+    },
+    {
+      "id": "q15",
+      "tema": "III · Independencias en Latinoamérica",
+      "q": "Después de las independencias surgieron nuevas repúblicas. ¿Qué se mantuvo igual que en la Colonia?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "La desigualdad: las élites criollas mantuvieron el poder.",
+        "B": "El dominio del rey de España sobre las nuevas repúblicas.",
+        "C": "El monopolio que obligaba a comerciar solo con España.",
+        "D": "La prohibición de que los criollos ocuparan cargos públicos."
+      },
+      "ans": "A",
+      "why": "Hubo cambios importantes, como gobiernos y constituciones propias. Pero las élites criollas siguieron mandando, y las mujeres, los pueblos originarios y los sectores populares no participaron en igualdad. Lo que se mantiene en el tiempo se llama continuidad.",
+      "notes": {
+        "A": "",
+        "B": "Con la independencia terminó el dominio del rey de España.",
+        "C": "El monopolio colonial terminó con la independencia.",
+        "D": "Es lo contrario: tras la independencia, los criollos encabezaron los nuevos gobiernos."
+      },
+      "hint": "Sección III, tercer párrafo. Continuidad es lo que no cambió. ¿Quiénes mantuvieron el poder?"
+    },
+    {
+      "id": "q16",
+      "tema": "IV · Independencia de Chile",
+      "q": "¿Qué ocurrió el 18 de septiembre de 1810?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Se proclamó oficialmente la independencia de Chile.",
+        "B": "Se formó la Primera Junta Nacional de Gobierno.",
+        "C": "Se ganó la batalla de Maipú contra los realistas.",
+        "D": "Se instaló el Primer Congreso Nacional de Chile."
+      },
+      "ans": "B",
+      "why": "La Primera Junta se formó para administrar el territorio en ausencia de Fernando VII. Todavía se declaraba leal al rey, pero empezó a tomar decisiones autónomas: así comenzó la Patria Vieja.",
+      "notes": {
+        "A": "La independencia se proclamó el 12 de febrero de 1818.",
+        "B": "",
+        "C": "Maipú fue el 5 de abril de 1818.",
+        "D": "El Primer Congreso se instaló en 1811, durante la Patria Vieja, un año después."
+      },
+      "hint": "Sección IV.a, primer párrafo. En 1810 todavía se declaraba lealtad a Fernando VII."
+    },
+    {
+      "id": "q17",
+      "tema": "IV · Independencia de Chile",
+      "q": "Durante la Patria Vieja, José Miguel Carrera impulsó la creación de símbolos patrios y la publicación de…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "el Acta de Independencia firmada por O’Higgins.",
+        "B": "El contrato social, traducido al español.",
+        "C": "la Declaración de los Derechos del Hombre.",
+        "D": "la Aurora de Chile, primer periódico nacional."
+      },
+      "ans": "D",
+      "why": "La Aurora de Chile comenzó a publicarse en 1812 y fue el primer periódico del país. Difundía ideas patriotas e ilustradas. Carrera también impulsó los primeros símbolos patrios, para diferenciar a Chile de España.",
+      "notes": {
+        "A": "El Acta de Independencia es de 1818, durante la Patria Nueva y el gobierno de O’Higgins.",
+        "B": "Carrera no publicó la obra de Rousseau. Lo que impulsó fue el primer periódico del país.",
+        "C": "Fue proclamada en Francia, en 1789.",
+        "D": ""
+      },
+      "hint": "Sección IV.a, segundo párrafo. Fue el primer medio impreso de noticias del país."
+    },
+    {
+      "id": "q18",
+      "tema": "IV · Independencia de Chile",
+      "q": "Durante la Reconquista (1814–1817), ¿qué papel cumplió Manuel Rodríguez?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Fue el gobernador realista que persiguió a los patriotas en Santiago.",
+        "B": "Fue el general que dirigió el Ejército de los Andes en Mendoza.",
+        "C": "Fue espía, mensajero y organizador de la resistencia patriota.",
+        "D": "Fue el primer Director Supremo de Chile tras la batalla de Chacabuco."
+      },
+      "ans": "C",
+      "why": "Mientras otros líderes preparaban un ejército en las Provincias Unidas del Río de la Plata, Manuel Rodríguez actuó dentro de Chile: conseguía información sobre los realistas, llevaba mensajes y mantenía vivo el espíritu independentista.",
+      "notes": {
+        "A": "Manuel Rodríguez era patriota: luchaba contra las autoridades españolas.",
+        "B": "El Ejército de los Andes lo encabezó José de San Martín, con la participación de Bernardo O’Higgins.",
+        "C": "",
+        "D": "Tras Chacabuco gobernó Bernardo O’Higgins como Director Supremo."
+      },
+      "hint": "Sección IV.b, segundo párrafo. Se quedó en Chile mientras otros preparaban el ejército al otro lado de la cordillera."
+    },
+    {
+      "id": "q19",
+      "tema": "IV · Independencia de Chile",
+      "q": "¿En qué etapa se proclamó este documento y qué significaba?",
+      "ctx": {
+        "text": "…el territorio continental de Chile y sus islas adyacentes forman de hecho y por derecho un Estado libre, independiente y soberano, y quedan para siempre separados de la Monarquía de España…",
+        "cite": "Acta de Independencia de Chile (1818)"
+      },
+      "opts": {
+        "A": "Patria Vieja: Chile juraba lealtad al rey Fernando VII.",
+        "B": "Patria Nueva: Chile se declaraba un Estado soberano.",
+        "C": "Reconquista: España recuperaba el control del territorio.",
+        "D": "Patria Nueva: Chile se unía a las Provincias del Río de la Plata."
+      },
+      "ans": "B",
+      "why": "La independencia se proclamó formalmente el 12 de febrero de 1818, durante la Patria Nueva, con O’Higgins en el gobierno. «Soberano» significa que decide por sí mismo. La victoria de Maipú, el 5 de abril de 1818, consolidó la independencia en la zona central.",
+      "notes": {
+        "A": "En la Patria Vieja (1810–1814) se mantenía la lealtad al rey, pero el texto dice lo contrario: separación para siempre.",
+        "B": "",
+        "C": "Durante la Reconquista gobernaban los realistas. Nunca habrían proclamado la independencia.",
+        "D": "El texto dice «independiente y soberano»: Chile no se une ni depende de otro Estado."
+      },
+      "hint": "Sección IV.c, primer párrafo. ¿En qué año y en qué etapa se proclamó formalmente la independencia?"
+    },
+    {
+      "id": "q20",
+      "tema": "IV · Independencia de Chile",
+      "q": "Ordena cronológicamente estos hechos de la independencia de Chile:\n1. Batalla de Chacabuco\n2. Formación de la Primera Junta Nacional de Gobierno\n3. Abdicación de Bernardo O’Higgins\n4. Batalla de Rancagua",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "2 – 4 – 1 – 3",
+        "B": "2 – 1 – 4 – 3",
+        "C": "4 – 2 – 1 – 3",
+        "D": "2 – 4 – 3 – 1"
+      },
+      "ans": "A",
+      "why": "Primera Junta (1810) → Rancagua (1814) → Chacabuco (1817) → abdicación de O’Higgins (1823). Rancagua cierra la Patria Vieja, Chacabuco cierra la Reconquista y la abdicación cierra la Patria Nueva.",
+      "notes": {
+        "A": "",
+        "B": "Pone Chacabuco (1817) antes que Rancagua (1814).",
+        "C": "Parte con Rancagua (1814), pero la Primera Junta es de 1810.",
+        "D": "Pone la abdicación de O’Higgins (1823) antes que Chacabuco (1817)."
+      },
+      "hint": "Sección IV. Los títulos de cada etapa tienen años: Patria Vieja (1810–1814), Reconquista (1814–1817) y Patria Nueva (1817–1823)."
+    },
+    {
+      "id": "q21",
+      "tema": "V · Consolidación del territorio",
+      "q": "Después de la independencia, ¿qué buscaba la «construcción de la chilenidad»?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Recuperar las tradiciones españolas para mantener la unidad.",
+        "B": "Que cada provincia tuviera su propia bandera, escudo e himno.",
+        "C": "Unir a los habitantes en torno a símbolos y tradiciones comunes.",
+        "D": "Que los pueblos originarios definieran los símbolos de la nación."
+      },
+      "ans": "C",
+      "why": "El nuevo Estado necesitaba unir a sus habitantes. Para eso difundió la bandera, el escudo y el himno, celebró fechas históricas, promovió tradiciones y enseñó una historia común en las escuelas.",
+      "notes": {
+        "A": "Se buscaba lo contrario: diferenciarse de España.",
+        "B": "Se buscaba la unidad: símbolos comunes para todo el país.",
+        "C": "",
+        "D": "El proceso lo dirigieron las élites criollas. Los pueblos originarios tuvieron una participación limitada."
+      },
+      "hint": "Sección V, primer párrafo. La idea era «unir a los habitantes» bajo una misma comunidad política."
+    },
+    {
+      "id": "q22",
+      "tema": "V · Consolidación del territorio",
+      "q": "El escudo nacional de 1812 incorporó figuras indígenas. ¿Qué contradicción muestra este hecho?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Se usó la imagen indígena sin reconocer realmente sus derechos.",
+        "B": "Los pueblos originarios diseñaron los primeros símbolos patrios.",
+        "C": "El Estado devolvió al pueblo mapuche sus tierras al sur del Biobío.",
+        "D": "España exigió incluir figuras indígenas en el escudo de Chile."
+      },
+      "ans": "A",
+      "why": "Los criollos usaron la imagen indígena como símbolo de resistencia frente a España. Pero esa valoración fue solo simbólica: el Estado buscó imponer una identidad común y, durante el siglo XIX, extender su autoridad sobre territorios indígenas.",
+      "notes": {
+        "A": "",
+        "B": "Los símbolos los crearon las élites criollas, no los pueblos originarios.",
+        "C": "Fue lo contrario: en el siglo XIX el Estado buscó expandirse sobre ese territorio.",
+        "D": "El escudo de 1812 lo crearon los patriotas, justamente para diferenciarse de España."
+      },
+      "hint": "Sección V.a, primer párrafo. Fíjate en la frase que empieza con «Sin embargo»."
+    },
+    {
+      "id": "q23",
+      "tema": "VI · Derechos fundamentales",
+      "q": "¿Qué cambio respecto del Antiguo Régimen representa este artículo?",
+      "ctx": {
+        "text": "Los hombres nacen y permanecen libres e iguales en derechos. Las distinciones sociales solo pueden fundarse en la utilidad común.",
+        "cite": "Declaración de los Derechos del Hombre y del Ciudadano (1789), artículo 1"
+      },
+      "opts": {
+        "A": "Confirma los privilegios de la nobleza y del alto clero.",
+        "B": "Reserva los derechos naturales para el rey y la nobleza.",
+        "C": "Otorga a las mujeres los mismos derechos políticos.",
+        "D": "Rechaza los privilegios que se obtenían por nacimiento."
+      },
+      "ans": "D",
+      "why": "En el Antiguo Régimen, nacer noble daba privilegios ante la ley. La Declaración de 1789 dice que todos nacen iguales en derechos: es la igualdad jurídica. También reconoció la libertad, la propiedad, la seguridad y la resistencia a la opresión.",
+      "notes": {
+        "A": "Es lo contrario: el artículo cuestiona los privilegios basados en el nacimiento.",
+        "B": "Habla de «los hombres», es decir, de las personas en general.",
+        "C": "En la práctica, las mujeres quedaron excluidas de la participación política. Por eso protestó Olympe de Gouges en 1791.",
+        "D": ""
+      },
+      "hint": "Sección VI, primer párrafo. ¿Qué tipo de privilegios cuestionó la Declaración?"
+    },
+    {
+      "id": "q24",
+      "tema": "VI · Derechos fundamentales",
+      "q": "¿Por qué Olympe de Gouges escribió esta declaración?",
+      "ctx": {
+        "text": "La mujer nace libre y permanece igual al hombre en derechos.",
+        "cite": "Olympe de Gouges, Declaración de los Derechos de la Mujer y de la Ciudadana (1791), artículo 1"
+      },
+      "opts": {
+        "A": "Para apoyar el regreso de la monarquía absoluta en Francia.",
+        "B": "Para denunciar la exclusión de las mujeres de esos derechos.",
+        "C": "Para exigir que se anulara la Declaración de los Derechos de 1789.",
+        "D": "Para celebrar que las mujeres ya podían votar en Francia."
+      },
+      "ans": "B",
+      "why": "La Declaración de 1789 hablaba de igualdad, pero las mujeres siguieron excluidas de la participación política. Olympe de Gouges escribió una declaración paralela, artículo por artículo, para mostrar esa contradicción.",
+      "notes": {
+        "A": "Ella defendía la igualdad de derechos, no el poder absoluto del rey.",
+        "B": "",
+        "C": "No quería anularla: quería que sus derechos también incluyeran a las mujeres.",
+        "D": "Las mujeres no votaban en esa época. En Francia votaron por primera vez en 1945."
+      },
+      "hint": "Sección VI, segundo párrafo. Ella quería que los derechos de 1789 también fueran para…"
+    }
+  ]
+}

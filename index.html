@@ -1,0 +1,1615 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Juegos de preguntas por equipos para la sala de clases: crea tus preguntas, arma los equipos y juega con tómbola, rebote y comodines.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Ccircle%20cx%3D%2732%27%20cy%3D%2732%27%20r%3D%2730%27%20fill%3D%27%23f5c44e%27/%3E%3Ccircle%20cx%3D%2732%27%20cy%3D%2732%27%20r%3D%2717%27%20fill%3D%27%2314121b%27/%3E%3Ctext%20x%3D%2732%27%20y%3D%2740%27%20font-family%3D%27Arial%27%20font-weight%3D%27700%27%20font-size%3D%2722%27%20text-anchor%3D%27middle%27%20fill%3D%27%23f5c44e%27%3E%3F%3C/text%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Tómbola de Repaso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap">
+<style>
+/* Layout: biblioteca en grilla de tarjetas; editor con lista de preguntas a la izquierda y resumen a la derecha; juego con marcador arriba, pregunta a la izquierda y turno a la derecha (proyector). */
+:root{
+  /* Sala oscura para proyector, con los colores de la tómbola: amarillo de boleto, rojo y azul escolar; escarapelas de color para los equipos */
+  --bg:#14121b; --panel:#1e1b28; --panel2:#29253a; --ink:#f4efe6; --muted:#b3abc0; --line:#3c3650;
+  --accent:#f5c44e; --on-accent:#1d1404; --gold-soft:rgba(245,196,78,.13);
+  --blue:#3f78e0; --red:#e04a3e;
+  --ok:#5fd394; --on-ok:#05200f; --ok-soft:rgba(95,211,148,.14);
+  --warn:#ffb547; --warn-soft:rgba(255,181,71,.14);
+  --bad:#ff6157; --on-bad:#2a0503; --bad-soft:rgba(255,97,87,.13);
+  --t0:#5b9dff; --t1:#ff7bb0; --t2:#31c7bf; --t3:#ff9d45; --t4:#b48cff; --t5:#c9a06e; --on-team:#15101b;
+  --scrim:rgba(8,5,12,.78);
+  --confetti:#f5c44e,#3f78e0,#e04a3e,#f4efe6,#5b9dff,#ff7bb0,#31c7bf;
+  --f-display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+html{font-size:clamp(15px, calc(0.5vw + 9.5px), 20px)}
+html,body{background:var(--bg);color:var(--ink)}
+body{font-family:var(--f-body);line-height:1.45;-webkit-font-smoothing:antialiased;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+button{font:inherit;color:inherit;cursor:pointer}
+button:disabled{cursor:not-allowed}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.app{max-width:1480px;margin:0 auto;padding-inline:clamp(0px,1.6vw,24px);padding-block:0 48px;display:flex;flex-direction:column;gap:18px}
+.stripe{height:6px;background:linear-gradient(90deg,var(--accent) 0 33.33%,var(--red) 33.33% 66.66%,var(--blue) 66.66% 100%);border-radius:0 0 4px 4px}
+h1,h2,h3,h4{margin:0}
+.cock{flex:none;display:inline-block;width:1.05em;height:1.05em;border-radius:50%;background:radial-gradient(circle,var(--tc) 0 28%,var(--ink) 29% 50%,var(--tc) 51% 100%);box-shadow:0 0 0 1px rgba(0,0,0,.3)}
+
+/* ---------- botones y campos ---------- */
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{border:0;border-radius:12px;padding:.75rem 1.2rem;font-weight:700;font-size:1rem;background:var(--accent);color:var(--on-accent);display:inline-flex;gap:.5rem;align-items:center;justify-content:center;text-align:center;text-decoration:none}
+.btn:hover:not(:disabled){filter:brightness(1.08)}
+.btn:disabled{opacity:.4}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn.ghost:hover:not(:disabled){border-color:var(--accent)}
+.btn.small{padding:.45rem .8rem;font-size:.85rem;border-radius:10px}
+.btn.big{padding:1rem 2rem;font-size:1.15rem}
+.btn.warn{background:var(--bad);color:var(--on-bad)}
+.btn.danger-t{color:var(--bad)}
+kbd{font-family:var(--f-body);font-size:.72em;padding:.05rem .35rem;border-radius:5px;border:1px solid currentColor;opacity:.75;font-weight:700}
+textarea,input[type=number],input[type=text],select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.5rem .7rem;width:100%}
+textarea{resize:vertical;line-height:1.4}
+input:focus,textarea:focus,select:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--gold-soft)}
+input[type=number]{width:5.5rem}
+select{width:auto}
+input:disabled,textarea:disabled{opacity:.6}
+.example{font-size:.82rem;color:var(--muted);margin:0}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.box h2{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:700}
+
+/* ---------- encabezado ---------- */
+.top{display:flex;flex-direction:column;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap}
+.brand{min-width:0;display:flex;flex-direction:column;gap:4px}
+.brand h1{font-family:var(--f-display);font-weight:800;font-size:1.75rem;line-height:1.05;letter-spacing:-.01em;overflow-wrap:anywhere}
+.brand p{margin:0;color:var(--muted);font-size:.82rem}
+.crumbs{display:flex;align-items:center;gap:12px;flex-wrap:wrap;min-width:0}
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+.icon-btn{width:2.3rem;height:2.3rem;border-radius:10px;border:1px solid var(--line);background:var(--panel);display:grid;place-items:center}
+.icon-btn:hover{border-color:var(--accent)}
+.icon-btn[aria-pressed="false"]{opacity:.5}
+.icon-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pill{display:inline-flex;align-items:center;gap:.4em;font-size:.75rem;padding:.25rem .65rem;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.pill.ok{border-color:var(--ok);color:var(--ok)}
+.pill.warn{border-color:var(--warn);color:var(--warn)}
+.pill.bad{border-color:var(--bad);color:var(--bad)}
+
+/* ---------- biblioteca ---------- */
+.lib-hero{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;padding-top:6px}
+.lib-hero h2{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,5vw,3.4rem);line-height:1;letter-spacing:-.02em}
+.lib-hero p{margin:.5rem 0 0;color:var(--muted);max-width:60ch}
+.lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.gcard{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.gcard::after{content:"";position:absolute;right:16px;top:-1px;width:44px;height:10px;border-radius:0 0 8px 8px;background:var(--accent);opacity:.9}
+.gcard .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:700;margin:0;padding-right:56px;overflow-wrap:anywhere}
+.gcard h3{font-family:var(--f-display);font-weight:800;font-size:1.45rem;line-height:1.1;letter-spacing:-.01em;overflow-wrap:anywhere}
+.gcard .meta{font-size:.82rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 12px}
+.gcard .row{margin-top:auto;padding-top:6px}
+.gcard .more-menu{display:flex;flex-wrap:wrap;gap:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.empty{border:2px dashed var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.empty h3{font-family:var(--f-display);font-weight:800;font-size:1.4rem}
+.notice{border:1px solid var(--warn);background:var(--warn-soft);border-radius:12px;padding:10px 14px;font-size:.88rem}
+.helpgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.helpgrid .box p{margin:0;font-size:.92rem;color:var(--muted)}
+.helpgrid h3{font-family:var(--f-display);font-weight:800;font-size:1.1rem}
+
+/* ---------- editor ---------- */
+.ed-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,320px);gap:22px;align-items:start}
+.ed-main{display:flex;flex-direction:column;gap:14px;min-width:0}
+.ed-side{display:flex;flex-direction:column;gap:14px;position:sticky;top:12px;min-width:0}
+.ed-meta{display:flex;flex-direction:column;gap:10px}
+input.title-input{font-family:var(--f-display);font-weight:800;font-size:clamp(1.5rem,3.5vw,2.3rem);letter-spacing:-.01em;background:transparent;border:1px dashed transparent;padding:.2rem .4rem;margin-left:-.4rem}
+input.title-input:hover{border-color:var(--line)}
+.ed-meta-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mini{display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--muted);font-weight:700}
+.mini input{font-weight:400;font-size:.95rem}
+.savestat{font-size:.82rem;color:var(--muted)}
+.savestat.dirty,.savestat.saving{color:var(--accent)}
+.savestat.err{color:var(--bad)}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qe{background:var(--panel);border:1px solid var(--line);border-radius:16px;min-width:0}
+.qe.open{border-color:var(--accent)}
+.qe-h{width:100%;display:grid;grid-template-columns:2rem minmax(0,1fr) auto 1.2rem;gap:12px;align-items:center;background:transparent;border:0;padding:12px 14px;text-align:left}
+.qnum{width:2rem;height:2rem;border-radius:50%;background:var(--panel2);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:.95rem}
+.qprev{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
+.qprev.empty-t{color:var(--muted);font-weight:400;font-style:italic}
+.chev{color:var(--muted);transition:transform .2s}
+.qe.open .chev{transform:rotate(180deg)}
+.badge{font-size:.72rem;font-weight:700;padding:.18rem .55rem;border-radius:999px;white-space:nowrap}
+.badge.ok{background:var(--ok-soft);color:var(--ok)}
+.badge.warn{background:var(--warn-soft);color:var(--warn)}
+.badge.err{background:var(--bad-soft);color:var(--bad)}
+.qe-b{padding:4px 16px 16px;display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--line)}
+.fld{display:flex;flex-direction:column;gap:5px;font-size:.82rem;font-weight:700;color:var(--muted)}
+.fld small,.alts legend small{font-weight:400}
+.fld textarea,.fld input{font-weight:400;color:var(--ink);font-size:1rem}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+details.more{border:1px dashed var(--line);border-radius:12px;padding:8px 12px}
+details.more summary{cursor:pointer;font-size:.85rem;font-weight:700;color:var(--muted)}
+details.more[open]{display:flex;flex-direction:column;gap:10px}
+details.more[open] summary{margin-bottom:4px}
+.alts{border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+.alts legend{font-size:.82rem;font-weight:700;color:var(--muted);padding:0;margin-bottom:6px}
+.alt{display:grid;grid-template-columns:auto minmax(0,1fr) 2.4rem;gap:4px 8px;align-items:center;padding:6px;border-radius:12px;border:2px solid transparent}
+.alt.is-ans{border-color:var(--ok);background:var(--ok-soft)}
+.pick{display:flex;align-items:center;gap:6px;cursor:pointer}
+.pick input{width:1.15rem;height:1.15rem;accent-color:var(--ok);margin:0}
+.pick span{width:2rem;height:2rem;border-radius:8px;display:grid;place-items:center;background:var(--panel2);font-family:var(--f-display);font-weight:800}
+.alt.is-ans .pick span{background:var(--ok);color:var(--on-ok)}
+.len{font-size:.72rem;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.len.long{color:var(--warn);font-weight:700}
+.alt-note{grid-column:2/4;font-size:.86rem!important;padding:.35rem .6rem;border-style:dashed}
+.issues{display:flex;flex-direction:column;gap:6px}
+.issues:empty{display:none}
+.issue{font-size:.86rem;padding:8px 12px;border-radius:10px}
+.issue.err{background:var(--bad-soft);color:var(--bad)}
+.issue.warn{background:var(--warn-soft);color:var(--warn)}
+.qe-actions{border-top:1px solid var(--line);padding-top:12px}
+.stat{font-size:.95rem}
+.stat b{font-family:var(--f-display);font-size:1.6rem;font-weight:800}
+.dist{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:end;height:104px}
+.dist div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%}
+.dist i{width:100%;max-width:38px;background:var(--accent);border-radius:6px 6px 0 0;min-height:3px}
+.dist span{font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.side-tools{display:flex;flex-direction:column;gap:8px}
+.side-tools .btn{justify-content:flex-start}
+pre.fmt{margin:0;white-space:pre-wrap;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.78rem;line-height:1.5;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--ink);overflow-x:auto}
+
+/* ---------- juego: marcador ---------- */
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.tcard{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px 12px;padding:10px 14px;border-radius:14px;background:var(--panel);border:2px solid transparent;min-width:0;transition:background-color .3s,border-color .3s}
+.tcard .tname{display:flex;align-items:center;gap:.5em;font-weight:700;font-size:.92rem;min-width:0}
+.tcard .tname span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tcard .tscore{grid-column:2;grid-row:1/span 2;font-family:var(--f-display);font-weight:800;font-size:2.1rem;line-height:1;font-variant-numeric:tabular-nums}
+.tcard .tmeta{display:flex;align-items:center;gap:10px;font-size:.7rem;color:var(--muted);min-height:12px}
+.dots3{display:flex;gap:3px}
+.dots3 i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.dots3 i.on{background:var(--accent)}
+.fcount{color:var(--bad);font-weight:700}
+.tcard.cur{border-color:var(--tc);background:color-mix(in srgb,var(--tc) 17%,var(--panel))}
+.tcard .flag{font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--on-team);background:var(--tc);border-radius:999px;padding:.08rem .5rem}
+.tcard.bump .tscore{animation:bump .7s cubic-bezier(.2,1.6,.4,1)}
+@keyframes bump{0%{transform:scale(1.35);color:var(--accent)}100%{transform:scale(1)}}
+
+/* ---------- juego: preguntas ---------- */
+.dots{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.dot{min-width:2.1rem;height:2.1rem;padding:0 .4rem;border-radius:999px;border:1px solid var(--line);background:transparent;font-weight:700;font-size:.8rem;font-variant-numeric:tabular-nums;color:var(--muted);box-shadow:inset 0 -4px 0 var(--tc)}
+.dot.ok{background:var(--ok);border-color:var(--ok);color:var(--on-ok)}
+.dot.half{border-color:var(--ok);color:var(--ok);border-width:2px}
+.dot.bad{border-color:var(--bad);color:var(--bad);border-width:2px}
+.dot.gold{border-color:var(--accent);border-width:2px}
+.dot.gold:not(.ok){color:var(--accent)}
+.dot.cur{outline:3px solid var(--accent);outline-offset:2px;color:var(--ink)}
+.dot.ok.cur{color:var(--on-ok)}
+.dot.fin{padding:0 .8rem;letter-spacing:.05em;text-transform:uppercase;font-size:.7rem;box-shadow:none;border-radius:8px}
+.stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,340px);gap:22px;align-items:start}
+.qcol{display:flex;flex-direction:column;gap:14px;min-width:0}
+.qcard{background:var(--panel);border:2px solid transparent;border-radius:18px;padding:clamp(18px,2.2vw,32px);display:flex;flex-direction:column;gap:18px;min-width:0}
+.qcard.gold{border-color:var(--accent);box-shadow:0 0 0 5px var(--gold-soft),0 0 70px rgba(245,196,78,.12)}
+.qmeta{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.qn{font-family:var(--f-display);font-weight:800;font-size:1.5rem;line-height:1;margin-right:4px}
+.qn small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:.45em;font-size:.74rem;padding:.25rem .65rem;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.chip.pts{border-color:var(--accent);color:var(--accent);font-weight:700}
+.chip.pts.gold{background:var(--accent);color:var(--on-accent)}
+.chip.own{color:var(--ink)}
+.ctx,.hintbox{margin:0;padding:14px 18px;border-radius:12px;display:grid;gap:6px;min-width:0}
+.ctx{background:var(--panel2)}
+.hintbox{border:2px dashed var(--accent);background:var(--gold-soft)}
+.clabel{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700}
+.ctx q{quotes:"«" "»";font-style:italic;font-size:1.12rem;line-height:1.45;white-space:pre-line}
+.ctx cite{font-style:normal;color:var(--muted);font-size:.84rem}
+.hintbox p{margin:0;font-size:1.02rem}
+.stem{font-size:1.38rem;line-height:1.38;margin:0;font-weight:700;text-wrap:pretty;white-space:pre-line}
+.opts{display:grid;gap:10px}
+.opt{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:14px;align-items:start;text-align:left;padding:12px 16px 12px 12px;border-radius:14px;border:2px solid var(--line);background:var(--bg);font-size:1.08rem;line-height:1.35;transition:border-color .15s,background .15s,opacity .2s,transform .15s}
+.opt .L{width:2.6rem;height:2.6rem;border-radius:10px;display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:1.3rem;background:var(--panel2);color:var(--ink)}
+.opt .txt{padding-top:.35rem;min-width:0;overflow-wrap:anywhere}
+.opt .why-not{display:block;margin-top:6px;font-size:.86rem;color:var(--muted);line-height:1.35}
+.opt .why-not b{color:var(--bad)}
+.opt:not(:disabled):hover{border-color:var(--accent);transform:translateX(3px)}
+.opt:disabled{cursor:default}
+.opt.is-out{opacity:.25;text-decoration:line-through}
+.opt.is-wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.is-wrong .L{background:var(--bad);color:var(--on-bad)}
+.opt.is-right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.is-right .L{background:var(--ok);color:var(--on-ok)}
+.fb{border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;border:1px dashed var(--line)}
+.fb.good{border:2px solid var(--ok);background:var(--ok-soft)}
+.fb.bad{border:2px solid var(--bad);background:var(--bad-soft)}
+.fb .verdict{font-family:var(--f-display);font-weight:800;font-size:1.4rem;line-height:1.15;margin:0}
+.fb p{margin:0;font-size:1.04rem;max-width:72ch}
+.fb .kicker{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}
+.fb .hint{color:var(--muted)}
+.fb .hint b{color:var(--ink)}
+.side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.turn{background:var(--tc);border-color:transparent;color:var(--on-team);transition:background-color .12s}
+.turn h2{color:var(--on-team);opacity:.8;font-size:.78rem}
+.who{font-family:var(--f-display);font-weight:800;font-size:2.3rem;line-height:1.05;min-height:2.2em;display:flex;align-items:center;overflow-wrap:anywhere;color:var(--on-team)}
+.who.wait{opacity:.55;font-size:1.5rem}
+.who.land{animation:land .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes land{0%{transform:scale(.8)}100%{transform:scale(1)}}
+.turn .sub{font-size:.82rem;margin:0;opacity:.8}
+.btn.spin{width:100%;padding:1rem;font-size:1.08rem;background:var(--on-team);color:var(--tc)}
+.timer{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;background:rgba(21,16,27,.88);color:var(--ink)}
+.timer b{font-family:var(--f-display);font-size:1.8rem;font-variant-numeric:tabular-nums;min-width:2.2ch;color:var(--accent)}
+.timer span{font-size:.85rem;line-height:1.3}
+.life{display:grid;gap:8px}
+.lf{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1px 10px;align-items:center;border:2px solid var(--line);background:transparent;border-radius:12px;padding:8px 12px;text-align:left}
+.lf strong{font-family:var(--f-display);font-weight:800;font-size:1.02rem}
+.lf span{grid-column:1;font-size:.75rem;color:var(--muted);line-height:1.25}
+.lf .dots3{grid-column:2;grid-row:1/span 2}
+.lf .dots3 i{width:10px;height:10px}
+.lf:not(:disabled):hover{border-color:var(--accent)}
+.lf:disabled{opacity:.42}
+.rules{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.rules li{display:flex;gap:10px;align-items:center;font-weight:700;font-size:1rem}
+.rules li svg{flex:none;width:26px;height:26px;fill:none;stroke:var(--bad);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fbtns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.fbtn{display:flex;align-items:center;gap:8px;border:2px solid var(--line);background:transparent;border-radius:10px;padding:.55rem .6rem;font-weight:700;font-size:.8rem;text-align:left;min-width:0}
+.fbtn .fn{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fbtn b{color:var(--bad);font-variant-numeric:tabular-nums}
+.fbtn:hover{border-color:var(--bad);background:var(--bad-soft)}
+.conduct small{color:var(--muted);font-size:.78rem;line-height:1.35}
+.linkish{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;font-size:.78rem;align-self:flex-start}
+.keys{font-size:.72rem;color:var(--muted);line-height:1.8;margin:0}
+
+/* ---------- juego: portada y final ---------- */
+.intro,.final{display:grid;gap:24px;padding-top:6px}
+.hero{position:relative;overflow:hidden;isolation:isolate;padding-block:22px 6px;display:flex;flex-direction:column;gap:14px}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:repeating-conic-gradient(from -90deg at 8% 46%,rgba(245,196,78,.10) 0 3deg,transparent 3deg 10deg);-webkit-mask-image:radial-gradient(circle at 8% 46%,#000 0,transparent 68%);mask-image:radial-gradient(circle at 8% 46%,#000 0,transparent 68%);pointer-events:none}
+.eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);font-weight:700;margin:0}
+.hero h2{font-family:var(--f-display);font-weight:800;font-size:clamp(2.4rem,7vw,5rem);line-height:.95;letter-spacing:-.02em;text-wrap:balance;overflow-wrap:anywhere}
+.hero p.lead{font-size:1.12rem;max-width:62ch;margin:0;color:var(--muted)}
+.sec-title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.sec-title h3{font-family:var(--f-display);font-weight:800;font-size:1.45rem}
+.tgrid-intro{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.tbox{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.tbox h4{display:flex;align-items:center;gap:.5em;font-family:var(--f-display);font-weight:800;font-size:1.12rem;min-width:0}
+.tbox h4 small{margin-left:auto;font-family:var(--f-body);font-size:.75rem;color:var(--muted);font-weight:400}
+.names{display:flex;flex-wrap:wrap;gap:5px}
+.names span{font-size:.8rem;padding:.15rem .55rem;border-radius:999px;background:var(--panel2)}
+.tbox .names span{background:color-mix(in srgb,var(--tc) 20%,var(--panel2))}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.cols h3{font-family:var(--f-display);font-weight:800;font-size:1.22rem}
+.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:10px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:1.9rem minmax(0,1fr);gap:10px;font-size:.96rem}
+.steps li::before{content:counter(s);width:1.9rem;height:1.9rem;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.perks{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.perks li{font-size:.96rem;padding:8px 12px;border-radius:10px;background:var(--panel2)}
+.perks li b{font-family:var(--f-display);color:var(--accent)}
+.warnbox{border:2px solid var(--bad);background:var(--bad-soft)}
+.warnbox p{margin:0;font-size:.95rem}
+.podium{display:flex;align-items:flex-end;justify-content:center;gap:clamp(8px,2vw,22px);height:300px;border-bottom:3px solid var(--line)}
+.pod{flex:1;max-width:230px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;min-width:0}
+.pod .pname{display:flex;align-items:center;gap:.4em;font-weight:700;text-align:center;font-size:1rem;max-width:100%}
+.pod .pname span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pod .bar{width:100%;background:var(--tc);color:var(--on-team);border-radius:12px 12px 0 0;display:flex;flex-direction:column;align-items:center;gap:2px;padding-top:12px}
+.pod .place{font-family:var(--f-display);font-weight:800;font-size:2.4rem;line-height:1}
+.pod .ppts{font-family:var(--f-display);font-weight:800;font-size:1.15rem;font-variant-numeric:tabular-nums}
+.tbl{overflow-x:auto}
+.tbl table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;min-width:560px}
+.tbl th,.tbl td{padding:.55rem .8rem;border-bottom:1px solid var(--line);text-align:right}
+.tbl th{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl td:first-child{font-weight:700}
+.tbl td.total{font-family:var(--f-display);font-weight:800;font-size:1.3rem;color:var(--accent)}
+.tbl td .tn{display:inline-flex;align-items:center;gap:.45em}
+.neg{color:var(--bad)}
+
+/* ---------- ventanas y avisos ---------- */
+.overlay{position:fixed;inset:0;background:var(--scrim);display:grid;place-items:center;padding:max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));z-index:40}
+.sheet{background:var(--panel);border:1px solid var(--line);border-radius:18px;width:min(900px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:22px;display:flex;flex-direction:column;gap:16px}
+.sheet > *{flex-shrink:0}
+.sheet h2{font-family:var(--f-display);font-weight:800;font-size:1.5rem}
+.sheet p{margin:0}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label,.field .lbl{font-weight:700;font-size:.9rem}
+.field small{color:var(--muted);font-size:.78rem}
+.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.teamgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.tedit{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:12px;background:var(--panel2);min-width:0}
+.tedit-h{display:flex;align-items:center;gap:8px}
+.tedit textarea{min-height:130px}
+.tedit small{color:var(--muted);font-size:.75rem}
+.check{display:flex;gap:8px;align-items:center;font-size:.92rem}
+.danger{border-top:1px solid var(--line);padding-top:14px}
+.prevlist{display:flex;flex-direction:column;gap:8px;max-height:320px;overflow:auto}
+.prevq{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:.9rem;display:flex;flex-direction:column;gap:4px}
+.prevq b{font-weight:700}
+.prevq ol{margin:0;padding-left:1.3rem;color:var(--muted)}
+.prevq li.ans{color:var(--ok);font-weight:700}
+.status-line{font-size:.9rem;color:var(--muted)}
+.status-line b{color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:.8rem 1.2rem;border-radius:12px;font-weight:700;z-index:60;max-width:calc(100vw - 32px);box-shadow:0 10px 30px rgba(0,0,0,.35);text-align:center}
+.toast.bad{background:var(--bad);color:var(--on-bad)}
+.banner{position:fixed;inset:0;display:grid;place-items:center;z-index:55;pointer-events:none;padding:16px}
+.banner div{background:var(--accent);color:var(--on-accent);border-radius:22px;padding:28px 40px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:pop .6s cubic-bezier(.2,1.5,.4,1);max-width:100%}
+.banner small{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.16em;font-weight:700}
+.banner strong{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,5vw,3.6rem);line-height:1.05;margin:.3rem 0}
+.banner span{font-weight:700;font-size:1.15rem}
+@keyframes pop{0%{transform:scale(.5);opacity:0}100%{transform:scale(1);opacity:1}}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+body.flash-bad .app{animation:shake .45s}
+body.flash-bad::after{content:"";position:fixed;inset:0;box-shadow:inset 0 0 0 10px var(--bad);pointer-events:none;z-index:45;animation:fade .7s forwards}
+@keyframes fade{from{opacity:1}to{opacity:0}}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(4px)}}
+
+@media (max-width: 960px){
+  .ed-grid{grid-template-columns:minmax(0,1fr)}
+  .ed-side{position:static}
+  .helpgrid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width: 900px){
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .side{order:-1}
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .who{min-height:1.3em;font-size:2rem}
+}
+@media (max-width: 560px){
+  .brand h1{font-size:1.35rem}
+  .board{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tcard{padding:8px 10px}
+  .tcard .tscore{font-size:1.5rem}
+  .tcard .flag{display:none}
+  .stem{font-size:1.15rem}
+  .opt{font-size:.98rem}
+  .podium{height:240px}
+  .pod .place{font-size:1.8rem}
+  .ed-meta-row,.two{grid-template-columns:minmax(0,1fr)}
+  .qe-h{grid-template-columns:2rem minmax(0,1fr) 1.2rem}
+  .qe-h .qbadges{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="app">
+  <div class="stripe" aria-hidden="true"></div>
+  <header class="top" id="top"></header>
+  <main id="view"></main>
+</div>
+<div class="overlay" id="modal" hidden></div>
+<div class="toast" id="toast" role="status" hidden></div>
+<div class="banner" id="banner" hidden></div>
+
+<script>
+/* =================== utilidades =================== */
+const LET = ['A','B','C','D'];
+const BASE = 100, RACHA = 50, RACHA_MAX = 2, MAXT = 6;
+const TEAM_NAMES = ['Montesquieu','Olympe de Gouges','O’Higgins','Manuel Rodríguez','Voltaire','Carrera'];
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const str = v => typeof v === 'string' ? v : (v == null ? '' : String(v));
+const num = n => (n < 0 ? '−' : '') + Math.abs(Math.round(n));
+const reduceMotion = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const tcol = t => `var(--t${t})`;
+const IN_CLAUDE = !!(window.claude && typeof window.claude.use === 'function');
+const rid = () => Math.random().toString(36).slice(2, 8) + Date.now().toString(36).slice(-4);
+const slug = s => (str(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40)) || 'juego';
+const lsGet = k => { try { return JSON.parse(localStorage.getItem(k)); } catch(e) { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch(e) {} };
+const lsDel = k => { try { localStorage.removeItem(k); } catch(e) {} };
+function ago(iso){
+  const t = Date.parse(iso); if (!t) return '';
+  const m = Math.round((Date.now() - t) / 60000);
+  if (m < 1) return 'recién'; if (m < 60) return `hace ${m} min`;
+  const h = Math.round(m / 60); if (h < 24) return `hace ${h} h`;
+  const d = Math.round(h / 24); if (d < 30) return `hace ${d} ${d === 1 ? 'día' : 'días'}`;
+  return new Date(t).toLocaleDateString('es-CL');
+}
+
+/* =================== modelo de preguntas =================== */
+function normQ(x){
+  x = x || {}; const o = x.opts || {}, n = x.notes || {}, c = x.ctx || {};
+  const q = { id: (typeof x.id === 'string' && /^[\w-]{1,40}$/.test(x.id)) ? x.id : 'q' + rid(), tema: str(x.tema), q: str(x.q),
+    ctx: { text: str(c.text), cite: str(c.cite) }, opts: {}, notes: {}, ans: LET.includes(x.ans) ? x.ans : '', why: str(x.why), hint: str(x.hint) };
+  LET.forEach(L => { q.opts[L] = str(o[L]); q.notes[L] = str(n[L]); });
+  return q;
+}
+function normGame(id, d){
+  d = d || {};
+  return { id, title: str(d.title).trim() || 'Juego sin título', course: str(d.course), unit: str(d.unit),
+    questions: Array.isArray(d.questions) ? d.questions.map(normQ) : [], createdAt: str(d.createdAt), updatedAt: str(d.updatedAt) };
+}
+function gameBody(g){
+  return { title: g.title, course: g.course, unit: g.unit, createdAt: g.createdAt || new Date().toISOString(), updatedAt: g.updatedAt || new Date().toISOString(),
+    questions: g.questions.map(q => ({ id: q.id, tema: q.tema, q: q.q, ctx: { text: q.ctx.text, cite: q.ctx.cite }, opts: Object.assign({}, q.opts), ans: q.ans, why: q.why, notes: Object.assign({}, q.notes), hint: q.hint })) };
+}
+const letters = q => LET.filter(L => q.opts[L].trim());
+function qIssues(q){
+  const out = [], ls = letters(q);
+  if (!q.q.trim()) out.push({ lvl:'err', t:'Falta el enunciado.' });
+  if (ls.length < 2) out.push({ lvl:'err', t:'Necesita al menos dos alternativas.' });
+  if (!q.ans) out.push({ lvl:'err', t:'Marca cuál es la alternativa correcta.' });
+  else if (!q.opts[q.ans].trim()) out.push({ lvl:'err', t:`La alternativa marcada como correcta (${q.ans}) está vacía.` });
+  if (ls.length >= 2 && ls.join('') !== LET.slice(0, ls.length).join('')) out.push({ lvl:'warn', t:'Hay una alternativa vacía entre medio. Deja las vacías al final (por ejemplo, C y D).' });
+  if (ls.length >= 2 && q.ans && q.opts[q.ans].trim()) {
+    const others = ls.filter(L => L !== q.ans).map(L => q.opts[L].trim().length);
+    const c = q.opts[q.ans].trim().length, avg = others.reduce((a, b) => a + b, 0) / others.length;
+    if (c > Math.max(...others) && c > avg * 1.2 && c - avg >= 8) out.push({ lvl:'warn', t:`La correcta es bastante más larga que las demás (${c} caracteres; las otras promedian ${Math.round(avg)}). Se puede adivinar sin leer.` });
+  }
+  const seen = {};
+  ls.forEach(L => { const k = q.opts[L].trim().toLowerCase(); if (seen[k]) out.push({ lvl:'warn', t:`Las alternativas ${seen[k]} y ${L} dicen lo mismo.` }); else seen[k] = L; });
+  return out;
+}
+const playable = q => !qIssues(q).some(i => i.lvl === 'err');
+const longWarn = q => qIssues(q).some(i => i.lvl === 'warn' && i.t.startsWith('La correcta es bastante'));
+
+/* Formato para pegar desde Word o Docs */
+const FORMAT_EXAMPLE = `1. ¿Quién propuso la separación de los poderes del Estado?
+A) Rousseau
+*B) Montesquieu
+C) Voltaire
+D) Olympe de Gouges
+Explicación: Montesquieu la propuso en El espíritu de las leyes (1748).
+Pista: Revisa la sección I.c de la guía.
+Tema: La Ilustración
+
+2. ¿En qué año se formó la Primera Junta Nacional de Gobierno?
+A) 1808
+*B) 1810
+C) 1814
+D) 1818`;
+function parseText(text){
+  const lines = str(text).replace(/\r/g, '').split('\n');
+  const out = []; let cur = null, lastField = null;
+  const start = () => { cur = normQ({}); cur._hasOpt = false; out.push(cur); lastField = 'q'; };
+  const looksNew = l => /^(pregunta\s*)?\d+\s*[\.\)\-:]\s*\S/i.test(l) || /^¿/.test(l);
+  for (const raw of lines) {
+    const line = raw.replace(/\u00a0/g, ' ').trim();
+    if (!line) { if (cur && (cur._hasOpt || lastField === 'why' || lastField === 'hint')) lastField = 'gap'; continue; }
+    let m = line.match(/^(\*|✓|✔)?\s*\(?([A-Da-d])\s*[\)\.\-:]\s+(.+)$/);
+    if (m && cur && lastField !== 'gap') {
+      const L = m[2].toUpperCase(); let t = m[3].trim(); let ok = !!m[1];
+      if (/(\s\*|\(correcta\)|✓|✔)$/i.test(t)) { ok = true; t = t.replace(/\s*(\*|\(correcta\)|✓|✔)$/i, '').trim(); }
+      cur.opts[L] = t; cur._hasOpt = true; if (ok) cur.ans = L; lastField = 'opt'; continue;
+    }
+    m = line.match(/^(explicaci[oó]n|por qu[eé]|pista|tema|secci[oó]n|fuente|texto|cita|autor|respuesta|correcta|clave)\s*:\s*(.*)$/i);
+    if (m) {
+      const k = m[1].toLowerCase(), v = m[2].trim();
+      const opener = k === 'fuente' || k === 'texto' || k === 'tema' || k.startsWith('secci');
+      if (!cur || (opener && lastField === 'gap')) start();
+      if (k.startsWith('explic') || k.startsWith('por qu')) { cur.why = v; lastField = 'why'; }
+      else if (k === 'pista') { cur.hint = v; lastField = 'hint'; }
+      else if (k === 'tema' || k.startsWith('secci')) { cur.tema = v; lastField = cur._hasOpt ? 'meta' : 'q'; }
+      else if (k === 'fuente' || k === 'texto') { cur.ctx.text = v; lastField = 'ctx'; }
+      else if (k === 'cita' || k === 'autor') { cur.ctx.cite = v; lastField = cur._hasOpt ? 'meta' : 'q'; }
+      else { const L = (v.match(/[A-Da-d]/) || [''])[0].toUpperCase(); if (L) cur.ans = L; lastField = 'meta'; }
+      continue;
+    }
+    // continuación de una explicación, pista o fuente
+    if (cur && (lastField === 'why' || lastField === 'hint') && !looksNew(line)) { cur[lastField] += ' ' + line; continue; }
+    if (cur && lastField === 'ctx' && !cur._hasOpt) { cur.ctx.text += '\n' + line; continue; }
+    // texto libre: enunciado nuevo o su continuación
+    if (!cur || cur._hasOpt || lastField === 'gap') start();
+    const clean = !cur.q ? line.replace(/^(pregunta\s*)?\d+\s*[\.\)\-:]\s*/i, '') : line;
+    cur.q = cur.q ? cur.q + '\n' + clean : clean; lastField = 'q';
+  }
+  return out.map(q => { delete q._hasOpt; return q; }).filter(q => q.q.trim() || letters(q).length);
+}
+
+/* =================== almacenamiento =================== */
+const LOCAL_KEY = 'tombola:juegos';
+const Store = {
+  mode: 'loading', db: null, games: [], builtin: [], readOnly: false, error: '', queues: {},
+  async loadBuiltin(){
+    // Juegos incluidos: archivos .json en la carpeta juegos/ junto a la página (por ejemplo, en GitHub Pages)
+    if (IN_CLAUDE || !/^https?:$/.test(location.protocol)) return;
+    try {
+      const r = await fetch('juegos/index.json', { cache: 'no-cache' }); if (!r.ok) return;
+      const list = await r.json(); if (!Array.isArray(list)) return;
+      const out = [];
+      for (const item of list) {
+        const file = typeof item === 'string' ? item : (item && item.archivo);
+        if (!file || !/^[\w.-]+\.json$/.test(file)) continue;
+        try { const rr = await fetch('juegos/' + file, { cache: 'no-cache' }); if (!rr.ok) continue; const d = await rr.json(); if (d && Array.isArray(d.questions)) { const g = normGame('inc-' + file.replace(/\.json$/, ''), d); g.builtin = true; out.push(g); } } catch(e) {}
+      }
+      this.builtin = out; onStoreChange();
+    } catch(e) {}
+  },
+  async init(){
+    let db = null;
+    try { db = (window.claude && typeof window.claude.use === 'function') ? await window.claude.use('db') : null; } catch(e) { db = null; }
+    if (db) {
+      this.db = db; this.mode = 'db';
+      try { const u = await window.claude.use('user'); if (u) { const w = await u.can('data.write'); if (w === false) this.readOnly = true; } } catch(e) {}
+      try {
+        db.collection('juegos').onSnapshot(snap => {
+          this.games = snap.docs.map(d => normGame(d.id, d.data())); this.error = ''; onStoreChange();
+        }, err => { this.error = (err && err.code) || 'unavailable'; onStoreChange(); });
+      } catch(e) { this.error = 'unavailable'; onStoreChange(); }
+    } else {
+      this.mode = 'local';
+      const raw = lsGet(LOCAL_KEY) || {};
+      this.games = Object.keys(raw).map(id => normGame(id, raw[id]));
+      onStoreChange();
+    }
+  },
+  persistLocal(){ const o = {}; this.games.forEach(g => o[g.id] = gameBody(g)); lsSet(LOCAL_KEY, o); },
+  get(id){ return this.games.find(g => g.id === id) || this.builtin.find(g => g.id === id) || null; },
+  save(g){
+    g.updatedAt = new Date().toISOString(); if (!g.createdAt) g.createdAt = g.updatedAt;
+    const body = gameBody(g);
+    if (this.mode !== 'db') {
+      const i = this.games.findIndex(x => x.id === g.id), copy = normGame(g.id, body);
+      if (i >= 0) this.games[i] = copy; else this.games.push(copy);
+      this.persistLocal(); onStoreChange(); return Promise.resolve();
+    }
+    const prev = this.queues[g.id] || Promise.resolve();
+    const p = prev.catch(() => {}).then(() => this.db.collection('juegos').doc(g.id).set(body));
+    this.queues[g.id] = p; return p;
+  },
+  remove(id){
+    if (this.mode !== 'db') { this.games = this.games.filter(g => g.id !== id); this.persistLocal(); onStoreChange(); return Promise.resolve(); }
+    const prev = this.queues[id] || Promise.resolve();
+    const p = prev.catch(() => {}).then(() => this.db.collection('juegos').doc(id).delete());
+    this.queues[id] = p; return p;
+  }
+};
+function writeErrorText(e){
+  const c = e && e.code;
+  if (c === 'invalid_argument') return 'No tienes permiso para guardar cambios en esta biblioteca.';
+  if (c === 'quota_exceeded') return 'La biblioteca está llena. Elimina juegos que ya no uses.';
+  if (c === 'revoked') return 'Se perdió el acceso a la biblioteca. Recarga la página.';
+  return 'No se pudo guardar. Revisa tu conexión e intenta de nuevo.';
+}
+function onStoreChange(){ if (VIEW === 'library') renderLibrary(); }
+
+/* =================== avisos =================== */
+let toastT = null, bannerT = null;
+function toast(msg, kind = ''){
+  const t = $('#toast'); t.textContent = msg; t.className = 'toast ' + kind; t.hidden = false;
+  clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 3800);
+}
+function banner(title, big, sub){
+  const b = $('#banner'); b.innerHTML = `<div><small>${esc(title)}</small><strong>${esc(big)}</strong><span>${esc(sub)}</span></div>`; b.hidden = false;
+  clearTimeout(bannerT); bannerT = setTimeout(() => b.hidden = true, 3200);
+}
+function hideBanner(){ clearTimeout(bannerT); $('#banner').hidden = true; }
+function flash(){ document.body.classList.remove('flash-bad'); void document.body.offsetWidth; document.body.classList.add('flash-bad'); setTimeout(() => document.body.classList.remove('flash-bad'), 800); }
+function openModal(html){ const o = $('#modal'); o.innerHTML = `<div class="sheet" role="dialog" aria-modal="true">${html}</div>`; o.hidden = false; }
+function closeModal(){ $('#modal').hidden = true; $('#modal').innerHTML = ''; MODAL = null; if (aiCtl) { aiCtl.abort(); aiCtl = null; } }
+let MODAL = null;
+
+/* =================== estado de vista =================== */
+let VIEW = 'library';
+let LIB = { more: null, del: null };
+let ED = null;           // { game, open:Set }
+let CAP = { sample: null, downloads: null };
+
+/* =================== biblioteca =================== */
+function renderLibrary(){
+  $('#top').innerHTML = `
+    <div class="brandrow">
+      <div class="brand"><h1>Tómbola de Repaso</h1><p>Juegos de preguntas por equipos para la sala de clases</p></div>
+      <div class="row">${storageBadge()}</div>
+    </div>`;
+  const games = Store.games.slice().sort((a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || ''));
+  const ro = Store.readOnly;
+  let body;
+  if (Store.mode === 'loading') body = `<div class="empty"><h3>Abriendo tu biblioteca…</h3><p class="example">Un momento.</p></div>`;
+  else if (!games.length) body = `<div class="empty"><h3>Aún no hay juegos</h3><p class="example">Crea un juego y escribe las preguntas, o pega preguntas que ya tengas en Word o Docs.</p>${ro ? '' : `<div class="row"><button class="btn" data-act="newGame">Crear juego</button><button class="btn ghost" data-act="openImport" data-v="new">Pegar preguntas</button></div>`}</div>`;
+  else body = `<div class="lib-grid">${games.map(gameCardHTML).join('')}</div>`;
+  $('#view').innerHTML = `
+    <div style="display:grid;gap:22px">
+      <div class="lib-hero">
+        <div><h2>Tus juegos</h2><p>Cada juego es un set de preguntas. Edítalo cuando quieras y júgalo con el curso por equipos, con tómbola, rebote y comodines.</p></div>
+        ${ro ? '' : `<div class="row"><button class="btn" data-act="newGame">+ Nuevo juego</button><button class="btn ghost" data-act="openImport" data-v="new">Pegar preguntas</button><button class="btn ghost" data-act="openImport" data-v="file">Cargar respaldo</button></div>`}
+      </div>
+      ${Store.error ? `<p class="notice">No se pudo leer la biblioteca en este momento. Recarga la página para intentar de nuevo.</p>` : ''}
+      ${Store.mode === 'local' ? (IN_CLAUDE ? `<p class="notice">Esta vista no tiene acceso a la biblioteca en línea, así que los juegos se guardan solo en este navegador. Abre la página desde Claude con tu cuenta para guardarlos en tu biblioteca.</p>` : `<p class="notice">Tus juegos se guardan en este navegador. Para usarlos en otro computador, usa «Descargar respaldo» y cárgalo allá con «Cargar respaldo».</p>`) : ''}
+      ${ro ? `<p class="notice">Puedes jugar los juegos de esta biblioteca, pero no editarlos.</p>` : ''}
+      ${body}
+      ${Store.builtin.length ? `<div class="sec-title"><h3>Juegos incluidos</h3><p class="example">Listos para jugar. Si quieres modificar uno, cópialo a tus juegos.</p></div><div class="lib-grid">${Store.builtin.map(builtinCardHTML).join('')}</div>` : ''}
+      <div class="helpgrid">
+        <div class="box"><h3>1 · Escribe o pega</h3><p>Crea las preguntas en el editor o pégalas desde Word con un formato simple: la correcta va marcada con un asterisco.</p></div>
+        <div class="box"><h3>2 · Revisa</h3><p>El editor avisa si falta algo o si la correcta es mucho más larga que las demás, para que no se adivine sin leer.</p></div>
+        <div class="box"><h3>3 · Juega</h3><p>Arma los equipos con la lista del curso y proyecta. La lista queda guardada solo en tu navegador.</p></div>
+      </div>
+    </div>`;
+}
+function storageBadge(){
+  if (Store.mode === 'db') return `<span class="pill ok">Guardado en tu biblioteca</span>`;
+  if (Store.mode === 'local') return IN_CLAUDE ? `<span class="pill warn">Guardado solo en este navegador</span>` : `<span class="pill">Guardado en este navegador</span>`;
+  return `<span class="pill">Conectando…</span>`;
+}
+function gameCardHTML(g){
+  const n = g.questions.length, ready = g.questions.filter(playable).length, warn = g.questions.filter(longWarn).length;
+  const ro = Store.readOnly;
+  const more = LIB.more === g.id, del = LIB.del === g.id;
+  return `<article class="gcard">
+    <p class="eyebrow">${esc([g.course, g.unit].filter(Boolean).join(' · ') || 'Sin curso')}</p>
+    <h3>${esc(g.title)}</h3>
+    <div class="meta"><span>${n} ${n === 1 ? 'pregunta' : 'preguntas'}</span>${ready < n ? `<span class="fcount">${n - ready} incompleta${n - ready === 1 ? '' : 's'}</span>` : ''}${warn ? `<span style="color:var(--warn)">${warn} por revisar</span>` : ''}<span>${esc(ago(g.updatedAt))}</span></div>
+    <div class="row">
+      <button class="btn small" data-act="playGame" data-v="${g.id}" ${ready ? '' : 'disabled'}>Jugar</button>
+      ${ro ? '' : `<button class="btn ghost small" data-act="editGame" data-v="${g.id}">Editar</button><button class="btn ghost small" data-act="libMore" data-v="${g.id}" aria-expanded="${more}">Más</button>`}
+    </div>
+    ${more ? `<div class="more-menu">${del
+      ? `<strong style="width:100%">¿Eliminar «${esc(g.title)}» para siempre?</strong><button class="btn warn small" data-act="delGameYes" data-v="${g.id}">Sí, eliminar</button><button class="btn ghost small" data-act="libMore" data-v="${g.id}">No</button>`
+      : `<button class="btn ghost small" data-act="dupGame" data-v="${g.id}">Duplicar</button><button class="btn ghost small" data-act="exportGame" data-v="${g.id}">Descargar respaldo</button><button class="btn ghost small danger-t" data-act="delGame" data-v="${g.id}">Eliminar</button>`}</div>` : ''}
+  </article>`;
+}
+function builtinCardHTML(g){
+  const n = g.questions.length, ready = g.questions.filter(playable).length;
+  return `<article class="gcard">
+    <p class="eyebrow">${esc([g.course, g.unit].filter(Boolean).join(' · ') || 'Sin curso')}</p>
+    <h3>${esc(g.title)}</h3>
+    <div class="meta"><span>${n} ${n === 1 ? 'pregunta' : 'preguntas'}</span><span>Incluido</span></div>
+    <div class="row">
+      <button class="btn small" data-act="playGame" data-v="${g.id}" ${ready ? '' : 'disabled'}>Jugar</button>
+      ${Store.readOnly ? '' : `<button class="btn ghost small" data-act="copyBuiltin" data-v="${g.id}">Copiar a mis juegos</button>`}
+    </div>
+  </article>`;
+}
+async function copyBuiltin(id){
+  const src = Store.builtin.find(g => g.id === id); if (!src) return;
+  const g = normGame(slug(src.title) + '-' + rid(), Object.assign(gameBody(src), { createdAt: '' }));
+  g.questions = g.questions.map(q => Object.assign(q, { id: 'q' + rid() }));
+  try { await Store.save(g); } catch(e) { toast(writeErrorText(e), 'bad'); return; }
+  toast(`«${g.title}» quedó en tus juegos. Ya puedes editarlo.`); openEditor(g.id, g);
+}
+async function newGame(){
+  if (Store.readOnly) return;
+  const g = normGame('j-' + rid(), { title: 'Juego sin título', questions: [normQ({})] });
+  try { await Store.save(g); } catch(e) { toast(writeErrorText(e), 'bad'); return; }
+  openEditor(g.id, g, true);
+}
+async function dupGame(id){
+  const src = Store.get(id); if (!src) return;
+  const g = normGame(slug(src.title) + '-' + rid(), Object.assign(gameBody(src), { title: src.title + ' (copia)', createdAt: '' }));
+  g.questions = g.questions.map(q => Object.assign(q, { id: 'q' + rid() }));
+  LIB.more = null;
+  try { await Store.save(g); toast('Juego duplicado'); } catch(e) { toast(writeErrorText(e), 'bad'); }
+  if (VIEW === 'library') renderLibrary();
+}
+async function delGame(id){
+  const g = Store.get(id); LIB.more = null; LIB.del = null;
+  try { await Store.remove(id); lsDel('tombola:partida:' + id); toast(`Se eliminó «${g ? g.title : 'el juego'}».`); } catch(e) { toast(writeErrorText(e), 'bad'); }
+  if (VIEW === 'library') renderLibrary(); else toLibrary();
+}
+async function exportGame(id){
+  const g = (ED && ED.game.id === id) ? ED.game : Store.get(id); if (!g) return;
+  const data = JSON.stringify(Object.assign({ formato: 'tombola-de-repaso', version: 1 }, gameBody(g)), null, 2);
+  const dl = CAP.downloads;
+  if (dl) {
+    try { await dl.save({ filename: slug(g.title) + '.json', data }); toast('Respaldo descargado'); return; }
+    catch(e) { if (e && e.code === 'declined') return; }
+  }
+  if (!IN_CLAUDE) {
+    try {
+      const url = URL.createObjectURL(new Blob([data], { type: 'application/json' }));
+      const a = document.createElement('a'); a.href = url; a.download = slug(g.title) + '.json'; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000); toast('Respaldo descargado'); return;
+    } catch(e) {}
+  }
+  openModal(`<h2>Respaldo de «${esc(g.title)}»</h2><p class="example">Copia este texto y guárdalo en un archivo .json. Después puedes cargarlo con «Cargar respaldo».</p><textarea id="expText" rows="12" readonly spellcheck="false">${esc(data)}</textarea><div class="row"><button class="btn" data-act="copyExport">Copiar</button><button class="btn ghost" data-act="closeModal">Cerrar</button></div>`);
+}
+
+/* =================== editor =================== */
+let saveT = null, saveState = 'saved', saveErr = '';
+function openEditor(id, game, focusFirst){
+  const g = game || Store.get(id); if (!g) { toast('No se encontró ese juego.', 'bad'); return; }
+  ED = { game: normGame(g.id, gameBody(g)), open: new Set() };
+  if (focusFirst && ED.game.questions[0]) ED.open.add(ED.game.questions[0].id);
+  saveState = 'saved'; saveErr = '';
+  VIEW = 'editor'; renderEditor(); window.scrollTo({ top: 0 });
+  if (focusFirst) setTimeout(() => { const t = $('#g-title'); if (t) { t.focus(); t.select(); } }, 30);
+}
+function renderEditor(){
+  const g = ED.game, ro = Store.readOnly;
+  $('#top').innerHTML = `
+    <div class="brandrow">
+      <div class="crumbs"><button class="btn ghost small" data-act="toLibrary">← Biblioteca</button><span class="savestat" id="saveStat"></span></div>
+      <div class="row"><button class="btn" data-act="playGame" data-v="${g.id}">Jugar este juego</button></div>
+    </div>`;
+  $('#view').innerHTML = `
+    <div class="ed-grid">
+      <div class="ed-main">
+        <section class="ed-meta">
+          <input type="text" id="g-title" class="title-input" data-g="title" value="${esc(g.title)}" placeholder="Nombre del juego" aria-label="Nombre del juego" ${ro ? 'disabled' : ''}>
+          <div class="ed-meta-row">
+            <label class="mini">Curso<input type="text" id="g-course" data-g="course" value="${esc(g.course)}" placeholder="Ej.: 8° básico" ${ro ? 'disabled' : ''}></label>
+            <label class="mini">Unidad o tema<input type="text" id="g-unit" data-g="unit" value="${esc(g.unit)}" placeholder="Ej.: Unidad 3 · Guía 8" ${ro ? 'disabled' : ''}></label>
+          </div>
+        </section>
+        <div id="qlist" class="qlist"></div>
+        ${ro ? '' : `<div class="row"><button class="btn" data-act="addQ">+ Agregar pregunta</button><button class="btn ghost" data-act="openImport" data-v="here">Pegar preguntas</button>${CAP.sample ? '<button class="btn ghost" data-act="openAI">Borrador con IA</button>' : ''}</div>`}
+      </div>
+      <aside class="ed-side" id="edSide"></aside>
+    </div>`;
+  renderQList(); renderEdSide(); setSaveStatus();
+}
+function renderQList(){
+  const list = $('#qlist'); if (!list) return;
+  const qs = ED.game.questions;
+  list.innerHTML = qs.length ? qs.map((q, i) => qCardHTML(q, i)).join('') : `<div class="empty"><h3>Sin preguntas todavía</h3><p class="example">Agrega la primera o pega varias desde Word.</p></div>`;
+}
+const isBlank = q => !q.q.trim() && !letters(q).length;
+function badgeHTML(q){
+  if (isBlank(q)) return `<span class="badge warn">Nueva</span>`;
+  const iss = qIssues(q);
+  if (iss.some(i => i.lvl === 'err')) return `<span class="badge err">Incompleta</span>`;
+  if (iss.length) return `<span class="badge warn">Revisar</span>`;
+  return `<span class="badge ok">Lista · ${q.ans}</span>`;
+}
+function issuesHTML(q){ if (isBlank(q)) return ''; return qIssues(q).map(i => `<div class="issue ${i.lvl}">${esc(i.t)}</div>`).join(''); }
+function lenClass(q, L){
+  if (!q.ans || L !== q.ans) return '';
+  const others = letters(q).filter(x => x !== q.ans).map(x => q.opts[x].trim().length); if (!others.length) return '';
+  return q.opts[L].trim().length > Math.max(...others) ? 'long' : '';
+}
+function qCardHTML(q, i){
+  const open = ED.open.has(q.id), ro = Store.readOnly, n = ED.game.questions.length;
+  const prev = q.q.trim().split('\n')[0];
+  return `<article class="qe ${open ? 'open' : ''}" id="qe-${q.id}" data-id="${q.id}">
+    <button class="qe-h" data-act="qtoggle" data-v="${q.id}" aria-expanded="${open}">
+      <span class="qnum">${i + 1}</span>
+      <span class="qprev ${prev ? '' : 'empty-t'}" id="qp-${q.id}">${esc(prev || 'Pregunta sin enunciado')}</span>
+      <span class="qbadges" id="qb-${q.id}">${badgeHTML(q)}</span>
+      <span class="chev" aria-hidden="true">▾</span>
+    </button>
+    ${open ? `<div class="qe-b">
+      <label class="fld"><span>Enunciado</span><textarea data-f="q" rows="2" placeholder="Escribe la pregunta. Puedes usar varias líneas, por ejemplo para una lista de hechos que hay que ordenar." ${ro ? 'disabled' : ''}>${esc(q.q)}</textarea></label>
+      <details class="more" ${q.ctx.text ? 'open' : ''}><summary>Fuente o texto para analizar (opcional)</summary>
+        <label class="fld"><span>Texto</span><textarea data-f="ctx.text" rows="3" ${ro ? 'disabled' : ''}>${esc(q.ctx.text)}</textarea></label>
+        <label class="fld"><span>Autor, obra y año</span><input type="text" data-f="ctx.cite" value="${esc(q.ctx.cite)}" ${ro ? 'disabled' : ''}></label>
+      </details>
+      <fieldset class="alts"><legend>Alternativas <small>· marca la correcta. Para verdadero o falso, usa solo A y B.</small></legend>
+        ${LET.map(L => `<div class="alt ${q.ans === L ? 'is-ans' : ''}" data-l="${L}">
+          <label class="pick" title="Marcar ${L} como correcta"><input type="radio" name="ans-${q.id}" value="${L}" data-f="ans" ${q.ans === L ? 'checked' : ''} ${ro ? 'disabled' : ''}><span>${L}</span></label>
+          <input type="text" class="alt-text" data-f="opts.${L}" value="${esc(q.opts[L])}" placeholder="Alternativa ${L}${L > 'B' ? ' (opcional)' : ''}" aria-label="Alternativa ${L}" ${ro ? 'disabled' : ''}>
+          <span class="len ${lenClass(q, L)}" id="ln-${q.id}-${L}" title="Caracteres">${q.opts[L].trim().length || ''}</span>
+          <input type="text" class="alt-note" data-f="notes.${L}" value="${esc(q.notes[L])}" placeholder="Por qué no es correcta (opcional, se muestra al revelar)" aria-label="Por qué la ${L} no es correcta" ${q.ans === L ? 'hidden' : ''} ${ro ? 'disabled' : ''}>
+        </div>`).join('')}
+      </fieldset>
+      <div class="issues" id="qi-${q.id}">${issuesHTML(q)}</div>
+      <label class="fld"><span>Explicación de la respuesta correcta <small>· se muestra al revelar</small></span><textarea data-f="why" rows="2" ${ro ? 'disabled' : ''}>${esc(q.why)}</textarea></label>
+      <div class="two">
+        <label class="fld"><span>Pista <small>· la muestra el comodín</small></span><input type="text" data-f="hint" value="${esc(q.hint)}" placeholder="Ej.: Revisa la sección II de la guía" ${ro ? 'disabled' : ''}></label>
+        <label class="fld"><span>Tema o sección <small>· opcional</small></span><input type="text" data-f="tema" value="${esc(q.tema)}" placeholder="Ej.: II · Revoluciones" ${ro ? 'disabled' : ''}></label>
+      </div>
+      ${ro ? '' : `<div class="row qe-actions">
+        <button class="btn ghost small" data-act="qmove" data-v="${q.id}|-1" ${i === 0 ? 'disabled' : ''}>Subir</button>
+        <button class="btn ghost small" data-act="qmove" data-v="${q.id}|1" ${i === n - 1 ? 'disabled' : ''}>Bajar</button>
+        <button class="btn ghost small" data-act="qdup" data-v="${q.id}">Duplicar</button>
+        <span id="qd-${q.id}"><button class="btn ghost small danger-t" data-act="qdel" data-v="${q.id}">Eliminar</button></span>
+      </div>`}
+    </div>` : ''}
+  </article>`;
+}
+function renderEdSide(){
+  const side = $('#edSide'); if (!side) return;
+  const qs = ED.game.questions, ready = qs.filter(playable), warn = qs.filter(longWarn).length;
+  const dist = LET.map(L => ready.filter(q => q.ans === L).length), max = Math.max(1, ...dist);
+  const ro = Store.readOnly;
+  side.innerHTML = `
+    <div class="box">
+      <h2>Resumen</h2>
+      <div class="stat"><b>${qs.length}</b> ${qs.length === 1 ? 'pregunta' : 'preguntas'} · <b>${ready.length}</b> ${ready.length === 1 ? 'lista' : 'listas'} para jugar</div>
+      <div><p class="example" style="margin-bottom:6px">Letra de la respuesta correcta</p>
+        <div class="dist">${LET.map((L, k) => `<div><span>${dist[k]}</span><i style="height:${Math.round(dist[k] / max * 52)}px"></i><span>${L}</span></div>`).join('')}</div>
+      </div>
+      ${qs.length - ready.length ? `<p class="example"><span class="fcount">${qs.length - ready.length} incompleta${qs.length - ready.length === 1 ? '' : 's'}</span>: no se incluyen al jugar.</p>` : ''}
+      ${warn ? `<p class="example" style="color:var(--warn)">En ${warn} ${warn === 1 ? 'pregunta' : 'preguntas'} la correcta es bastante más larga que las demás.</p>` : (ready.length ? `<p class="example">Ninguna correcta destaca por su largo.</p>` : '')}
+    </div>
+    ${ro ? '' : `<div class="box">
+      <h2>Herramientas</h2>
+      <div class="side-tools">
+        <button class="btn ghost small" data-act="openImport" data-v="here">Pegar preguntas desde Word</button>
+        ${CAP.sample ? '<button class="btn ghost small" data-act="openAI">Crear borrador con IA</button>' : ''}
+        <button class="btn ghost small" data-act="exportGame" data-v="${ED.game.id}">Descargar respaldo</button>
+        <button class="btn ghost small" data-act="dupGame" data-v="${ED.game.id}">Duplicar juego</button>
+        <span id="edDel"><button class="btn ghost small danger-t" data-act="edDel">Eliminar juego</button></span>
+      </div>
+    </div>`}
+    <div class="box">
+      <h2>Formato para pegar</h2>
+      <pre class="fmt">${esc(FORMAT_EXAMPLE.split('\n\n')[0])}</pre>
+      <p class="example">Marca la correcta con * antes de la letra. Explicación, Pista y Tema son opcionales.</p>
+    </div>`;
+}
+function setSaveStatus(){
+  const el = $('#saveStat'); if (!el) return;
+  const map = { saved: Store.mode === 'db' ? 'Guardado en tu biblioteca' : 'Guardado en este navegador', dirty: 'Cambios sin guardar…', saving: 'Guardando…', err: saveErr || 'No se pudo guardar' };
+  el.textContent = Store.readOnly ? 'Solo lectura' : map[saveState]; el.className = 'savestat ' + saveState;
+}
+function markDirty(){ if (Store.readOnly) return; saveState = 'dirty'; setSaveStatus(); clearTimeout(saveT); saveT = setTimeout(flushSave, 900); }
+async function flushSave(){
+  clearTimeout(saveT); saveT = null;
+  if (!ED || saveState !== 'dirty' || Store.readOnly) return;
+  saveState = 'saving'; setSaveStatus();
+  try { await Store.save(ED.game); if (saveState === 'saving') saveState = 'saved'; saveErr = ''; }
+  catch(e) { saveState = 'err'; saveErr = writeErrorText(e); if (e && e.code === 'invalid_argument') { Store.readOnly = true; } toast(saveErr, 'bad'); }
+  setSaveStatus();
+}
+function setField(q, f, v){
+  if (f === 'ans') q.ans = v;
+  else if (f.startsWith('opts.')) q.opts[f.slice(5)] = v;
+  else if (f.startsWith('notes.')) q.notes[f.slice(6)] = v;
+  else if (f === 'ctx.text') q.ctx.text = v;
+  else if (f === 'ctx.cite') q.ctx.cite = v;
+  else q[f] = v;
+}
+let sideT = null;
+function refreshCard(q){
+  const b = $('#qb-' + q.id); if (b) b.innerHTML = badgeHTML(q);
+  const iss = $('#qi-' + q.id); if (iss) iss.innerHTML = issuesHTML(q);
+  const p = $('#qp-' + q.id); if (p) { const t = q.q.trim().split('\n')[0]; p.textContent = t || 'Pregunta sin enunciado'; p.classList.toggle('empty-t', !t); }
+  LET.forEach(L => { const ln = $(`#ln-${q.id}-${L}`); if (ln) { ln.textContent = q.opts[L].trim().length || ''; ln.className = 'len ' + lenClass(q, L); } });
+  clearTimeout(sideT); sideT = setTimeout(renderEdSide, 250);
+}
+function edQ(id){ return ED.game.questions.find(q => q.id === id); }
+function qToggle(id){ if (ED.open.has(id)) ED.open.delete(id); else ED.open.add(id); const i = ED.game.questions.findIndex(q => q.id === id); const el = $('#qe-' + id); if (el && i >= 0) el.outerHTML = qCardHTML(ED.game.questions[i], i); }
+function addQ(){
+  const q = normQ({}); ED.game.questions.push(q); ED.open.add(q.id); renderQList(); renderEdSide(); markDirty();
+  setTimeout(() => { const el = $('#qe-' + q.id); if (el) { el.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'center' }); const t = el.querySelector('textarea[data-f="q"]'); if (t) t.focus(); } }, 40);
+}
+function qMove(v){
+  const [id, d] = v.split('|'); const qs = ED.game.questions, i = qs.findIndex(q => q.id === id), j = i + (+d);
+  if (i < 0 || j < 0 || j >= qs.length) return; [qs[i], qs[j]] = [qs[j], qs[i]]; renderQList(); markDirty();
+  const el = $('#qe-' + id); if (el) el.scrollIntoView({ block: 'nearest' });
+}
+function qDup(id){
+  const qs = ED.game.questions, i = qs.findIndex(q => q.id === id); if (i < 0) return;
+  const c = normQ(JSON.parse(JSON.stringify(qs[i]))); c.id = 'q' + rid(); qs.splice(i + 1, 0, c); ED.open.add(c.id); renderQList(); renderEdSide(); markDirty();
+}
+function qDel(id){ const s = $('#qd-' + id); if (s) s.innerHTML = `<strong>¿Eliminar esta pregunta?</strong> <button class="btn warn small" data-act="qdelYes" data-v="${id}">Sí</button> <button class="btn ghost small" data-act="qdelNo" data-v="${id}">No</button>`; }
+function qDelYes(id){ ED.game.questions = ED.game.questions.filter(q => q.id !== id); ED.open.delete(id); renderQList(); renderEdSide(); markDirty(); toast('Pregunta eliminada'); }
+function qDelNo(id){ const s = $('#qd-' + id); if (s) s.innerHTML = `<button class="btn ghost small danger-t" data-act="qdel" data-v="${id}">Eliminar</button>`; }
+async function toLibrary(){
+  if (VIEW === 'editor') await flushSave();
+  if (VIEW === 'play') { stopWhisper(); hideBanner(); }
+  VIEW = 'library'; ED = null; LIB = { more: null, del: null }; renderLibrary(); window.scrollTo({ top: 0 });
+}
+
+/* =================== importar =================== */
+let IMP = null;
+function openImport(target){
+  if (Store.readOnly) return;
+  IMP = { target: target === 'here' && ED ? 'here' : 'new', parsed: [] };
+  const fileOnly = target === 'file';
+  MODAL = 'import';
+  openModal(`
+    <h2>${fileOnly ? 'Cargar un respaldo' : 'Pegar preguntas'}</h2>
+    ${fileOnly ? '' : `<p class="example">Copia tus preguntas desde Word o Docs y pégalas aquí. Usa este formato: la correcta va con un asterisco (*) antes de la letra. Explicación, Pista y Tema son opcionales. Deja una línea en blanco entre preguntas.</p>
+    <pre class="fmt">${esc(FORMAT_EXAMPLE)}</pre>
+    ${IMP.target === 'new' ? `<div class="field"><label for="impTitle">Nombre del juego nuevo</label><input type="text" id="impTitle" placeholder="Ej.: Repaso Unidad 4"></div>` : ''}
+    <div class="field"><label for="impText">Tus preguntas</label><textarea id="impText" rows="10" spellcheck="false" placeholder="Pega aquí tus preguntas"></textarea></div>
+    <div id="impPrev" class="status-line">Todavía no hay preguntas pegadas.</div>
+    <div class="row"><button class="btn" data-act="doImport" id="impGo" disabled>${IMP.target === 'here' ? 'Agregar al juego' : 'Crear juego'}</button><button class="btn ghost" data-act="closeModal">Cancelar</button></div>`}
+    <div class="field ${fileOnly ? '' : 'danger'}"><label for="impFile">${fileOnly ? 'Elige el archivo .json que descargaste con «Descargar respaldo».' : 'O carga un respaldo (.json) descargado desde esta plataforma'}</label><input type="file" id="impFile" accept=".json,application/json,text/plain"></div>
+    ${fileOnly ? '<div class="row"><button class="btn ghost" data-act="closeModal">Cancelar</button></div>' : ''}`);
+  const ta = $('#impText');
+  if (ta) { ta.addEventListener('input', impPreview); setTimeout(() => ta.focus(), 30); }
+  $('#impFile').addEventListener('change', impFile);
+}
+function impPreview(){
+  const qs = parseText($('#impText').value); IMP.parsed = qs;
+  const ok = qs.filter(playable).length, noAns = qs.filter(q => !q.ans).length;
+  const el = $('#impPrev');
+  if (!qs.length) { el.innerHTML = 'Todavía no hay preguntas pegadas.'; $('#impGo').disabled = true; return; }
+  el.innerHTML = `Se encontraron <b>${qs.length}</b> ${qs.length === 1 ? 'pregunta' : 'preguntas'}: <b>${ok}</b> ${ok === 1 ? 'lista' : 'listas'}${noAns ? `, ${noAns} sin la correcta marcada (podrás marcarla en el editor)` : ''}.
+    <div class="prevlist" style="margin-top:8px">${qs.slice(0, 40).map((q, i) => `<div class="prevq"><b>${i + 1}. ${esc(q.q.split('\n')[0] || '(sin enunciado)')}</b><ol type="A">${letters(q).map(L => `<li class="${q.ans === L ? 'ans' : ''}">${esc(q.opts[L])}</li>`).join('')}</ol></div>`).join('')}</div>`;
+  $('#impGo').disabled = false;
+}
+async function doImport(){
+  const qs = IMP.parsed; if (!qs.length) return;
+  if (IMP.target === 'here' && ED) {
+    const wasBlank = ED.game.questions.length === 1 && !ED.game.questions[0].q.trim() && !letters(ED.game.questions[0]).length;
+    if (wasBlank) ED.game.questions = [];
+    ED.game.questions.push(...qs); closeModal(); renderQList(); renderEdSide(); markDirty(); toast(`Se agregaron ${qs.length} preguntas`);
+    return;
+  }
+  const title = ($('#impTitle') && $('#impTitle').value.trim()) || 'Juego importado';
+  const g = normGame(slug(title) + '-' + rid(), { title, questions: qs });
+  try { await Store.save(g); } catch(e) { toast(writeErrorText(e), 'bad'); return; }
+  closeModal(); openEditor(g.id, g); toast(`Juego creado con ${qs.length} preguntas`);
+}
+function impFile(e){
+  const f = e.target.files && e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = async () => {
+    let d = null; try { d = JSON.parse(r.result); } catch(err) {}
+    if (!d || !Array.isArray(d.questions)) { toast('Ese archivo no es un respaldo de esta plataforma.', 'bad'); return; }
+    const qs = d.questions.map(x => Object.assign(normQ(x), { id: 'q' + rid() }));
+    if (IMP && IMP.target === 'here' && ED) { ED.game.questions.push(...qs); closeModal(); renderQList(); renderEdSide(); markDirty(); toast(`Se agregaron ${qs.length} preguntas del respaldo`); return; }
+    const g = normGame(slug(d.title) + '-' + rid(), { title: str(d.title) || 'Juego importado', course: d.course, unit: d.unit, questions: qs });
+    try { await Store.save(g); } catch(err) { toast(writeErrorText(err), 'bad'); return; }
+    closeModal(); toast(`Se cargó «${g.title}» con ${qs.length} preguntas`); if (VIEW === 'library') renderLibrary();
+  };
+  r.readAsText(f);
+}
+
+/* =================== borrador con IA (opcional) =================== */
+let aiCtl = null, AI = null;
+function openAI(){
+  if (!CAP.sample || !ED) return;
+  MODAL = 'ai'; AI = { items: [] };
+  openModal(`
+    <h2>Crear borrador con IA</h2>
+    <p class="example">Pega el texto de tu guía. Claude propondrá preguntas con alternativas de largo parejo, que luego revisas y editas aquí. Usa tu cuenta de Claude y la primera vez te pedirá permiso.</p>
+    <div class="field"><label for="aiText">Texto de la guía</label><textarea id="aiText" rows="9" placeholder="Pega aquí el texto"></textarea></div>
+    <div class="inline"><label for="aiN">Cantidad</label><select id="aiN">${[5,8,10,12,15].map(n => `<option ${n === 10 ? 'selected' : ''}>${n}</option>`).join('')}</select>
+      <label for="aiCourse">Para</label><input type="text" id="aiCourse" style="max-width:220px" value="${esc(ED.game.course || '8° básico')}"></div>
+    <div id="aiOut" class="status-line"></div>
+    <div class="row"><button class="btn" data-act="aiGo" id="aiGo">Generar borrador</button><button class="btn ghost" data-act="aiStop" id="aiStop" hidden>Detener</button><button class="btn" data-act="aiAdd" id="aiAdd" hidden>Agregar al juego</button><button class="btn ghost" data-act="closeModal">Cerrar</button></div>`);
+  setTimeout(() => $('#aiText').focus(), 30);
+}
+async function aiGo(){
+  const text = $('#aiText').value.trim(); if (text.length < 80) { toast('Pega un texto más largo para generar preguntas.'); return; }
+  const n = +$('#aiN').value || 10, course = $('#aiCourse').value.trim() || 'enseñanza básica';
+  const prompt = `Eres profesor de Historia y escribes preguntas de selección múltiple para estudiantes de ${course} en Chile.
+A partir SOLO del texto de abajo, escribe ${n} preguntas variadas que cubran todo el texto.
+Reglas:
+- 4 alternativas (A, B, C, D) y una sola correcta.
+- Las 4 alternativas deben tener un largo parecido (máximo 15% de diferencia) y el mismo nivel de detalle. La correcta NO puede ser la más larga.
+- Reparte la letra correcta de forma pareja entre A, B, C y D.
+- Las incorrectas deben ser creíbles: usa conceptos, fechas o personajes del mismo texto, mal relacionados. No uses palabras absolutas como "todas", "nunca", "siempre" o "solo".
+- Enunciados breves y lenguaje claro para ${course}. Español de Chile.
+- "why": 1 a 3 oraciones que expliquen por qué la correcta es correcta.
+- "notes": para cada letra incorrecta, una oración breve de por qué no es correcta.
+- "hint": una pista que diga dónde buscar en el texto, sin dar la respuesta.
+- "tema": el tema o sección, en pocas palabras.
+Responde solo con un arreglo JSON, sin texto adicional, con esta forma:
+[{"tema":"...","q":"...","opts":{"A":"...","B":"...","C":"...","D":"..."},"ans":"B","why":"...","notes":{"A":"...","C":"...","D":"..."},"hint":"..."}]
+
+TEXTO:
+"""
+${text.slice(0, 60000)}
+"""`;
+  const out = $('#aiOut');
+  out.innerHTML = 'Pensando… (puede tardar uno o dos minutos)';
+  $('#aiGo').disabled = true; $('#aiStop').hidden = false; $('#aiAdd').hidden = true;
+  aiCtl = new AbortController();
+  try {
+    const data = await CAP.sample.json(prompt, { signal: aiCtl.signal, onText: () => { out.innerHTML = 'Escribiendo las preguntas…'; } });
+    const arr = Array.isArray(data) ? data : (data && Array.isArray(data.preguntas) ? data.preguntas : []);
+    AI.items = arr.map(normQ).filter(q => q.q.trim());
+    if (!AI.items.length) { out.innerHTML = 'No llegaron preguntas. Intenta de nuevo o con otro texto.'; }
+    else {
+      const ok = AI.items.filter(playable).length, warn = AI.items.filter(longWarn).length;
+      out.innerHTML = `Llegaron <b>${AI.items.length}</b> preguntas (${ok} completas${warn ? `, ${warn} con la correcta más larga` : ''}). Revísalas antes de jugar.
+        <div class="prevlist" style="margin-top:8px">${AI.items.map((q, i) => `<div class="prevq"><b>${i + 1}. ${esc(q.q)}</b><ol type="A">${letters(q).map(L => `<li class="${q.ans === L ? 'ans' : ''}">${esc(q.opts[L])}</li>`).join('')}</ol></div>`).join('')}</div>`;
+      $('#aiAdd').hidden = false;
+    }
+  } catch(e) {
+    const c = e && e.code;
+    if (c === 'cancelled') out.innerHTML = 'Generación detenida.';
+    else if (c === 'not_granted' || c === 'sampling_disabled' || c === 'capability_disabled' || c === 'capability_removed' || c === 'not_declared') { out.innerHTML = 'La ayuda con IA no está disponible en esta vista.'; CAP.sample = null; }
+    else if (c === 'rate_limited') out.innerHTML = 'Se alcanzó el límite de uso por ahora. Intenta más tarde.';
+    else if (c === 'invalid_json') out.innerHTML = 'La respuesta llegó incompleta. Intenta con menos preguntas.';
+    else if (c === 'prompt_too_large') out.innerHTML = 'El texto es demasiado largo. Pega una parte de la guía.';
+    else out.innerHTML = 'No se pudo generar. Intenta de nuevo.';
+  } finally {
+    aiCtl = null; const g = $('#aiGo'), s = $('#aiStop'); if (g) g.disabled = false; if (s) s.hidden = true;
+  }
+}
+function aiStop(){ if (aiCtl) aiCtl.abort(); }
+function aiAdd(){
+  if (!AI || !AI.items.length || !ED) return;
+  const wasBlank = ED.game.questions.length === 1 && !ED.game.questions[0].q.trim() && !letters(ED.game.questions[0]).length;
+  if (wasBlank) ED.game.questions = [];
+  ED.game.questions.push(...AI.items); const n = AI.items.length; closeModal(); renderQList(); renderEdSide(); markDirty(); toast(`Se agregaron ${n} preguntas. Revísalas antes de jugar.`);
+}
+
+/* =================== juego: configuración de equipos =================== */
+const CFG_KEY = 'tombola:equipos';
+function exampleTeams(n, roster){ const per = Math.ceil(roster.length / n); return Array.from({length:n}, (_, t) => ({ name: TEAM_NAMES[t], members: roster.slice(t * per, (t + 1) * per) })); }
+function defaultConfig(){ const roster = Array.from({length:32}, (_, i) => 'N° ' + (i + 1)); return { roster, teams: exampleTeams(4, roster), example: true, noRepeat: true, lives: 1, penalty: 50, free: 1, sound: true, lists: {} }; }
+let C = Object.assign(defaultConfig(), lsGet(CFG_KEY) || {});
+if (!Array.isArray(C.teams) || C.teams.length < 1 || C.teams.length > MAXT) C.teams = defaultConfig().teams;
+if (!C.lists || typeof C.lists !== 'object') C.lists = {};
+const saveCfg = () => lsSet(CFG_KEY, C);
+
+/* =================== juego: datos y estado =================== */
+let G = null, D = null, N = 0, S = null;
+const freshCur = t => ({ attempt:1, team:t, student:null, hidden:[], picks:[], whisper:false, fifty:false, hint:false });
+function pickGold(T){
+  const g = [];
+  if (T === 1) { const idx = shuffle(Array.from({length: Math.max(0, N - 1)}, (_, i) => i + 1)); return idx.slice(0, Math.min(2, idx.length)).sort((a, b) => a - b); }
+  for (let t = 0; t < T; t++) {
+    let idx = []; for (let i = T; i < N; i++) if (i % T === t) idx.push(i);
+    if (!idx.length) for (let i = 0; i < N; i++) if (i % T === t) idx.push(i);
+    if (idx.length) g.push(idx[Math.floor(Math.random() * idx.length)]);
+  }
+  return g.sort((a, b) => a - b);
+}
+function sigOf(){ return D.questions.map(q => q.id).join(','); }
+function freshState(){
+  const T = C.teams.length;
+  return { phase:'intro', qi:0, T, sig:sigOf(), results:Array(N).fill(null), gold:pickGold(T), goldSeen:[], bonus:Array(T).fill(0), streak:Array(T).fill(0),
+    used:[], faltas:[], life:Array.from({length:T}, () => ({ fifty:C.lives, whisper:C.lives, hint:C.lives })), cur:freshCur(0) };
+}
+const stateKey = () => 'tombola:partida:' + G.id;
+function save(){ if (G && S) lsSet(stateKey(), S); saveCfg(); }
+async function playGame(id){
+  if (VIEW === 'editor' && ED && ED.game.id === id) await flushSave();
+  const src = (ED && ED.game.id === id) ? ED.game : Store.get(id);
+  if (!src) { toast('No se encontró ese juego.', 'bad'); return; }
+  const qs = src.questions.filter(playable);
+  if (!qs.length) { toast('Este juego todavía no tiene preguntas completas.', 'bad'); return; }
+  G = normGame(src.id, gameBody(src));
+  D = { id: G.id, game: G.title, course: G.course, unit: G.unit,
+    questions: qs.map(q => { const opts = {}, notes = {}; letters(q).forEach(L => { opts[L] = q.opts[L].trim(); notes[L] = q.notes[L].trim(); }); return { id: q.id, tema: q.tema.trim(), q: q.q.trim(), ctx: q.ctx.text.trim() ? { text: q.ctx.text.trim(), cite: q.ctx.cite.trim() } : null, opts, notes, ans: q.ans, why: q.why.trim(), hint: q.hint.trim() }; }) };
+  N = D.questions.length;
+  const skipped = src.questions.length - N;
+  S = lsGet(stateKey());
+  const valid = S && Array.isArray(S.results) && S.results.length === N && S.T === C.teams.length && S.sig === sigOf() && Array.isArray(S.life) && S.life.length === S.T && S.cur && Array.isArray(S.gold);
+  if (!valid) S = freshState();
+  if (!['intro','final','draw','answer','wrong','revealed'].includes(S.phase)) S.phase = 'draw';
+  if (S.phase !== 'intro' && S.phase !== 'final' && S.phase !== 'revealed') { S.phase = S.results[S.qi] ? 'revealed' : 'draw'; S.cur = freshCur(owner(S.qi)); }
+  spinning = false; lastScores = [];
+  VIEW = 'play';
+  $('#view').innerHTML = `<section class="intro" id="intro" hidden></section>
+    <section id="game" hidden><div class="stage"><div class="qcol"><nav class="dots" id="dots" aria-label="Preguntas"></nav><article class="qcard" id="qcard"></article></div><aside class="side" id="side"></aside></div></section>
+    <section class="final" id="final" hidden></section>`;
+  $('#top').innerHTML = `<div class="brandrow">
+      <div class="crumbs"><button class="btn ghost small" data-act="toLibrary">← Biblioteca</button><div class="brand"><h1 id="gameName"></h1><p id="gameSub"></p></div></div>
+      <div class="tools">
+        <button class="icon-btn" data-act="rules" title="Portada y reglas" aria-label="Ver portada y reglas"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg></button>
+        <button class="icon-btn" data-act="sound" id="soundBtn" title="Sonido" aria-label="Activar o silenciar sonido"><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></button>
+        <button class="icon-btn" data-act="fs" title="Pantalla completa" aria-label="Pantalla completa"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+        <button class="icon-btn" data-act="settings" title="Equipos y ajustes" aria-label="Equipos y ajustes"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2c3 .2 5.5 2.6 5.5 5.8"/></svg></button>
+      </div>
+    </div>
+    <div class="board" id="board" aria-live="polite"></div>`;
+  save(); render(); window.scrollTo({ top: 0 });
+  if (skipped > 0) toast(`${skipped} ${skipped === 1 ? 'pregunta incompleta quedó' : 'preguntas incompletas quedaron'} fuera del juego.`);
+}
+
+/* =================== juego: equipos y puntaje =================== */
+const teamIdx = () => C.teams.map((_, t) => t);
+const teamName = t => (C.teams[t] && C.teams[t].name) || ('Equipo ' + (t + 1));
+const members = t => ((C.teams[t] && C.teams[t].members) || []).map(s => String(s).trim()).filter(Boolean);
+const owner = i => i % S.T;
+const isGold = i => S.gold.includes(i);
+const faltasOf = t => S.faltas.filter(f => f.team === t).length;
+const penaltyOf = t => Math.max(0, faltasOf(t) - C.free) * C.penalty;
+const qL = q => LET.filter(L => q.opts[L]);
+function teamScore(t){ return S.results.reduce((s, r) => s + (r && r.team === t ? r.pts : 0), 0) + S.bonus[t] - penaltyOf(t); }
+function standings(){
+  const rows = teamIdx().map(t => ({ t, name: teamName(t), score: teamScore(t),
+    ok: S.results.filter(r => r && r.team === t && r.status === 'correct').length,
+    reb: S.results.filter(r => r && r.team === t && r.status === 'rebote').length,
+    gold: S.results.filter(r => r && r.team === t && r.gold).length,
+    bonus: S.bonus[t], faltas: faltasOf(t), pen: penaltyOf(t) }));
+  rows.sort((a, b) => b.score - a.score || a.t - b.t);
+  rows.forEach(r => { r.place = 1 + rows.filter(o => o.score > r.score).length; });
+  return rows;
+}
+
+/* =================== sonido y confeti =================== */
+let AC = null;
+function ac(){ if (!AC) { try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) { AC = null; } } if (AC && AC.state === 'suspended') AC.resume().catch(() => {}); return AC; }
+function tone(freq, dur = .12, type = 'sine', vol = .15, when = 0){
+  if (!C.sound) return; const a = ac(); if (!a) return;
+  const t = a.currentTime + when, o = a.createOscillator(), g = a.createGain();
+  o.type = type; o.frequency.setValueAtTime(freq, t);
+  g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+  o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + dur + .03);
+}
+const SFX = {
+  tick: () => tone(1100, .03, 'square', .04),
+  pick: () => { tone(660, .12, 'triangle', .2); tone(990, .25, 'triangle', .2, .1); },
+  ok:   () => [523,659,784,1047].forEach((f, i) => tone(f, .2, 'triangle', .18, i * .08)),
+  bad:  () => { tone(233, .22, 'sawtooth', .08); tone(174, .4, 'sawtooth', .08, .16); },
+  falta:() => { tone(130, .55, 'square', .1); tone(123, .55, 'square', .08, .02); },
+  gold: () => [784,988,1175,1568].forEach((f, i) => tone(f, .3, 'sine', .16, i * .09)),
+  fanfare: () => [523,659,784,1047,784,1047,1319].forEach((f, i) => tone(f, .24, 'triangle', .2, i * .11)),
+  end:  () => tone(880, .5, 'sine', .2)
+};
+const cv = $('#fx'), cx = cv.getContext('2d'); let parts = [], raf = null, W = 0, H = 0;
+function sizeFx(){ const d = window.devicePixelRatio || 1; W = innerWidth; H = innerHeight; cv.width = W * d; cv.height = H * d; cx.setTransform(d, 0, 0, d, 0, 0); }
+function burst(n = 120, extra){
+  if (reduceMotion()) return; sizeFx();
+  let cols = getComputedStyle(document.documentElement).getPropertyValue('--confetti').split(',').map(s => s.trim()).filter(Boolean);
+  if (extra) cols = cols.concat(extra, extra, extra);
+  for (let i = 0; i < n; i++) parts.push({ x: W * (.25 + Math.random() * .5), y: H * .42, vx: (Math.random() - .5) * 16, vy: -Math.random() * 15 - 5, r: Math.random() * 7 + 5, c: cols[i % cols.length], rot: Math.random() * 6, vr: (Math.random() - .5) * .35 });
+  if (!raf) loop();
+}
+function loop(){
+  cx.clearRect(0, 0, W, H);
+  parts.forEach(p => { p.vy += .38; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.rot += p.vr; cx.save(); cx.translate(p.x, p.y); cx.rotate(p.rot); cx.fillStyle = p.c; cx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); cx.restore(); });
+  parts = parts.filter(p => p.y < H + 40);
+  if (parts.length) raf = requestAnimationFrame(loop); else { raf = null; cx.clearRect(0, 0, W, H); }
+}
+const teamHex = t => getComputedStyle(document.documentElement).getPropertyValue('--t' + t).trim();
+
+/* =================== juego: tómbola y respuestas =================== */
+let spinning = false;
+function pool(t){
+  const m = members(t); if (!C.noRepeat) return m;
+  let p = m.filter(n => !S.used.includes(n));
+  if (!p.length) { S.used = S.used.filter(n => !m.includes(n)); toast(S.T === 1 ? 'Todo el curso ya participó. Vuelven a entrar todos a la tómbola.' : `Todo el equipo ${teamName(t)} ya participó. Vuelven a entrar todos a la tómbola.`); p = m.slice(); }
+  return p;
+}
+function spin(){
+  if (VIEW !== 'play' || spinning || S.phase !== 'draw') return;
+  const t = S.cur.team, m = members(t);
+  if (!m.length) { openSettings(); toast(`El equipo ${teamName(t)} no tiene integrantes. Agrégalos en Equipos y ajustes.`, 'bad'); return; }
+  const p = pool(t);
+  let cand = p.filter(n => !S.cur.picks.some(k => k.s === n)); if (!cand.length) cand = p;
+  const final = cand[Math.floor(Math.random() * cand.length)];
+  spinning = true; render();
+  const el = $('#who'); el.classList.remove('wait', 'land');
+  let d = 45;
+  const step = () => { if (d > 330 || reduceMotion()) return done(); el.textContent = m[Math.floor(Math.random() * m.length)]; SFX.tick(); d *= 1.11; setTimeout(step, d); };
+  function done(){
+    spinning = false; S.cur.student = final;
+    if (C.noRepeat && !S.used.includes(final)) S.used.push(final);
+    S.phase = 'answer'; save(); SFX.pick(); render();
+    const w = $('#who'); if (w) w.classList.add('land');
+  }
+  step();
+}
+function answer(L){
+  if (VIEW !== 'play' || spinning || S.phase !== 'answer') return;
+  const q = D.questions[S.qi], c = S.cur, t = c.team;
+  if (!q.opts[L] || c.hidden.includes(L) || c.picks.some(p => p.l === L)) return;
+  c.picks.push({ s: c.student, t, l: L });
+  stopWhisper();
+  const mult = isGold(S.qi) ? 2 : 1;
+  if (L === q.ans) {
+    const pts = (c.attempt === 1 ? BASE : BASE / 2) * mult;
+    S.results[S.qi] = { status: c.attempt === 1 ? 'correct' : 'rebote', pts, team: t, gold: mult === 2, picks: c.picks.slice() };
+    S.streak[t]++; S.phase = 'revealed';
+    SFX.ok(); burst(mult === 2 ? 200 : 120, teamHex(t));
+    if (S.streak[t] % 3 === 0 && S.bonus[t] < RACHA * RACHA_MAX) {
+      S.bonus[t] += RACHA;
+      setTimeout(() => { SFX.fanfare(); banner('Racha de tres aciertos', S.T === 1 ? 'Todo el curso' : teamName(t), `+${RACHA} puntos extra`); if (VIEW === 'play') renderBoard(); }, 900);
+    }
+    save(); render();
+  } else {
+    S.streak[t] = 0; SFX.bad(); flash();
+    const remaining = qL(q).filter(x => !c.hidden.includes(x) && !c.picks.some(p => p.l === x));
+    if (c.attempt === 1 && remaining.length >= 2) S.phase = 'wrong';
+    else { S.results[S.qi] = { status:'wrong', pts:0, team:null, gold: mult === 2, picks: c.picks.slice() }; S.phase = 'revealed'; }
+    save(); render();
+  }
+}
+function rebote(){
+  if (VIEW !== 'play' || S.phase !== 'wrong' || spinning) return;
+  const from = S.cur.team;
+  const others = S.T === 1 ? [0] : teamIdx().filter(t => t !== from && members(t).length);
+  if (!others.length) { toast('No hay otro equipo con integrantes para el rebote.'); return; }
+  const target = others[Math.floor(Math.random() * others.length)];
+  stopWhisper();
+  Object.assign(S.cur, { attempt:2, team:target, student:null, whisper:false, fifty:false });
+  S.phase = 'draw';
+  if (S.T === 1) { save(); render(); spin(); return; }
+  spinning = true; render();
+  const box = $('#turnBox'), lab = $('#turnTeam'), who = $('#who');
+  who.classList.remove('wait'); who.textContent = '¿Quién rebota?';
+  let d = 70, k = Math.floor(Math.random() * others.length);
+  const step = () => {
+    if (d > 380 || reduceMotion()) return land();
+    const tt = others[k++ % others.length];
+    box.style.setProperty('--tc', tcol(tt)); lab.textContent = 'Rebote · Equipo ' + teamName(tt); SFX.tick(); d *= 1.16; setTimeout(step, d);
+  };
+  function land(){ spinning = false; SFX.pick(); save(); render(); setTimeout(spin, reduceMotion() ? 0 : 550); }
+  step();
+}
+function reveal(){
+  if (VIEW !== 'play' || S.phase !== 'wrong' || spinning) return;
+  S.results[S.qi] = { status:'wrong', pts:0, team:null, gold:isGold(S.qi), picks:S.cur.picks.slice() };
+  S.phase = 'revealed'; save(); render();
+}
+function goTo(i){
+  if (VIEW !== 'play' || spinning || i < 0 || i >= N) return;
+  stopWhisper();
+  S.qi = i; S.cur = freshCur(owner(i)); S.phase = S.results[i] ? 'revealed' : 'draw';
+  const newGold = !S.results[i] && isGold(i) && !S.goldSeen.includes(i);
+  if (newGold) S.goldSeen.push(i);
+  save(); render(); window.scrollTo({ top: 0, behavior: reduceMotion() ? 'auto' : 'smooth' });
+  if (newGold) { SFX.gold(); burst(90); banner('¡Pregunta de oro!', 'Vale el doble', `${S.T === 1 ? 'El curso' : teamName(owner(i))} puede ganar ${BASE * 2} puntos`); }
+}
+function next(){ if (S.qi < N - 1) goTo(S.qi + 1); else showFinal(); }
+function showFinal(){
+  if (spinning) return; stopWhisper(); hideBanner(); S.phase = 'final'; save(); render();
+  const top = standings()[0]; SFX.fanfare(); burst(240, top ? teamHex(top.t) : undefined); window.scrollTo({ top: 0 });
+}
+function start(){ ac(); goTo(S.qi); }
+function fifty(){
+  if (S.phase !== 'answer' || spinning) return;
+  const c = S.cur, L = S.life[c.team]; if (L.fifty <= 0 || c.fifty) return;
+  const q = D.questions[S.qi];
+  const wrong = qL(q).filter(l => l !== q.ans && !c.hidden.includes(l) && !c.picks.some(p => p.l === l));
+  if (wrong.length < 2) { toast('Solo queda una alternativa incorrecta: el 50/50 no ayuda aquí.'); return; }
+  shuffle(wrong); c.hidden.push(...wrong.slice(0, wrong.length - 1));
+  c.fifty = true; L.fifty--; SFX.pick(); save(); render();
+}
+let wT = null, wLeft = 0;
+function whisper(){
+  if (S.phase !== 'answer' || spinning) return;
+  const c = S.cur, L = S.life[c.team]; if (L.whisper <= 0 || c.whisper) return;
+  c.whisper = true; L.whisper--; save();
+  wLeft = 30; SFX.pick(); render();
+  wT = setInterval(() => {
+    wLeft--; const el = $('#wLeft'); if (el) el.textContent = wLeft;
+    if (wLeft <= 5 && wLeft > 0) SFX.tick();
+    if (wLeft <= 0) { stopWhisper(); SFX.end(); toast('Se acabó el tiempo de consulta. ¡A responder!'); if (VIEW === 'play') render(); }
+  }, 1000);
+}
+function stopWhisper(){ if (wT) { clearInterval(wT); wT = null; } wLeft = 0; }
+function useHint(){
+  if (S.phase !== 'answer' || spinning) return;
+  const c = S.cur, L = S.life[c.team], q = D.questions[S.qi]; if (L.hint <= 0 || c.hint) return;
+  if (!q.hint) { toast('Esta pregunta no tiene pista escrita.'); return; }
+  c.hint = true; L.hint--; SFX.pick(); save(); render();
+}
+function falta(v){
+  const t = +v; if (!(t >= 0 && t < S.T)) return;
+  S.faltas.push({ team:t, q:S.qi + 1 }); SFX.falta(); flash();
+  const n = faltasOf(t), who = S.T === 1 ? 'el curso' : teamName(t);
+  if (n <= C.free) toast(`Advertencia para ${who} (${n} de ${C.free}). La próxima falta descuenta ${C.penalty} puntos.`, 'bad');
+  else toast(`Falta para ${who}: −${C.penalty} puntos.`, 'bad');
+  save(); render();
+}
+function undoFalta(){ if (!S.faltas.length) return; const f = S.faltas.pop(); save(); render(); toast(`Se quitó la última falta (${teamName(f.team)}).`); }
+
+/* =================== juego: equipos y ajustes =================== */
+let draft = null;
+function openSettings(){
+  if (spinning) return;
+  draft = { T: C.teams.length, names: [], members: [] };
+  for (let i = 0; i < MAXT; i++) { draft.names[i] = C.teams[i] ? C.teams[i].name : TEAM_NAMES[i]; draft.members[i] = C.teams[i] ? members(i).join('\n') : ''; }
+  const listNames = Object.keys(C.lists);
+  MODAL = 'settings';
+  openModal(`
+    <h2>Equipos y ajustes</h2>
+    <div class="field">
+      <label for="roster">Lista del curso</label>
+      ${listNames.length ? `<div class="inline"><select id="listSel" aria-label="Listas guardadas">${listNames.map(n => `<option>${esc(n)}</option>`).join('')}</select><button class="btn ghost small" data-act="listLoad">Usar esta lista</button><button class="btn ghost small danger-t" data-act="listDel">Borrar</button></div>` : ''}
+      <textarea id="roster" rows="6" spellcheck="false">${esc(C.roster.join('\n'))}</textarea>
+      <small>Un nombre por línea. Si alguien está ausente, borra su línea antes de repartir. Las listas quedan guardadas solo en este navegador.</small>
+      <div class="inline"><input type="text" id="listName" style="max-width:200px" placeholder="Ej.: 8° B" aria-label="Nombre para guardar la lista"><button class="btn ghost small" data-act="listSave">Guardar lista</button><span class="example">·</span><span class="example">Números del 1 al</span><input type="number" id="genN" min="2" max="60" value="${C.roster.length || 32}"><button class="btn ghost small" data-act="gen">Generar</button></div>
+    </div>
+    <div class="field">
+      <label for="nTeams">Número de equipos</label>
+      <div class="inline"><select id="nTeams">${[1,2,3,4,5,6].map(n => `<option value="${n}" ${n === draft.T ? 'selected' : ''}>${n === 1 ? '1 · todo el curso juntos' : n + ' equipos'}</option>`).join('')}</select><button class="btn small" data-act="deal">Repartir la lista al azar</button></div>
+      <small>Cambiar el número de equipos reinicia la partida. Con un solo equipo, el rebote pasa a otra persona del curso.</small>
+    </div>
+    <div class="teamgrid" id="teamGrid"></div>
+    <label class="check"><input type="checkbox" id="noRepeat" ${C.noRepeat ? 'checked' : ''}> No repetir integrantes hasta que todo su equipo haya participado</label>
+    <div class="field">
+      <span class="lbl">Comodines y conducta</span>
+      <div class="inline">Usos de cada comodín por equipo: <input type="number" id="lives" min="1" max="3" step="1" value="${C.lives}"></div>
+      <div class="inline">Cada falta descuenta <input type="number" id="penalty" min="0" max="500" step="10" value="${C.penalty}"> puntos. Advertencias sin descuento por equipo: <input type="number" id="free" min="0" max="5" step="1" value="${C.free}"></div>
+    </div>
+    <div class="row"><button class="btn" data-act="saveSettings">Guardar cambios</button><button class="btn ghost" data-act="closeModal">Cancelar</button></div>
+    <div class="danger row" id="dangerRow"><button class="btn ghost small" data-act="reset">Reiniciar la partida</button><small class="example">Borra puntajes, faltas, comodines y sorteos de este juego. Los equipos se mantienen.</small></div>`);
+  renderTeamGrid();
+  $('#nTeams').addEventListener('change', () => { syncTeams(); draft.T = +$('#nTeams').value; renderTeamGrid(); });
+}
+function renderTeamGrid(){
+  $('#teamGrid').innerHTML = Array.from({length: draft.T}, (_, i) => {
+    const n = draft.members[i].split('\n').map(s => s.trim()).filter(Boolean).length;
+    return `<div class="tedit" style="--tc:${tcol(i)}"><div class="tedit-h"><span class="cock"></span><input type="text" id="tn${i}" value="${esc(draft.T === 1 && draft.names[i] === TEAM_NAMES[0] ? 'Todo el curso' : draft.names[i])}" aria-label="Nombre del equipo ${i + 1}"></div><textarea id="tm${i}" spellcheck="false" aria-label="Integrantes del equipo ${i + 1}">${esc(draft.members[i])}</textarea><small>${n} ${n === 1 ? 'integrante' : 'integrantes'}</small></div>`;
+  }).join('');
+}
+function syncTeams(){ for (let i = 0; i < draft.T; i++) { const n = $('#tn' + i), m = $('#tm' + i); if (n) draft.names[i] = n.value; if (m) draft.members[i] = m.value; } }
+function deal(){
+  syncTeams();
+  const list = $('#roster').value.split('\n').map(s => s.trim()).filter(Boolean);
+  if (list.length < draft.T) { toast('Pega primero la lista del curso.', 'bad'); return; }
+  shuffle(list);
+  const groups = Array.from({length: draft.T}, () => []); list.forEach((n, k) => groups[k % draft.T].push(n));
+  groups.forEach((g, i) => draft.members[i] = g.join('\n'));
+  renderTeamGrid(); toast(draft.T === 1 ? 'Lista cargada en el equipo. Revisa y guarda.' : `Lista repartida en ${draft.T} equipos. Revisa y guarda.`);
+}
+function genRoster(){ const n = Math.max(2, Math.min(60, Math.round(+$('#genN').value) || 32)); $('#roster').value = Array.from({length:n}, (_, i) => 'N° ' + (i + 1)).join('\n'); }
+function listSave(){
+  const name = $('#listName').value.trim(), list = $('#roster').value.split('\n').map(s => s.trim()).filter(Boolean);
+  if (!name) { toast('Escribe un nombre para la lista, por ejemplo «8° B».'); return; }
+  if (!list.length) { toast('La lista está vacía.'); return; }
+  C.lists[name] = list; saveCfg(); toast(`Lista «${name}» guardada en este navegador`);
+  syncTeams(); const keep = Object.assign({}, draft); openSettings(); draft.T = keep.T; draft.names = keep.names; draft.members = keep.members; $('#nTeams').value = String(draft.T); renderTeamGrid(); $('#roster').value = list.join('\n');
+}
+function listLoad(){ const n = $('#listSel').value; if (C.lists[n]) { $('#roster').value = C.lists[n].join('\n'); toast(`Lista «${n}» cargada. Ahora reparte los equipos.`); } }
+function listDel(){ const n = $('#listSel').value; delete C.lists[n]; saveCfg(); syncTeams(); const keep = Object.assign({}, draft), r = $('#roster').value; openSettings(); draft.T = keep.T; draft.names = keep.names; draft.members = keep.members; $('#nTeams').value = String(draft.T); renderTeamGrid(); $('#roster').value = r; toast(`Lista «${n}» borrada`); }
+function saveSettings(){
+  syncTeams();
+  const T = draft.T;
+  const teams = Array.from({length: T}, (_, i) => ({ name: draft.names[i].trim() || (T === 1 ? 'Todo el curso' : TEAM_NAMES[i]), members: draft.members[i].split('\n').map(s => s.trim()).filter(Boolean) }));
+  const empty = teams.find(t => !t.members.length);
+  if (empty) { toast(`El equipo ${empty.name} no tiene integrantes. Reparte la lista o escríbelos.`, 'bad'); return; }
+  const oldLives = C.lives, changedT = T !== C.teams.length;
+  C.roster = $('#roster').value.split('\n').map(s => s.trim()).filter(Boolean);
+  C.teams = teams;
+  C.example = teams.every(t => t.members.every(n => /^N° \d+$/.test(n)));
+  C.noRepeat = $('#noRepeat').checked;
+  C.lives = Math.max(1, Math.min(3, Math.round(+$('#lives').value) || 1));
+  C.penalty = Math.max(0, Math.round(+$('#penalty').value) || 0);
+  C.free = Math.max(0, Math.min(5, Math.floor(+$('#free').value) || 0));
+  if (changedT) S = freshState();
+  else {
+    if (C.lives !== oldLives) S.life = S.life.map(l => ({ fifty: Math.max(0, C.lives - (oldLives - l.fifty)), whisper: Math.max(0, C.lives - (oldLives - l.whisper)), hint: Math.max(0, C.lives - (oldLives - l.hint)) }));
+    const all = teams.flatMap(t => t.members); S.used = S.used.filter(n => all.includes(n));
+  }
+  save(); closeModal(); render(); toast(changedT ? 'Equipos guardados. La partida comenzó de nuevo.' : 'Cambios guardados');
+}
+function askReset(){ $('#dangerRow').innerHTML = `<strong>¿Reiniciar? Se pierde el progreso de esta partida.</strong><button class="btn warn small" data-act="resetYes">Sí, reiniciar</button><button class="btn ghost small" data-act="resetNo">No</button>`; }
+function resetNo(){ $('#dangerRow').innerHTML = `<button class="btn ghost small" data-act="reset">Reiniciar la partida</button><small class="example">Borra puntajes, faltas, comodines y sorteos de este juego. Los equipos se mantienen.</small>`; }
+function doReset(){ stopWhisper(); S = freshState(); lastScores = []; save(); closeModal(); render(); toast('Partida reiniciada'); }
+function toggleSound(){ C.sound = !C.sound; save(); render(); if (C.sound) { ac(); SFX.pick(); } }
+function fullscreen(){
+  try {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else { const p = document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); if (p && p.catch) p.catch(() => toast('Este navegador no permite pantalla completa aquí.')); else if (!p) toast('Este navegador no permite pantalla completa aquí.'); }
+  } catch(e) { toast('Este navegador no permite pantalla completa aquí.'); }
+}
+
+/* =================== juego: dibujo =================== */
+const ICON_SHOUT = '<svg viewBox="0 0 24 24"><path d="M4 10v4h3l5 4V6L7 10H4z"/><path d="M15 9l5 6M20 9l-5 6"/></svg>';
+const ICON_SEAT = '<svg viewBox="0 0 24 24"><path d="M7 3v9h10M7 12v9M17 12v9M7 16h10"/><path d="M3 3l18 18"/></svg>';
+const dots3 = (left, total) => `<span class="dots3" aria-hidden="true">${Array.from({length: total}, (_, k) => `<i class="${k < left ? 'on' : ''}"></i>`).join('')}</span>`;
+const freeTxt = () => C.free === 0 ? '' : (C.free === 1 ? `La primera falta${S.T === 1 ? '' : ' de cada equipo'} es solo una advertencia.` : `Las primeras ${C.free} faltas${S.T === 1 ? '' : ' de cada equipo'} son solo advertencias.`);
+let lastScores = [];
+function renderBoard(){
+  const active = ['draw','answer','wrong'].includes(S.phase) ? S.cur.team : -1;
+  $('#board').innerHTML = teamIdx().map(t => {
+    const L = S.life[t], left = L.fifty + L.whisper + L.hint, f = faltasOf(t);
+    return `<div class="tcard ${t === active && S.T > 1 ? 'cur' : ''}" data-t="${t}" style="--tc:${tcol(t)}">
+      <span class="tname"><span class="cock"></span><span>${esc(teamName(t))}</span>${t === active && S.T > 1 ? '<b class="flag">Turno</b>' : ''}</span>
+      <span class="tscore">${num(teamScore(t))}</span>
+      <span class="tmeta" title="Comodines disponibles y faltas">${dots3(left, 3 * C.lives)}${f ? `<span class="fcount">${f} ${f === 1 ? 'falta' : 'faltas'}</span>` : ''}</span>
+    </div>`;
+  }).join('');
+  teamIdx().forEach(t => {
+    const sc = teamScore(t);
+    if (lastScores[t] !== undefined && lastScores[t] !== sc) { const el = $(`.tcard[data-t="${t}"]`); if (el) el.classList.add('bump'); }
+    lastScores[t] = sc;
+  });
+}
+function renderHeader(){
+  $('#gameName').textContent = D.game;
+  $('#gameSub').textContent = [D.course, D.unit, `${N} preguntas`, S.T === 1 ? 'todo el curso' : `${S.T} equipos`].filter(Boolean).join(' · ');
+  $('#soundBtn').setAttribute('aria-pressed', C.sound ? 'true' : 'false');
+  renderBoard();
+}
+function renderIntro(){
+  const started = S.results.some(Boolean) || S.faltas.length;
+  const even = S.T === 1 || N % S.T === 0;
+  const solo = S.T === 1;
+  $('#intro').innerHTML = `
+    <div class="hero">
+      <p class="eyebrow">${esc([solo ? 'Repaso de todo el curso' : 'Repaso en equipos', D.course, D.unit].filter(Boolean).join(' · '))}</p>
+      <h2>${esc(D.game)}</h2>
+      <p class="lead">${N} preguntas. ${solo ? 'La tómbola elige quién responde y todo el curso suma puntos junto.' : 'Los equipos se turnan, la tómbola elige quién responde y gana el equipo con más puntos.'}</p>
+      <div class="row"><button class="btn big" data-act="start">${started ? 'Continuar la partida' : 'Comenzar el juego'} <kbd>Enter</kbd></button><button class="btn ghost" data-act="settings">Equipos y ajustes</button></div>
+    </div>
+    <section style="display:grid;gap:12px">
+      <div class="sec-title"><h3>${solo ? 'El curso' : 'Los equipos'}</h3><p class="example">${C.example ? 'Ahora hay números de lista de ejemplo. En Equipos y ajustes puedes pegar los nombres del curso y repartirlos al azar.' : `${C.roster.length} estudiantes${solo ? '' : ` en ${S.T} equipos`}.`}${even ? '' : ` Con ${S.T} equipos, algunos responden una pregunta más que otros.`}</p></div>
+      <div class="tgrid-intro">${teamIdx().map(t => `<div class="tbox" style="--tc:${tcol(t)}"><h4><span class="cock"></span>${esc(teamName(t))}<small>${members(t).length} integrantes</small></h4><div class="names">${members(t).map(n => `<span>${esc(n)}</span>`).join('')}</div></div>`).join('')}</div>
+    </section>
+    <div class="cols">
+      <div class="box"><h3>Cómo se juega</h3><ol class="steps">
+        ${solo ? `<li><span>La tómbola elige a una persona del curso, y solo ella responde.</span></li>
+        <li><span>Si acierta, el curso gana <b>${BASE} puntos</b>.</span></li>
+        <li><span>Si falla, hay <b>rebote</b>: la tómbola elige a otra persona. Si acierta, gana ${BASE / 2}.</span></li>`
+        : `<li><span>Los equipos se turnan las preguntas. La tómbola elige a un integrante del equipo en turno, y solo esa persona responde.</span></li>
+        <li><span>Si acierta, su equipo gana <b>${BASE} puntos</b>.</span></li>
+        <li><span>Si falla, hay <b>rebote</b>: la ruleta elige otro equipo y la tómbola a uno de sus integrantes. Si acierta, gana ${BASE / 2}.</span></li>`}
+        <li><span>Tres aciertos seguidos suman <b>+${RACHA}</b> de racha (hasta dos veces${solo ? '' : ' por equipo'}).</span></li>
+      </ol></div>
+      <div class="box"><h3>Comodines y sorpresas</h3><ul class="perks">
+        <li><b>50/50</b> elimina alternativas incorrectas.</li>
+        <li><b>Susurro</b>: 30 segundos para consultar en voz baja${solo ? ' con el compañero de puesto' : ' con su equipo'}.</li>
+        <li><b>Pista</b> muestra dónde buscar la respuesta.</li>
+        <li><b>Pregunta de oro</b>: ${solo ? 'hay dos escondidas' : 'cada equipo tiene una escondida en sus turnos'}. Vale el doble.</li>
+      </ul><p class="example">${solo ? 'El curso tiene' : 'Cada equipo tiene'} ${C.lives === 1 ? 'un uso' : C.lives + ' usos'} de cada comodín. Se usan antes de responder.</p></div>
+      <div class="box warnbox"><h3>Reglas de convivencia</h3><ul class="rules"><li>${ICON_SHOUT}No gritar</li><li>${ICON_SEAT}No pararse del asiento</li></ul>
+        <p>Cada falta descuenta <b>${C.penalty} puntos</b>${solo ? ' al curso' : ' al equipo'}. ${freeTxt()}</p></div>
+    </div>`;
+}
+function renderDots(){
+  $('#dots').innerHTML = D.questions.map((q, i) => {
+    const r = S.results[i];
+    const cls = r ? (r.status === 'correct' ? 'ok' : r.status === 'rebote' ? 'half' : 'bad') : '';
+    const g = isGold(i) && (S.goldSeen.includes(i) || r) ? ' gold' : '';
+    return `<button class="dot ${cls}${g} ${i === S.qi ? 'cur' : ''}" style="--tc:${S.T === 1 ? 'transparent' : tcol(owner(i))}" data-act="goto" data-v="${i}" aria-label="Pregunta ${i + 1}${S.T > 1 ? ', turno de ' + esc(teamName(owner(i))) : ''}${g ? ', pregunta de oro' : ''}">${i + 1}</button>`;
+  }).join('') + `<button class="dot fin" data-act="final">Resultados</button>`;
+}
+function renderQ(){
+  const q = D.questions[S.qi], r = S.results[S.qi], c = S.cur, ph = S.phase, own = owner(S.qi);
+  const gold = isGold(S.qi), value = BASE * (gold ? 2 : 1), revealed = ph === 'revealed';
+  const picks = r ? r.picks : c.picks, canAnswer = ph === 'answer' && !spinning;
+  const opts = qL(q).map(L => {
+    const cls = [], wrongPick = picks.some(p => p.l === L) && L !== q.ans;
+    if (!revealed && c.hidden.includes(L)) cls.push('is-out');
+    if (wrongPick) cls.push('is-wrong');
+    if (revealed && L === q.ans) cls.push('is-right');
+    const note = revealed && L !== q.ans && q.notes[L] ? `<span class="why-not"><b>Por qué no:</b> ${esc(q.notes[L])}</span>` : '';
+    const dis = !canAnswer || c.hidden.includes(L) || wrongPick;
+    return `<button class="opt ${cls.join(' ')}" data-act="answer" data-v="${L}" ${dis ? 'disabled' : ''}><span class="L">${L}</span><span class="txt">${esc(q.opts[L])}${note}</span></button>`;
+  }).join('');
+  let fb = '';
+  const tn = esc(S.T === 1 ? 'el curso' : teamName(c.team)), keyRange = `${qL(q)[0]}–${qL(q)[qL(q).length - 1]}`;
+  if (ph === 'draw') {
+    fb = `<div class="fb"><p class="hint">${c.attempt === 2 ? `<b>Rebote${S.T === 1 ? '' : ' para ' + tn}.</b> Si acierta, gana ${value / 2} puntos.` : (S.T === 1 ? 'Lean la pregunta en silencio mientras sorteamos quién responde.' : `Turno de <b>${tn}</b>. Lean la pregunta en silencio mientras sorteamos quién responde.`)} Presiona <kbd>S</kbd> o <b>Sortear</b>.</p></div>`;
+  } else if (ph === 'answer') {
+    fb = `<div class="fb"><p class="hint">Responde <b>${esc(c.student || '')}</b>${S.T === 1 ? '' : ` (${tn})`}, desde su asiento y en voz normal. Antes de responder puede usar un comodín. Marca la alternativa que diga (teclas ${keyRange}).</p></div>`;
+  } else if (ph === 'wrong') {
+    const L = c.picks[c.picks.length - 1].l;
+    fb = `<div class="fb bad"><p class="verdict">La ${L} no es correcta</p>${q.notes[L] ? `<p>${esc(q.notes[L])}</p>` : ''}
+      <div class="row"><button class="btn" data-act="rebote">${S.T === 1 ? 'Rebote a otra persona' : 'Rebote a otro equipo'} (vale ${value / 2}) <kbd>R</kbd></button><button class="btn ghost" data-act="reveal">Ver la respuesta correcta</button></div></div>`;
+  } else if (revealed && r) {
+    const last = r.picks[r.picks.length - 1], name = last ? esc(last.s) : '';
+    const to = S.T === 1 ? 'para el curso' : 'para ' + esc(teamName(r.team));
+    let verdict, cls;
+    if (r.status === 'correct') { verdict = `¡Correcto${name ? ', ' + name : ''}! +${r.pts} ${to}`; cls = 'good'; }
+    else if (r.status === 'rebote') { verdict = `¡Rebote ganado${name ? ' por ' + name : ''}! +${r.pts} ${to}`; cls = 'good'; }
+    else { verdict = `Nadie suma esta vez. Era la ${q.ans}`; cls = 'bad'; }
+    fb = `<div class="fb ${cls}"><p class="verdict">${verdict}</p>${q.why ? `<span class="kicker">Por qué es la ${q.ans}</span><p>${esc(q.why)}</p>` : ''}
+      <div class="row"><button class="btn" data-act="next">${S.qi < N - 1 ? 'Siguiente pregunta' : 'Ver resultados'} <kbd>Enter</kbd></button></div></div>`;
+  }
+  const hintBox = c.hint && !revealed && q.hint ? `<div class="hintbox"><span class="clabel">Pista</span><p>${esc(q.hint)}</p></div>` : '';
+  const qc = $('#qcard'); qc.className = 'qcard' + (gold ? ' gold' : '');
+  qc.innerHTML = `
+    <div class="qmeta">
+      <span class="qn">Pregunta ${S.qi + 1}<small> de ${N}</small></span>
+      ${q.tema ? `<span class="chip">${esc(q.tema)}</span>` : ''}
+      ${S.T > 1 ? `<span class="chip own" style="--tc:${tcol(own)}"><span class="cock"></span>Turno de ${esc(teamName(own))}</span>` : ''}
+      <span class="chip pts ${gold ? 'gold' : ''}">${gold ? 'Pregunta de oro · ' : ''}${value} puntos</span>
+    </div>
+    ${q.ctx ? `<blockquote class="ctx"><span class="clabel">Fuente</span><q>${esc(q.ctx.text)}</q>${q.ctx.cite ? `<cite>${esc(q.ctx.cite)}</cite>` : ''}</blockquote>` : ''}
+    <p class="stem">${esc(q.q)}</p>
+    ${hintBox}
+    <div class="opts">${opts}</div>
+    ${fb}`;
+}
+function renderSide(){
+  const ph = S.phase, c = S.cur, r = S.results[S.qi];
+  let t = c.team, name = c.student;
+  let label = S.T === 1 ? (c.attempt === 2 ? 'Rebote · responde' : 'Responde') : (c.attempt === 2 ? 'Rebote · ' : '') + 'Equipo ' + teamName(t);
+  if (ph === 'revealed' && r && r.picks.length) { const last = r.picks[r.picks.length - 1]; name = last.s; t = last.t; const reb = r.status === 'rebote' || (r.status === 'wrong' && r.picks.length > 1); label = S.T === 1 ? (reb ? 'Rebote · respondió' : 'Respondió') : (reb ? 'Rebote · ' : '') + 'Equipo ' + teamName(t); }
+  const m = members(t), left = m.filter(n => !S.used.includes(n)).length;
+  const L = S.life[c.team], canLife = ph === 'answer' && !spinning, q = D.questions[S.qi];
+  const whisperBox = wT ? `<div class="timer"><b id="wLeft">${wLeft}</b><span>Consulta en voz baja${S.T === 1 ? ' con el compañero de puesto' : ' con tu equipo'}, sin pararse y sin gritar.</span></div>` : '';
+  const lf = (act, title, desc, n, used, extra = true) => `<button class="lf" data-act="${act}" ${canLife && n > 0 && !used && extra ? '' : 'disabled'}><strong>${title}</strong><span>${desc}</span>${dots3(n, C.lives)}</button>`;
+  $('#side').innerHTML = `
+    <div class="box turn" id="turnBox" style="--tc:${tcol(t)}">
+      <h2 id="turnTeam">${esc(label)}</h2>
+      <div class="who ${name || spinning ? '' : 'wait'}" id="who">${name ? esc(name) : (spinning ? '' : '¿Quién responde?')}</div>
+      ${whisperBox}
+      <button class="btn spin" data-act="spin" ${ph === 'draw' && !spinning ? '' : 'disabled'}>${spinning ? 'Sorteando…' : 'Sortear'} <kbd>S</kbd></button>
+      <p class="sub">${C.noRepeat ? `Faltan ${left} de ${m.length} por participar${S.T === 1 ? '' : ' en este equipo'}.` : `${m.length} integrantes.`}</p>
+    </div>
+    <div class="box">
+      <h2>Comodines${S.T === 1 ? ' del curso' : ' de ' + esc(teamName(c.team))}</h2>
+      <div class="life">
+        ${lf('fifty', '50/50', 'Elimina alternativas incorrectas', L.fifty, c.fifty, qL(q).length > 2)}
+        ${lf('whisper', 'Susurro', S.T === 1 ? '30 s para consultar con el compañero' : '30 s para consultar con el equipo', L.whisper, c.whisper)}
+        ${lf('hint', 'Pista', q.hint ? 'Muestra dónde buscar la respuesta' : 'Esta pregunta no tiene pista', L.hint, c.hint, !!q.hint)}
+      </div>
+    </div>
+    <div class="box conduct">
+      <h2>Reglas de convivencia</h2>
+      <ul class="rules"><li>${ICON_SHOUT}No gritar</li><li>${ICON_SEAT}No pararse del asiento</li></ul>
+      <small>Registrar una falta${S.T === 1 ? '' : ' para'}:</small>
+      <div class="fbtns">${teamIdx().map(tt => `<button class="fbtn" data-act="falta" data-v="${tt}" style="--tc:${tcol(tt)}" aria-label="Registrar falta para ${esc(teamName(tt))}"><span class="cock"></span><span class="fn">${esc(teamName(tt))}</span><b>${faltasOf(tt)}</b></button>`).join('')}</div>
+      <small>${freeTxt()} ${C.free ? 'Después, cada' : 'Cada'} falta descuenta ${C.penalty} puntos.</small>
+      ${S.faltas.length ? '<button class="linkish" data-act="undo">Quitar la última falta</button>' : ''}
+    </div>
+    <p class="keys">Teclado: <kbd>S</kbd> sortear · <kbd>A</kbd>–<kbd>D</kbd> responder · <kbd>R</kbd> rebote · <kbd>Enter</kbd> siguiente · <kbd>←</kbd> <kbd>→</kbd> moverse</p>`;
+}
+function renderFinal(){
+  const rows = standings(), pending = S.results.filter(r => !r).length, solo = S.T === 1;
+  const winners = rows.filter(r => r.place === 1);
+  const title = solo ? `${num(rows[0].score)} puntos` : (winners.length === 1 ? `Gana ${winners[0].name}` : `Empate: ${winners.map(w => w.name).join(' y ')}`);
+  const onPod = rows.filter(r => r.place <= 3);
+  const podiumOrder = [...onPod.filter(r => r.place === 2), ...onPod.filter(r => r.place === 1), ...onPod.filter(r => r.place === 3)];
+  const hgt = p => p === 1 ? 100 : p === 2 ? 72 : 50;
+  const names = [...new Set(S.results.flatMap(r => r ? r.picks.map(p => p.s) : []))];
+  $('#final').innerHTML = `
+    <div class="hero">
+      <p class="eyebrow">${esc(['Resultados', D.course, D.unit].filter(Boolean).join(' · '))}</p>
+      <h2>${esc(title)}</h2>
+      <p class="lead">${N - pending} de ${N} preguntas jugadas${pending ? `; quedan ${pending} sin responder` : ''}. ${solo ? 'Ese es el puntaje que reunió todo el curso.' : (winners.length === 1 ? `${esc(winners[0].name)} terminó con ${num(winners[0].score)} puntos.` : `Terminaron con ${num(winners[0].score)} puntos cada uno.`)}</p>
+    </div>
+    ${solo ? '' : `<div class="podium" aria-label="Podio">${podiumOrder.map(r => `<div class="pod" style="--tc:${tcol(r.t)}"><span class="pname"><span class="cock"></span><span>${esc(r.name)}</span></span><div class="bar" style="height:${hgt(r.place) * .78}%"><span class="place">${r.place}°</span><span class="ppts">${num(r.score)}</span></div></div>`).join('')}</div>`}
+    <div class="tbl"><table>
+      <thead><tr><th>${solo ? 'Curso' : 'Equipo'}</th><th>Aciertos</th><th>Rebotes ganados</th><th>Preguntas de oro</th><th>Racha</th><th>Faltas</th><th>Total</th></tr></thead>
+      <tbody>${rows.map(r => `<tr><td><span class="tn" style="--tc:${tcol(r.t)}"><span class="cock"></span>${solo ? '' : r.place + '° '}${esc(r.name)}</span></td><td>${r.ok}</td><td>${r.reb}</td><td>${r.gold}</td><td>${r.bonus ? '+' + r.bonus : '0'}</td><td>${r.faltas}${r.pen ? ` <span class="neg">(−${r.pen})</span>` : ''}</td><td class="total">${num(r.score)}</td></tr>`).join('')}</tbody>
+    </table></div>
+    ${names.length ? `<div class="box"><h2>Participaron (${names.length})</h2><div class="names">${names.map(n => `<span>${esc(n)}</span>`).join('')}</div></div>` : ''}
+    <div class="row"><button class="btn" data-act="back">Volver a las preguntas</button><button class="btn ghost" data-act="settings">Equipos, ajustes o reiniciar</button><button class="btn ghost" data-act="toLibrary">Ir a la biblioteca</button></div>`;
+}
+function render(){
+  if (VIEW !== 'play') return;
+  renderHeader();
+  const ph = S.phase;
+  $('#intro').hidden = ph !== 'intro';
+  $('#game').hidden = ph === 'intro' || ph === 'final';
+  $('#final').hidden = ph !== 'final';
+  if (ph === 'intro') renderIntro();
+  else if (ph === 'final') renderFinal();
+  else {
+    renderDots(); renderQ();
+    if (spinning) { const keep = $('#who') ? $('#who').textContent : ''; renderSide(); $('#who').textContent = keep; $('#who').classList.remove('wait'); }
+    else renderSide();
+  }
+}
+
+/* =================== eventos =================== */
+const ACTIONS = {
+  // biblioteca y editor
+  newGame, copyBuiltin: v => copyBuiltin(v), editGame: v => openEditor(v), playGame: v => playGame(v), dupGame: v => dupGame(v), exportGame: v => exportGame(v),
+  libMore: v => { LIB.more = LIB.more === v && !LIB.del ? null : v; LIB.del = null; renderLibrary(); },
+  delGame: v => { LIB.more = v; LIB.del = v; renderLibrary(); }, delGameYes: v => delGame(v),
+  toLibrary, qtoggle: v => qToggle(v), addQ, qmove: v => qMove(v), qdup: v => qDup(v), qdel: v => qDel(v), qdelYes: v => qDelYes(v), qdelNo: v => qDelNo(v),
+  edDel: () => { $('#edDel').innerHTML = `<strong>¿Eliminar este juego para siempre?</strong> <button class="btn warn small" data-act="edDelYes">Sí, eliminar</button> <button class="btn ghost small" data-act="edDelNo">No</button>`; },
+  edDelYes: () => { const id = ED.game.id; clearTimeout(saveT); saveState = 'saved'; delGame(id); },
+  edDelNo: () => renderEdSide(),
+  openImport: v => openImport(v), doImport, openAI, aiGo, aiStop, aiAdd, closeModal,
+  copyExport: () => { const t = $('#expText'); try { navigator.clipboard.writeText(t.value).then(() => toast('Copiado'), () => { t.select(); toast('Selecciona y copia con Ctrl+C'); }); } catch(e) { t.select(); toast('Selecciona y copia con Ctrl+C'); } },
+  // juego
+  start, spin, rebote, reveal, next, fifty, whisper, hint: useHint,
+  answer: v => answer(v), goto: v => goTo(+v), falta: v => falta(v),
+  final: showFinal, back: () => goTo(S.qi), undo: undoFalta,
+  settings: openSettings, saveSettings, gen: genRoster, deal, listSave, listLoad, listDel,
+  reset: askReset, resetYes: doReset, resetNo,
+  sound: toggleSound, fs: fullscreen,
+  rules: () => { if (spinning) return; stopWhisper(); S.phase = 'intro'; save(); render(); }
+};
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act]'); if (!b || b.disabled) return;
+  if (VIEW === 'play') ac();
+  const fn = ACTIONS[b.dataset.act]; if (fn) fn(b.dataset.v);
+});
+$('#modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
+$('#view').addEventListener('input', e => {
+  if (VIEW !== 'editor' || !ED || Store.readOnly) return;
+  const t = e.target;
+  if (t.dataset.g) { ED.game[t.dataset.g] = t.value; markDirty(); return; }
+  const f = t.dataset.f; if (!f) return;
+  const card = t.closest('.qe'); if (!card) return;
+  const q = edQ(card.dataset.id); if (!q) return;
+  setField(q, f, t.value);
+  if (f === 'ans') {
+    card.querySelectorAll('.alt').forEach(a => { const on = a.dataset.l === q.ans; a.classList.toggle('is-ans', on); const nt = a.querySelector('.alt-note'); if (nt) nt.hidden = on; });
+  }
+  refreshCard(q); markDirty();
+});
+document.addEventListener('keydown', e => {
+  if (!$('#modal').hidden) { if (e.key === 'Escape') closeModal(); return; }
+  if (VIEW !== 'play') return;
+  if (e.target.matches && e.target.matches('input, textarea, select')) return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if (S.phase === 'intro') { if (k === 'enter') { e.preventDefault(); start(); } return; }
+  if (S.phase === 'final') return;
+  if (['a','b','c','d'].includes(k)) { ac(); answer(k.toUpperCase()); }
+  else if (k === 's' || k === ' ') { e.preventDefault(); ac(); spin(); }
+  else if (k === 'enter' || k === 'n') { if (S.phase === 'revealed') { e.preventDefault(); next(); } }
+  else if (k === 'r') rebote();
+  else if (k === 'arrowright') goTo(S.qi + 1);
+  else if (k === 'arrowleft') goTo(S.qi - 1);
+});
+window.addEventListener('resize', () => { if (raf) sizeFx(); });
+window.addEventListener('pagehide', () => { if (VIEW === 'editor') flushSave(); });
+
+/* =================== inicio =================== */
+renderLibrary();
+Store.init();
+Store.loadBuiltin();
+(async () => {
+  if (!(window.claude && typeof window.claude.use === 'function')) return;
+  try { CAP.sample = await window.claude.use('sample'); } catch(e) { CAP.sample = null; }
+  try { CAP.downloads = await window.claude.use('downloads'); } catch(e) { CAP.downloads = null; }
+  if (VIEW === 'editor') renderEdSide();
+})();
+</script>
+</body>
+</html>
