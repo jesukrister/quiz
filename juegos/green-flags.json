@@ -1,0 +1,971 @@
+{
+  "formato": "tombola-de-repaso",
+  "version": 1,
+  "title": "Green Flags",
+  "course": "Orientación",
+  "unit": "Relaciones, convivencia, vida digital y estudio",
+  "createdAt": "2026-10-23T12:38:31.147Z",
+  "updatedAt": "2026-10-23T12:38:31.147Z",
+  "questions": [
+    {
+      "id": "q01",
+      "tema": "Estudio",
+      "q": "🤔 Te equivocaste en varias preguntas de una prueba. ¿Qué actitud te ayuda a aprender?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Pensar que eres malo para esa asignatura",
+        "B": "Guardar la prueba y no mirarla más",
+        "C": "Culpar a la pregunta por ser difícil",
+        "D": "Revisar los errores para entender qué falló"
+      },
+      "ans": "D",
+      "why": "Equivocarse es parte de aprender. Revisar los errores te muestra qué reforzar para la próxima vez.",
+      "notes": {
+        "A": "Un error muestra qué falta practicar, no cuánto vales.",
+        "B": "Sin revisar, es probable repetir los mismos errores.",
+        "C": "Revisar qué no entendiste ayuda más que buscar culpables.",
+        "D": ""
+      },
+      "hint": "Los errores son pistas."
+    },
+    {
+      "id": "q02",
+      "tema": "Bullying",
+      "q": "Si sufres bullying, ¿a quién puedes acudir en el colegio?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "A nadie, para no agrandar el problema",
+        "B": "Al encargado de convivencia o a un profesor",
+        "C": "Solo a quien te molesta, para arreglarlo entre ustedes",
+        "D": "A tus seguidores en redes sociales"
+      },
+      "ans": "B",
+      "why": "Todos los colegios tienen un encargado de convivencia escolar. También puedes acudir a tu profesor jefe, al orientador o a cualquier adulto de confianza.",
+      "notes": {
+        "A": "Pedir ayuda no agranda el problema: ayuda a detenerlo.",
+        "B": "",
+        "C": "Enfrentar solo o sola al agresor puede ser riesgoso; busca apoyo adulto.",
+        "D": "Publicarlo puede exponerte más; primero busca a un adulto de confianza."
+      },
+      "hint": "En cada colegio hay una persona encargada de la convivencia."
+    },
+    {
+      "id": "q03",
+      "tema": "Red flags",
+      "q": "Si una relación te hace sentir miedo, culpa o que caminas «sobre cáscaras de huevo», ¿qué conviene hacer?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Aguantar, porque todas las parejas pelean",
+        "B": "Esforzarte más para que no se enoje",
+        "C": "Hablarlo con un adulto de confianza",
+        "D": "Guardar el secreto para no exagerar"
+      },
+      "ans": "C",
+      "why": "Sentir miedo o culpa todo el tiempo es una señal de alerta. Conversarlo con un adulto de confianza (familia, profesor, orientador) ayuda a ver la situación con claridad.",
+      "notes": {
+        "A": "Las discusiones existen, pero el miedo constante no es normal.",
+        "B": "No es tu responsabilidad evitar los enojos de otra persona.",
+        "C": "",
+        "D": "Contarlo no es exagerar: pedir ayuda es una forma de cuidarte."
+      },
+      "hint": "Nadie tiene que enfrentar esto en soledad."
+    },
+    {
+      "id": "q04",
+      "tema": "Bullying",
+      "q": "«El bullying es cosa de niños y se les pasa». ¿Es cierto?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Sí: es una parte normal de crecer",
+        "B": "No: puede dejar daño emocional duradero",
+        "C": "Sí, mientras no haya golpes ni peleas físicas",
+        "D": "Sí, porque así se hacen más fuertes"
+      },
+      "ans": "B",
+      "why": "El bullying puede afectar la autoestima, el ánimo y el rendimiento por mucho tiempo. Por eso hay que tomarlo en serio.",
+      "notes": {
+        "A": "No es normal ni inofensivo: afecta la salud mental y el aprendizaje.",
+        "B": "",
+        "C": "Los insultos, las burlas y la exclusión también son bullying.",
+        "D": "El acoso no fortalece: genera miedo, aislamiento y ansiedad."
+      },
+      "hint": "¿Las burlas repetidas dejan huella?"
+    },
+    {
+      "id": "q05",
+      "tema": "Estudio",
+      "q": "🍅 La técnica Pomodoro consiste en…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Estudiar comiendo tomates para concentrarte",
+        "B": "Estudiar 5 horas seguidas sin pausa",
+        "C": "Repasar con música a todo volumen",
+        "D": "Estudiar 25 minutos y descansar 5"
+      },
+      "ans": "D",
+      "why": "La técnica Pomodoro alterna bloques de 25 minutos de concentración con descansos de 5. Su nombre viene del reloj de cocina con forma de tomate que usaba su creador.",
+      "notes": {
+        "A": "Pomodoro significa «tomate» en italiano, por un reloj de cocina con esa forma, pero no se trata de comer tomates.",
+        "B": "Estudiar sin pausas cansa y baja la concentración.",
+        "C": "Eso no tiene relación con esta técnica.",
+        "D": ""
+      },
+      "hint": "Tiene que ver con un reloj de cocina."
+    },
+    {
+      "id": "q06",
+      "tema": "Red flags",
+      "q": "«Los celos son una prueba de amor». ¿Es verdad?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Sí: mientras más celos, más grande es el amor",
+        "B": "No: los celos que vigilan son control",
+        "C": "Sí, pero solo al comienzo del pololeo",
+        "D": "Sí, si la otra persona tiene motivos"
+      },
+      "ans": "B",
+      "why": "Sentir inseguridad a veces es humano, pero los celos que vigilan, prohíben o castigan son violencia. El amor sano da tranquilidad, no miedo.",
+      "notes": {
+        "A": "Los celos no miden el amor; cuando son constantes, generan miedo.",
+        "B": "",
+        "C": "Al comienzo tampoco son sanos: pueden ser el inicio de un patrón de control.",
+        "D": "Aunque haya inseguridad, vigilar o prohibir no es la solución; se conversa."
+      },
+      "hint": "¿Un amor sano te hace sentir tranquilidad o miedo?"
+    },
+    {
+      "id": "q07",
+      "tema": "Bullying",
+      "q": "¿Qué hace que una situación sea bullying y no solo una pelea?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Ocurre dentro de la sala de clases",
+        "B": "Se repite y hay abuso de poder",
+        "C": "La víctima responde con insultos",
+        "D": "Hay más de dos personas peleando"
+      },
+      "ans": "B",
+      "why": "El bullying (acoso escolar) es una agresión que se repite en el tiempo, con intención de dañar, en la que una persona o un grupo abusa de su poder sobre otra.",
+      "notes": {
+        "A": "El bullying puede ocurrir en cualquier lugar, también en internet.",
+        "B": "",
+        "C": "Cómo reaccione la víctima no define el bullying.",
+        "D": "Una pelea entre varios no es bullying si no se repite ni hay abuso de poder."
+      },
+      "hint": "Piensa en dos palabras: repetición y poder."
+    },
+    {
+      "id": "q08",
+      "tema": "Estudio",
+      "q": "Te sientes muy estresado antes de una prueba. ¿Qué puede ayudarte?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Respirar profundo y repasar con calma",
+        "B": "Tomar bebidas energéticas toda la noche",
+        "C": "Saltarte las comidas para estudiar más",
+        "D": "Pensar que todo te va a salir mal"
+      },
+      "ans": "A",
+      "why": "Respirar lento ayuda a bajar el estrés, y repasar con calma te recuerda lo que sí sabes.",
+      "notes": {
+        "A": "",
+        "B": "Te quitan el sueño y aumentan la ansiedad.",
+        "C": "Tu cerebro necesita energía para concentrarse.",
+        "D": "Esos pensamientos aumentan el estrés."
+      },
+      "hint": "Primero el cuerpo: ¿cómo respiras cuando estás nervioso?"
+    },
+    {
+      "id": "q09",
+      "tema": "Vida digital",
+      "q": "📰 Ves en redes una noticia impactante sin fuente clara. ¿Qué haces antes de compartirla?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Compartirla rápido para avisarles a todos",
+        "B": "Revisar si medios confiables la publican",
+        "C": "Creerla si tiene muchos «me gusta»",
+        "D": "Creerla porque te la mandó un amigo cercano"
+      },
+      "ans": "B",
+      "why": "Antes de compartir, conviene revisar quién lo publica y si otros medios confiables dicen lo mismo. Así no ayudas a propagar noticias falsas.",
+      "notes": {
+        "A": "Compartir sin revisar ayuda a que se propaguen noticias falsas.",
+        "B": "",
+        "C": "Los «me gusta» no prueban que algo sea cierto.",
+        "D": "Tus amigos también pueden recibir noticias falsas sin saberlo."
+      },
+      "hint": "¿Quién lo dice? ¿Alguien más lo confirma?"
+    },
+    {
+      "id": "q10",
+      "tema": "Estudio",
+      "q": "📚 ¿Cuál de estas técnicas ayuda MÁS a recordar lo que estudiaste?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Leer muchas veces el mismo texto del libro",
+        "B": "Subrayar casi todo el texto",
+        "C": "Ponerte a prueba sin mirar el cuaderno",
+        "D": "Copiar el cuaderno con letra bonita"
+      },
+      "ans": "C",
+      "why": "Ponerte a prueba obliga al cerebro a recuperar la información, y eso la fija mejor. Es una de las técnicas de estudio con más evidencia.",
+      "notes": {
+        "A": "Releer da la sensación de saber, pero se recuerda menos que al practicar.",
+        "B": "Si subrayas todo, nada destaca.",
+        "C": "",
+        "D": "Copiar no obliga a pensar ni a recordar."
+      },
+      "hint": "Como en este mismo juego…"
+    },
+    {
+      "id": "q11",
+      "tema": "Vida digital",
+      "q": "📵 ¿Qué se recomienda hacer con el celular antes de dormir?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Usarlo hasta que te quedes dormido",
+        "B": "Dejarlo bajo la almohada por si escriben",
+        "C": "Dejarlo de lado un rato antes de acostarte",
+        "D": "Ver videos en la cama hasta tener sueño"
+      },
+      "ans": "C",
+      "why": "Usar pantallas justo antes de dormir hace más difícil quedarse dormido. Se recomienda dejar el celular un rato antes y, si se puede, fuera de la pieza.",
+      "notes": {
+        "A": "La pantalla y lo que ves mantienen el cerebro activo y cuesta más dormir.",
+        "B": "Las notificaciones interrumpen el sueño.",
+        "C": "",
+        "D": "Los videos suelen alargar el tiempo que pasas despierto."
+      },
+      "hint": "¿El celular ayuda al cerebro a «apagarse»?"
+    },
+    {
+      "id": "q12",
+      "tema": "Red flags",
+      "q": "💬 Tu pareja te dice: «Si me quisieras, no saldrías con tus amigos sin mí». ¿Qué está pasando?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Te demuestra lo mucho que te echa de menos",
+        "B": "Te da un consejo para cuidarte de los demás",
+        "C": "Te pide algo justo en una relación",
+        "D": "Te aleja de tus amigos para controlarte"
+      },
+      "ans": "D",
+      "why": "Alejarte de tus amigos y tu familia es una red flag: te deja con menos apoyo. La frase «si me quisieras…» es manipulación emocional.",
+      "notes": {
+        "A": "Extrañar es normal; culparte y prohibirte salir no lo es.",
+        "B": "Un consejo no te hace sentir culpable ni te aleja de tus amigos.",
+        "C": "Nadie tiene derecho a decidir con quién te juntas.",
+        "D": ""
+      },
+      "hint": "Fíjate en la frase «si me quisieras». ¿Te deja elegir libremente?"
+    },
+    {
+      "id": "q13",
+      "tema": "Vida digital",
+      "q": "👣 Tu «huella digital» es lo que dejas en internet. Lo que publicas…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Desaparece si lo borras a tiempo",
+        "B": "Solo lo ven las personas que tú eliges",
+        "C": "No tiene ninguna importancia para tu futuro",
+        "D": "Puede quedar guardado aunque lo borres"
+      },
+      "ans": "D",
+      "why": "Una captura de pantalla o un reenvío bastan para que algo quede circulando. Por eso conviene pensar antes de publicar.",
+      "notes": {
+        "A": "Alguien pudo guardarlo o capturarlo antes de que lo borraras.",
+        "B": "Lo que compartes puede reenviarse a otras personas.",
+        "C": "Lo que publicas hoy puede verse en unos años, por ejemplo al postular a un trabajo.",
+        "D": ""
+      },
+      "hint": "Piensa en las capturas de pantalla."
+    },
+    {
+      "id": "q14",
+      "tema": "Estudio",
+      "q": "📱 Estudias con el celular al lado y respondes cada mensaje que llega. ¿Qué pasa?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Te desconcentras y aprendes menos",
+        "B": "Aprendes igual, porque haces dos cosas",
+        "C": "Aprendes más rápido por la motivación",
+        "D": "No afecta si los mensajes son cortos"
+      },
+      "ans": "A",
+      "why": "Cada vez que miras el celular, tu atención se corta y cuesta volver a concentrarse. Estudiar con el celular lejos rinde más.",
+      "notes": {
+        "A": "",
+        "B": "El cerebro no hace bien dos tareas que piden atención al mismo tiempo.",
+        "C": "Las interrupciones hacen que te demores más, no menos.",
+        "D": "Incluso las interrupciones cortas cortan la concentración."
+      },
+      "hint": "¿Se puede poner atención completa a dos cosas a la vez?"
+    },
+    {
+      "id": "q15",
+      "tema": "Vida digital",
+      "q": "Si sufres ciberacoso, ¿qué conviene hacer primero?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Responder con insultos más fuertes",
+        "B": "Borrar todo para olvidarlo rápido",
+        "C": "Guardar pruebas, bloquear y pedir ayuda",
+        "D": "Cerrar tus redes y no contarle nada a nadie"
+      },
+      "ans": "C",
+      "why": "Las capturas de pantalla sirven como pruebas. Bloquear corta el contacto, y contarle a un adulto permite actuar.",
+      "notes": {
+        "A": "Responder puede empeorar la situación.",
+        "B": "Borrar elimina las pruebas que sirven para detener el acoso.",
+        "C": "",
+        "D": "Alejarte puede ayudar, pero no contarlo te deja sin apoyo."
+      },
+      "hint": "Tres pasos: pruebas, bloqueo y apoyo."
+    },
+    {
+      "id": "q16",
+      "tema": "Estudio",
+      "q": "⏰ Para una prueba, ¿qué conviene más?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Estudiar todo durante la noche anterior",
+        "B": "Estudiar un poco varios días antes",
+        "C": "Estudiar solo el día de la prueba",
+        "D": "No estudiar y confiar en la suerte"
+      },
+      "ans": "B",
+      "why": "Repartir el estudio en varios días (práctica espaciada) ayuda a recordar por más tiempo que estudiar todo de una vez.",
+      "notes": {
+        "A": "Estudiar todo de golpe y sin dormir hace que se olvide más rápido.",
+        "B": "",
+        "C": "No alcanza el tiempo para entender y practicar.",
+        "D": "La suerte no reemplaza la práctica."
+      },
+      "hint": "Mejor poquito y seguido que todo de golpe."
+    },
+    {
+      "id": "q17",
+      "tema": "Vida digital",
+      "q": "¿Qué información conviene NO publicar en un perfil público?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Tu dirección y el colegio donde estudias",
+        "B": "Tu comida favorita y tu película preferida",
+        "C": "Una foto de tu mascota durmiendo en el sofá",
+        "D": "La canción que más escuchas esta semana"
+      },
+      "ans": "A",
+      "why": "La dirección, el colegio y tus rutinas permiten que un desconocido sepa dónde encontrarte. Mejor mantenerlos privados.",
+      "notes": {
+        "A": "",
+        "B": "Son gustos que no permiten ubicarte.",
+        "C": "Una mascota no revela dónde vives (mientras no se vea tu dirección).",
+        "D": "Es un gusto personal que no permite ubicarte."
+      },
+      "hint": "¿Qué dato le diría a un desconocido dónde encontrarte?"
+    },
+    {
+      "id": "q18",
+      "tema": "Estudio",
+      "q": "👥 Estudiar en grupo funciona mejor cuando…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Uno hace todo y los demás copian",
+        "B": "Pasan gran parte del tiempo en el celular",
+        "C": "Se juntan sin saber qué van a estudiar",
+        "D": "Se explican la materia unos a otros"
+      },
+      "ans": "D",
+      "why": "Explicarle algo a otra persona es una de las mejores formas de aprender: te obliga a ordenar las ideas.",
+      "notes": {
+        "A": "Copiar no te ayuda a aprender.",
+        "B": "El celular distrae a todo el grupo.",
+        "C": "Sin un plan, el tiempo se va en otras cosas.",
+        "D": ""
+      },
+      "hint": "Enseñar también es aprender."
+    },
+    {
+      "id": "q19",
+      "tema": "Vida digital",
+      "q": "Un compañero recibe mensajes ofensivos todos los días en un grupo de WhatsApp. ¿Cómo se llama esto?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Libertad de expresión",
+        "B": "Ciberacoso",
+        "C": "Broma de grupo",
+        "D": "Discusión normal"
+      },
+      "ans": "B",
+      "why": "El ciberacoso (o ciberbullying) es el bullying que ocurre por medios digitales: mensajes, grupos, redes sociales o juegos en línea.",
+      "notes": {
+        "A": "Opinar libremente no incluye humillar ni acosar.",
+        "B": "",
+        "C": "Si se repite y daña, no es broma.",
+        "D": "Es acoso: se repite y busca dañar."
+      },
+      "hint": "Es bullying, pero en pantallas."
+    },
+    {
+      "id": "q20",
+      "tema": "Red flags",
+      "q": "Después de una pelea, tu pareja te dice: «Mira lo que me hiciste hacer». ¿Qué significa esa frase?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Te culpa por lo que él o ella hizo",
+        "B": "Te pide perdón de una forma sincera y honesta",
+        "C": "Reconoce que se equivocó contigo",
+        "D": "Busca arreglar el problema juntos"
+      },
+      "ans": "A",
+      "why": "Culpar a otra persona por las propias reacciones es manipulación. Cada uno es responsable de lo que hace.",
+      "notes": {
+        "A": "",
+        "B": "Una disculpa sincera se hace cargo; esta frase te echa la culpa.",
+        "C": "Al contrario: evita hacerse responsable.",
+        "D": "Culpar a la otra persona no arregla nada."
+      },
+      "hint": "¿Quién se hace cargo de lo que pasó en esa frase?"
+    },
+    {
+      "id": "q21",
+      "tema": "Bullying",
+      "q": "En Chile, ¿qué ley obliga a los colegios a prevenir y enfrentar el acoso escolar?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "La Ley de Tránsito de Chile",
+        "B": "La Ley sobre Violencia Escolar",
+        "C": "La Ley de Protección del Consumidor",
+        "D": "La Ley sobre Bebidas Alcohólicas"
+      },
+      "ans": "B",
+      "why": "La Ley 20.536 sobre Violencia Escolar (2011) obliga a los colegios a tener un encargado de convivencia escolar y protocolos para prevenir y enfrentar el acoso.",
+      "notes": {
+        "A": "La Ley de Tránsito regula calles, vehículos y peatones.",
+        "B": "",
+        "C": "Esa ley protege a quienes compran productos y servicios.",
+        "D": "Esa ley regula la venta y el consumo de alcohol."
+      },
+      "hint": "El nombre de la ley lo dice todo."
+    },
+    {
+      "id": "q22",
+      "tema": "Vida digital",
+      "q": "Pasas horas en el celular y te cuesta dejarlo aunque quieras. ¿Qué puede ayudarte?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Usarlo más para acostumbrarte a él",
+        "B": "Dormir menos para tener más tiempo libre",
+        "C": "Revisarlo apenas llegue un mensaje",
+        "D": "Ponerte horarios y silenciar avisos"
+      },
+      "ans": "D",
+      "why": "Las notificaciones están hechas para captar tu atención. Silenciarlas y ponerte horarios te ayuda a decidir tú cuándo usar el celular.",
+      "notes": {
+        "A": "Usarlo más refuerza el hábito.",
+        "B": "Dormir menos afecta tu ánimo y tu aprendizaje.",
+        "C": "Revisarlo cada vez refuerza el impulso de mirarlo.",
+        "D": ""
+      },
+      "hint": "¿Quién debería decidir cuándo miras el celular: tú o las notificaciones?"
+    },
+    {
+      "id": "q23",
+      "tema": "Bullying",
+      "q": "😂 Un compañero dice «era solo una broma» después de humillar a otro frente al curso. ¿Cuándo una broma deja de ser broma?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Cuando el profesor se da cuenta",
+        "B": "Cuando a la otra persona no le da risa",
+        "C": "Cuando la broma dura más de un día",
+        "D": "Cuando el resto del curso no se ríe"
+      },
+      "ans": "B",
+      "why": "Una broma es broma cuando todos se ríen, incluida la persona de la que se habla. Si humilla o duele, ya no es broma.",
+      "notes": {
+        "A": "Que un adulto la vea no cambia el daño que causa.",
+        "B": "",
+        "C": "Una sola humillación ya puede doler.",
+        "D": "Que otros se rían no la hace menos dañina."
+      },
+      "hint": "Piensa en la persona que recibe la «broma»."
+    },
+    {
+      "id": "q24",
+      "tema": "Red flags",
+      "q": "💚 ¿Cuál de estas conductas es una GREEN FLAG en una relación?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Se pone celoso cuando hablas con otros",
+        "B": "Decide qué ropa puedes usar al salir",
+        "C": "Te pide tus claves como prueba de amor",
+        "D": "Respeta cuando le dices que no"
+      },
+      "ans": "D",
+      "why": "Respetar un «no» es la base de una relación sana: cada persona puede decidir sobre sí misma sin miedo a que la otra se enoje o la castigue.",
+      "notes": {
+        "A": "Los celos constantes son una forma de control, no una prueba de amor.",
+        "B": "Decidir por ti cómo vestirte es control.",
+        "C": "Las claves son personales. Pedirlas «como prueba de amor» es presión.",
+        "D": ""
+      },
+      "hint": "Green flag = algo que muestra respeto."
+    },
+    {
+      "id": "q25",
+      "tema": "Bullying",
+      "q": "🦸 La persona que ve una agresión y decide ayudar a la víctima se llama…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Cómplice",
+        "B": "Testigo activo",
+        "C": "Espectador pasivo",
+        "D": "Acosador"
+      },
+      "ans": "B",
+      "why": "Un testigo activo no se queda mirando: acompaña a la víctima, no celebra la agresión y avisa a un adulto. Los testigos pueden detener el bullying.",
+      "notes": {
+        "A": "Cómplice es quien apoya o celebra la agresión.",
+        "B": "",
+        "C": "Es quien mira sin hacer nada.",
+        "D": "Es quien agrede."
+      },
+      "hint": "No mira de lejos: actúa."
+    },
+    {
+      "id": "q26",
+      "tema": "Red flags",
+      "q": "Tu pareja insiste en que le envíes una foto íntima «para demostrar confianza». ¿Qué es lo correcto?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Enviarla si promete borrarla después",
+        "B": "Enviarla, porque es tu pareja y te lo pidió",
+        "C": "No enviarla: la presión no es confianza",
+        "D": "Enviarla, pero sin mostrar la cara"
+      },
+      "ans": "C",
+      "why": "Nadie debe presionarte para enviar fotos íntimas. Además, difundir imágenes íntimas de menores de edad es un delito. Si te presionan, cuéntale a un adulto de confianza.",
+      "notes": {
+        "A": "Una vez enviada, la foto puede compartirse sin tu permiso; una promesa no lo impide.",
+        "B": "Ser pareja no obliga a nada. Presionarte es una red flag.",
+        "C": "",
+        "D": "Igual puede usarse para dañarte o presionarte después."
+      },
+      "hint": "Si alguien insiste después de un «no», ¿es confianza o presión?"
+    },
+    {
+      "id": "q27",
+      "tema": "Estudio",
+      "q": "📒 ¿Para qué sirve anotar las pruebas y tareas en una agenda o calendario?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Para organizarte y no dejar todo al final",
+        "B": "Para que el profesor revise tu agenda",
+        "C": "Para tener más tareas en la semana",
+        "D": "Solo sirve si estás en enseñanza media"
+      },
+      "ans": "A",
+      "why": "Ver las fechas con anticipación te permite repartir el trabajo y evitar estudiar todo a última hora.",
+      "notes": {
+        "A": "",
+        "B": "La agenda es para ti, no para mostrarla.",
+        "C": "Anotar no agrega trabajo: te ayuda a repartirlo.",
+        "D": "Organizarse sirve a cualquier edad."
+      },
+      "hint": "¿Qué pasa cuando te acuerdas de una prueba el día antes?"
+    },
+    {
+      "id": "q28",
+      "tema": "Bullying",
+      "q": "👀 Ves que a un compañero lo molestan todos los días en el recreo. ¿Qué es lo mejor que puedes hacer?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Mirar sin meterte, para evitar líos",
+        "B": "Grabarlo y subirlo para que se sepa",
+        "C": "Acompañarlo y avisar a un adulto",
+        "D": "Esperar a que él pida ayuda"
+      },
+      "ans": "C",
+      "why": "Quienes miran pueden detener el bullying: acompañar a la víctima, no celebrar las burlas y avisar a un adulto del colegio.",
+      "notes": {
+        "A": "Quedarse mirando también deja solo a quien sufre el acoso.",
+        "B": "Difundir el video lo expone más y puede ser ciberacoso.",
+        "C": "",
+        "D": "Muchas víctimas no piden ayuda por miedo o vergüenza."
+      },
+      "hint": "¿Qué haría un buen compañero sin ponerse en riesgo?"
+    },
+    {
+      "id": "q29",
+      "tema": "Red flags",
+      "q": "👯 Una amiga te dice que solo seguirás en el grupo si dejas de juntarte con otra compañera. ¿Es una red flag?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Sí: una amistad sana no pone esas condiciones",
+        "B": "No: así funcionan los grupos de amigos del curso",
+        "C": "No, si esa compañera le cae mal",
+        "D": "Solo si te lo pide más de una vez"
+      },
+      "ans": "A",
+      "why": "Las red flags también existen en la amistad. Poner condiciones para quererte o pedirte que aísles a alguien es control.",
+      "notes": {
+        "A": "",
+        "B": "Un grupo sano no te obliga a excluir a nadie.",
+        "C": "Que alguien le caiga mal no le da derecho a decidir por ti.",
+        "D": "Basta una vez para notar que pone condiciones injustas."
+      },
+      "hint": "Las red flags no son solo de pololeo."
+    },
+    {
+      "id": "q30",
+      "tema": "Vida digital",
+      "q": "📸 Le tomaste una foto chistosa a un compañero dormido en el bus. ¿Qué debes hacer antes de subirla?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Subirla, total es solo una broma",
+        "B": "Subirla solo a tus mejores amigos",
+        "C": "Pedirle permiso y respetar si dice que no",
+        "D": "Subirla y borrarla si después se enoja"
+      },
+      "ans": "C",
+      "why": "La imagen de cada persona le pertenece. Antes de publicar una foto de alguien, hay que pedirle permiso.",
+      "notes": {
+        "A": "Publicar fotos de otros sin permiso puede humillarlos.",
+        "B": "Igual puede reenviarse; la foto deja de estar bajo tu control.",
+        "C": "",
+        "D": "Aunque la borres, otros pueden haberla guardado."
+      },
+      "hint": "¿A ti te gustaría que subieran una foto tuya sin preguntarte?"
+    },
+    {
+      "id": "q31",
+      "tema": "Bullying",
+      "q": "¿Cuál de estas acciones TAMBIÉN puede ser bullying?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Excluir a alguien del grupo a propósito",
+        "B": "Tener una discusión puntual con un amigo",
+        "C": "No estar de acuerdo con la opinión de otro",
+        "D": "Elegir con quién sentarte en clases"
+      },
+      "ans": "A",
+      "why": "El bullying no es solo físico. La exclusión intencional y repetida, las burlas y los rumores también son formas de acoso.",
+      "notes": {
+        "A": "",
+        "B": "Una discusión puntual entre pares no es acoso.",
+        "C": "Opinar distinto es parte de convivir.",
+        "D": "Elegir compañía no es acoso, mientras no se use para humillar."
+      },
+      "hint": "El bullying no siempre deja moretones."
+    },
+    {
+      "id": "q32",
+      "tema": "Vida digital",
+      "q": "🔐 ¿Cuál de estas contraseñas es la más segura?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "minombreyapellido2013",
+        "B": "contraseña2026",
+        "C": "123456789012",
+        "D": "Pato.Rojo!Salta27"
+      },
+      "ans": "D",
+      "why": "Una contraseña segura es larga y mezcla mayúsculas, minúsculas, números y símbolos, sin datos personales fáciles de adivinar.",
+      "notes": {
+        "A": "Tu nombre, apellido y año de nacimiento son fáciles de adivinar para quien te conoce.",
+        "B": "Es una de las claves más usadas: aparece en las listas que usan los estafadores.",
+        "C": "Una secuencia de números seguidos se adivina en segundos.",
+        "D": ""
+      },
+      "hint": "Busca la que mezcla letras, números y símbolos."
+    },
+    {
+      "id": "q33",
+      "tema": "Red flags",
+      "q": "📱 Tu pareja te manda 30 mensajes seguidos y se enoja si no contestas en 5 minutos. ¿Qué es esto?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Una red flag de control digital",
+        "B": "Una muestra de que te extraña",
+        "C": "Algo normal en las parejas",
+        "D": "Tu culpa por contestar lento"
+      },
+      "ans": "A",
+      "why": "Exigir respuestas inmediatas y enojarse por no recibirlas es una forma de vigilar a la otra persona a través del celular.",
+      "notes": {
+        "A": "",
+        "B": "Extrañar no justifica exigir respuestas inmediatas ni enojarse.",
+        "C": "Puede ser frecuente, pero no es sano: es vigilancia.",
+        "D": "No es tu culpa: tienes derecho a tus tiempos."
+      },
+      "hint": "¿Tienes derecho a tus propios tiempos?"
+    },
+    {
+      "id": "q34",
+      "tema": "Bullying",
+      "q": "Llegó un compañero nuevo de otro país y algunos se burlan de su acento. ¿Qué actitud ayuda a la convivencia?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Reírse un poco para que se acostumbre",
+        "B": "Pedirle que hable como hablan los chilenos",
+        "C": "Integrarlo y no reírse de sus diferencias",
+        "D": "Dejarlo solo hasta que él mismo haga amigos"
+      },
+      "ans": "C",
+      "why": "Burlarse de alguien por su origen es discriminación. Integrar a los compañeros nuevos hace del curso un lugar más acogedor para todos.",
+      "notes": {
+        "A": "Reírse de alguien por su origen es discriminación.",
+        "B": "Su forma de hablar es parte de su identidad.",
+        "C": "",
+        "D": "Ignorarlo lo aísla; integrarlo es tarea de todos."
+      },
+      "hint": "¿Cómo te gustaría que te recibieran a ti en otro país?"
+    },
+    {
+      "id": "q35",
+      "tema": "Red flags",
+      "q": "🚩 ¿Red flag o green flag? Tu pareja revisa tu celular sin permiso, porque «si me quieres, no tienes nada que esconder».",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Green flag: muestra cuánto le importas",
+        "B": "Normal: casi todas las parejas lo hacen",
+        "C": "Solo es grave si encuentra algo malo",
+        "D": "Red flag: es control y desconfianza"
+      },
+      "ans": "D",
+      "why": "Revisar el celular sin permiso es una conducta de control. En una relación sana hay confianza y cada persona mantiene su privacidad.",
+      "notes": {
+        "A": "Que alguien te quiera no le da derecho a revisar tus cosas. La confianza no se exige revisando.",
+        "B": "Que sea común no lo hace sano. Revisar el celular sin permiso es una forma de control.",
+        "C": "El problema es revisar sin permiso, encuentre algo o no.",
+        "D": ""
+      },
+      "hint": "Pregúntate: ¿está respetando mi privacidad?"
+    },
+    {
+      "id": "q36",
+      "tema": "Vida digital",
+      "q": "🎮 Un adulto que conociste en un juego en línea te pide fotos y que no le cuentes a tus papás. ¿Qué haces?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Seguir hablando si parece una persona simpática",
+        "B": "Enviarle fotos sin mostrar tu cara",
+        "C": "Dejar de hablarle y contarle a un adulto",
+        "D": "Guardar el secreto, como te pidió"
+      },
+      "ans": "C",
+      "why": "Pedir fotos y secretos a un menor es una señal de alerta de grooming (acoso sexual en línea de un adulto a un menor), que es un delito. Corta el contacto, guarda los mensajes y cuéntale a un adulto de confianza. También se puede denunciar a la PDI o a Carabineros.",
+      "notes": {
+        "A": "Pedir fotos y secretos son señales de alerta, aunque la persona parezca simpática.",
+        "B": "No debes enviar fotos a desconocidos: cualquier foto puede usarse para presionarte.",
+        "C": "",
+        "D": "Un adulto que le pide secretos a un menor es una señal de peligro."
+      },
+      "hint": "Un adulto que pide secretos a un menor: ¿señal de amistad o de alerta?"
+    },
+    {
+      "id": "q37",
+      "tema": "Estudio",
+      "q": "📝 Un buen resumen…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Copia el texto completo del libro",
+        "B": "Tiene más páginas que el texto original del libro",
+        "C": "Usa tus palabras y destaca las ideas clave",
+        "D": "Incluye solo los títulos del capítulo"
+      },
+      "ans": "C",
+      "why": "Resumir con tus palabras te obliga a entender. Un buen resumen es corto y conserva las ideas más importantes.",
+      "notes": {
+        "A": "Copiar todo no es resumir.",
+        "B": "Un resumen debe ser más corto que el original.",
+        "C": "",
+        "D": "Los títulos solos no explican las ideas."
+      },
+      "hint": "Resumir no es copiar."
+    },
+    {
+      "id": "q38",
+      "tema": "Vida digital",
+      "q": "🎣 Te llega un mensaje: «¡Ganaste un celular! Ingresa tu clave y tu RUT en este link». ¿Qué es?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Un intento de estafa (phishing)",
+        "B": "Un premio real de una tienda",
+        "C": "Un mensaje oficial del colegio",
+        "D": "Una oferta que vence muy pronto"
+      },
+      "ans": "A",
+      "why": "El phishing busca robar datos con mensajes falsos que prometen premios o meten prisa. Nunca entregues claves por un link que no pediste.",
+      "notes": {
+        "A": "",
+        "B": "Las empresas no piden claves por mensaje para entregar premios.",
+        "C": "El colegio no te pediría claves por un link desconocido.",
+        "D": "La urgencia es un truco típico de las estafas."
+      },
+      "hint": "¿Quién pide tu clave para darte un premio?"
+    },
+    {
+      "id": "q39",
+      "tema": "Estudio",
+      "q": "😴 ¿Por qué dormir bien ayuda a rendir en una prueba?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Porque dormir mucho reemplaza el estudio",
+        "B": "No ayuda: es mejor trasnochar repasando",
+        "C": "Solo importa dormir el fin de semana",
+        "D": "Al dormir, el cerebro guarda lo aprendido"
+      },
+      "ans": "D",
+      "why": "Mientras duermes, el cerebro ordena y fija lo que aprendiste durante el día. Dormir poco afecta la memoria y la concentración.",
+      "notes": {
+        "A": "Dormir ayuda, pero no reemplaza estudiar.",
+        "B": "Trasnochar empeora la memoria y la atención.",
+        "C": "El cerebro necesita dormir bien todos los días.",
+        "D": ""
+      },
+      "hint": "¿Qué hace el cerebro mientras duermes?"
+    },
+    {
+      "id": "q40",
+      "tema": "Pedir ayuda",
+      "q": "☎️ En Chile, ¿qué línea gratuita atiende a niños, niñas y adolescentes que necesitan conversar sobre lo que les pasa?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "La Línea Libre, al 1515",
+        "B": "El 133 de Carabineros",
+        "C": "El 131 del SAMU",
+        "D": "El 132 de Bomberos"
+      },
+      "ans": "A",
+      "why": "Línea Libre (1515), de la Fundación para la Confianza, es gratuita y atiende a niños, niñas y adolescentes por teléfono y por chat en su aplicación. En una emergencia, se llama al 131, 132 o 133 según el caso.",
+      "notes": {
+        "A": "",
+        "B": "El 133 es para emergencias policiales.",
+        "C": "El 131 es para emergencias médicas.",
+        "D": "El 132 es para incendios y rescates."
+      },
+      "hint": "No es un número de emergencias: es para conversar."
+    }
+  ]
+}
