@@ -1,0 +1,587 @@
+{
+  "formato": "tombola-de-repaso",
+  "version": 1,
+  "title": "Dados y Datos",
+  "course": "8° básico",
+  "unit": "Unidad 4 · Probabilidad y estadística",
+  "createdAt": "2026-10-24T14:52:36.814Z",
+  "updatedAt": "2026-10-24T14:52:36.814Z",
+  "questions": [
+    {
+      "id": "q01",
+      "tema": "Probabilidad",
+      "q": "🪙 Lanzan una moneda para decidir quién elige la música en el bus de la gira. ¿Cuál es la probabilidad de que salga cara?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "1/3",
+        "B": "1/2",
+        "C": "1/4",
+        "D": "1/6"
+      },
+      "ans": "B",
+      "why": "La moneda tiene 2 resultados posibles (cara o sello) y solo 1 es cara. Probabilidad = casos favorables ÷ casos posibles = 1/2.",
+      "notes": {
+        "A": "Una moneda no tiene 3 resultados: solo puede salir cara o sello.",
+        "B": "",
+        "C": "1/4 corresponde a lanzar dos monedas y pedir un resultado exacto, como «cara y cara».",
+        "D": "1/6 es la probabilidad de un número en un dado, no en una moneda."
+      },
+      "hint": "Conocimientos previos, pág. 121: casos favorables ÷ casos posibles. ¿Cuántos resultados tiene una moneda?"
+    },
+    {
+      "id": "q02",
+      "tema": "Promedio",
+      "q": "📝 Sofía sacó un 5,0, un 6,0 y un 7,0 en tres pruebas. ¿Cuál es su promedio?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "5,0",
+        "B": "7,0",
+        "C": "6,0",
+        "D": "18,0"
+      },
+      "ans": "C",
+      "why": "Para el promedio se suman los datos y se divide por la cantidad de datos: (5 + 6 + 7) ÷ 3 = 18 ÷ 3 = 6,0.",
+      "notes": {
+        "A": "Esa es su nota más baja, no el promedio.",
+        "B": "Esa es su nota más alta, no el promedio.",
+        "C": "",
+        "D": "18 es la suma de las notas: falta dividir por 3."
+      },
+      "hint": "Conocimientos previos, pág. 121: suma todas las notas y divide por cuántas son."
+    },
+    {
+      "id": "q03",
+      "tema": "Gráficos",
+      "q": "🍕 ¿Qué gráfico usarías para mostrar qué parte de una pizza se comió cada amigo?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Un gráfico circular",
+        "B": "Un gráfico de líneas",
+        "C": "Un histograma",
+        "D": "Un polígono de frecuencias"
+      },
+      "ans": "A",
+      "why": "El gráfico circular muestra cómo se reparte un total en partes, como las porciones de una pizza. Cada sector es un porcentaje del todo.",
+      "notes": {
+        "A": "",
+        "B": "El gráfico de líneas muestra cambios en el tiempo, no partes de un total.",
+        "C": "El histograma agrupa datos numéricos en intervalos; no muestra porciones de un todo.",
+        "D": "El polígono de frecuencias se arma sobre un histograma; tampoco muestra partes de un todo."
+      },
+      "hint": "Pág. 127: ¿qué gráfico muestra cómo se reparte «un todo»?"
+    },
+    {
+      "id": "q04",
+      "tema": "Probabilidad",
+      "q": "🍬 En una bolsa hay 3 dulces de frutilla y 1 de menta. Sacas uno sin mirar. ¿Qué sabor es más probable que salga?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Menta",
+        "B": "Los dos por igual",
+        "C": "Ninguno de los dos",
+        "D": "Frutilla"
+      },
+      "ans": "D",
+      "why": "Hay 3 dulces de frutilla y 1 de menta. La probabilidad de frutilla es 3/4 y la de menta es 1/4: es más probable la frutilla.",
+      "notes": {
+        "A": "Hay solo 1 dulce de menta entre 4: su probabilidad es 1/4.",
+        "B": "Serían igual de probables si hubiera la misma cantidad de cada sabor.",
+        "C": "Siempre sale uno de los dos: en la bolsa solo hay frutilla y menta.",
+        "D": ""
+      },
+      "hint": "Cuenta cuántos dulces hay de cada sabor. ¿Cuál tiene más casos favorables?"
+    },
+    {
+      "id": "q05",
+      "tema": "Moda",
+      "q": "🎨 El curso votó el color de la polera para el Día del Alumno: azul, rojo, azul, verde, azul, rojo. ¿Cuál es la moda?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Azul",
+        "B": "Rojo",
+        "C": "Verde",
+        "D": "No hay moda"
+      },
+      "ans": "A",
+      "why": "La moda es el dato que más se repite. Azul aparece 3 veces, rojo 2 y verde 1.",
+      "notes": {
+        "A": "",
+        "B": "Rojo tuvo 2 votos; azul tuvo 3.",
+        "C": "Verde tuvo solo 1 voto: fue el menos elegido.",
+        "D": "Sí hay moda: es el dato que más se repite, y aquí uno se repite más que los otros."
+      },
+      "hint": "La moda es el dato que aparece más veces. Cuenta los votos de cada color."
+    },
+    {
+      "id": "q06",
+      "tema": "Principio multiplicativo",
+      "q": "👕 Tienes 3 poleras y 2 pantalones. ¿Cuántas combinaciones distintas de ropa puedes armar?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "5 combinaciones",
+        "B": "3 combinaciones",
+        "C": "6 combinaciones",
+        "D": "9 combinaciones"
+      },
+      "ans": "C",
+      "why": "Cada polera se puede combinar con 2 pantalones: 3 × 2 = 6. Esto se llama principio multiplicativo.",
+      "notes": {
+        "A": "Sumaste 3 + 2. Las combinaciones se multiplican, no se suman.",
+        "B": "Con 3 combinaciones estarías usando siempre el mismo pantalón.",
+        "C": "",
+        "D": "Eso sería 3 × 3, pero hay solo 2 pantalones."
+      },
+      "hint": "Piensa: por cada polera, ¿cuántos pantalones puedes usar?"
+    },
+    {
+      "id": "q07",
+      "tema": "Probabilidad",
+      "q": "🎲 En un juego de mesa necesitas sacar un 6 para salir de la cárcel. ¿Cuál es la probabilidad de lograrlo con un dado común?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "6/6",
+        "B": "1/2",
+        "C": "1/3",
+        "D": "1/6"
+      },
+      "ans": "D",
+      "why": "Un dado tiene 6 caras (casos posibles) y solo una tiene el 6 (caso favorable): 1/6.",
+      "notes": {
+        "A": "6/6 = 1 sería un evento seguro: saldrías siempre de la cárcel.",
+        "B": "1/2 sería si el dado tuviera solo dos caras.",
+        "C": "1/3 sería si hubiera 2 caras con 6 entre las 6 del dado.",
+        "D": ""
+      },
+      "hint": "¿Cuántas caras tiene un dado y cuántas tienen el número 6?"
+    },
+    {
+      "id": "q08",
+      "tema": "Gráficos",
+      "q": "⚽ Para crear los talleres del colegio se preguntó por el deporte favorito. ¿Cuál fue el más votado?",
+      "ctx": {
+        "text": "Fútbol: 8 votos\nBásquetbol: 12 votos\nTenis: 6 votos\nAtletismo: 10 votos",
+        "cite": "Deporte favorito de un grupo de estudiantes (libro, pág. 125)"
+      },
+      "opts": {
+        "A": "Fútbol",
+        "B": "Básquetbol",
+        "C": "Atletismo",
+        "D": "Tenis"
+      },
+      "ans": "B",
+      "why": "Básquetbol tiene la mayor frecuencia: 12 votos. En un gráfico de barras sería la barra más alta.",
+      "notes": {
+        "A": "Fútbol tuvo 8 votos; básquetbol tuvo 12.",
+        "B": "",
+        "C": "Atletismo quedó segundo, con 10 votos.",
+        "D": "Tenis fue el menos votado, con 6."
+      },
+      "hint": "Pág. 125: busca la mayor frecuencia, es decir, el número más grande de votos."
+    },
+    {
+      "id": "q09",
+      "tema": "Mediana",
+      "q": "🍫 Cinco amigos tienen 1, 3, 4, 8 y 9 chocolates. ¿Cuál es la mediana?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "4 chocolates",
+        "B": "5 chocolates",
+        "C": "8 chocolates",
+        "D": "1 chocolate"
+      },
+      "ans": "A",
+      "why": "La mediana es el dato que queda al centro cuando los datos están ordenados: 1, 3, 4, 8, 9. El del medio es 4.",
+      "notes": {
+        "A": "",
+        "B": "5 es el promedio (25 ÷ 5). La mediana es el dato del centro.",
+        "C": "8 no está en el centro de la lista ordenada.",
+        "D": "1 es el dato más pequeño, no el del centro."
+      },
+      "hint": "Pág. 131: ordena los datos y busca el que queda justo en el medio."
+    },
+    {
+      "id": "q10",
+      "tema": "Probabilidad",
+      "q": "🎂 ¿Cuál de estos eventos es SEGURO, es decir, tiene probabilidad 1?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Que salga cara al lanzar una moneda al aire",
+        "B": "Que después del lunes venga el martes",
+        "C": "Que al lanzar un dado común salga un 7",
+        "D": "Que ganes la próxima partida de cartas"
+      },
+      "ans": "B",
+      "why": "Un evento seguro ocurre siempre. Después del lunes siempre viene el martes, así que su probabilidad es 1.",
+      "notes": {
+        "A": "Es posible, pero no seguro: también puede salir sello.",
+        "B": "",
+        "C": "Es imposible: un dado común tiene números del 1 al 6.",
+        "D": "Es posible, pero nadie puede asegurarlo antes de jugar."
+      },
+      "hint": "Seguro = pasa siempre, sin excepción. ¿Cuál de estos hechos nunca falla?"
+    },
+    {
+      "id": "q11",
+      "tema": "Promedio",
+      "q": "⚽ Un equipo hizo 2, 0, 4 y 2 goles en cuatro partidos. ¿Cuántos goles hizo en promedio por partido?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "4 goles",
+        "B": "8 goles",
+        "C": "0 goles",
+        "D": "2 goles"
+      },
+      "ans": "D",
+      "why": "Se suman los goles y se divide por los partidos: (2 + 0 + 4 + 2) ÷ 4 = 8 ÷ 4 = 2 goles.",
+      "notes": {
+        "A": "4 es la mayor cantidad de goles en un partido, no el promedio.",
+        "B": "8 es el total de goles: falta dividir por los 4 partidos.",
+        "C": "0 es el partido con menos goles, no el promedio.",
+        "D": ""
+      },
+      "hint": "Suma todos los goles y divide por la cantidad de partidos. ¡Ojo, el 0 también cuenta como partido!"
+    },
+    {
+      "id": "q12",
+      "tema": "Gráficos",
+      "q": "📈 Quieres mostrar cómo cambió la temperatura de tu ciudad día a día durante una semana. ¿Qué gráfico es el más adecuado?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Un gráfico circular",
+        "B": "Un histograma",
+        "C": "Un gráfico de líneas",
+        "D": "Un gráfico de barras"
+      },
+      "ans": "C",
+      "why": "Los gráficos de líneas muestran valores que cambian en el tiempo. Así se ve si la temperatura subió o bajó cada día.",
+      "notes": {
+        "A": "El gráfico circular muestra partes de un todo, no cambios en el tiempo.",
+        "B": "El histograma agrupa datos en intervalos; no muestra la evolución día a día.",
+        "C": "",
+        "D": "Sirve para comparar categorías; para cambios en el tiempo es mejor el de líneas."
+      },
+      "hint": "Pág. 125, recuadro «Aprende»: ¿qué gráfico sirve para valores que varían en el tiempo?"
+    },
+    {
+      "id": "q13",
+      "tema": "Espacio muestral",
+      "q": "Lanzas dos monedas al mismo tiempo. ¿Cuál es el espacio muestral? (c = cara, s = sello)",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "{cc, ss}",
+        "B": "{cc, cs, sc, ss}",
+        "C": "{c, s, cc, ss}",
+        "D": "{cc, cs, ss}"
+      },
+      "ans": "B",
+      "why": "El espacio muestral reúne todos los resultados posibles: cara-cara, cara-sello, sello-cara y sello-sello. Son 4 casos.",
+      "notes": {
+        "A": "Faltan los casos en que sale una cara y un sello.",
+        "B": "",
+        "C": "Cada resultado debe mostrar las dos monedas; «c» o «s» solos no sirven.",
+        "D": "Falta «sc»: que la primera salga sello y la segunda cara es otro caso distinto."
+      },
+      "hint": "Conocimientos previos, pág. 121: el libro muestra justo este ejemplo."
+    },
+    {
+      "id": "q14",
+      "tema": "Moda",
+      "q": "👟 Según la tabla, ¿cuál es el número de calzado más común del curso (la moda)?",
+      "ctx": {
+        "text": "N° 36: 4 estudiantes\nN° 37: 4 estudiantes\nN° 38: 2 estudiantes\nN° 39: 3 estudiantes\nN° 40: 5 estudiantes\nN° 41: 3 estudiantes\nN° 42: 2 estudiantes",
+        "cite": "Número de calzado de un 8° básico (libro, pág. 125)"
+      },
+      "opts": {
+        "A": "N° 40",
+        "B": "N° 36",
+        "C": "N° 42",
+        "D": "N° 39"
+      },
+      "ans": "A",
+      "why": "La moda es el dato con mayor frecuencia. El N° 40 lo usan 5 estudiantes, más que cualquier otro número.",
+      "notes": {
+        "A": "",
+        "B": "El 36 lo usan 4 estudiantes; el 40 lo usan 5.",
+        "C": "El 42 es el número más grande, pero lo usan solo 2 estudiantes.",
+        "D": "El 39 está al medio de la lista, pero eso no lo hace el más común."
+      },
+      "hint": "Busca el número de calzado que usan más estudiantes."
+    },
+    {
+      "id": "q15",
+      "tema": "Principio multiplicativo",
+      "q": "🍦 En la convivencia hay 4 sabores de helado y 2 tipos de cono. ¿Cuántos helados distintos de una bola se pueden armar?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "6 helados",
+        "B": "4 helados",
+        "C": "2 helados",
+        "D": "8 helados"
+      },
+      "ans": "D",
+      "why": "Cada uno de los 4 sabores puede ir en 2 conos distintos: 4 × 2 = 8 helados.",
+      "notes": {
+        "A": "Sumaste 4 + 2. En el principio multiplicativo se multiplica.",
+        "B": "Contaste solo los sabores; faltan los 2 tipos de cono.",
+        "C": "Contaste solo los conos; faltan los 4 sabores.",
+        "D": ""
+      },
+      "hint": "Por cada sabor, ¿cuántos conos puedes elegir?"
+    },
+    {
+      "id": "q16",
+      "tema": "Probabilidad",
+      "q": "En una caja hay fichas numeradas del 1 al 10. Sacas una al azar. ¿Cuál es la probabilidad de sacar un número par?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "2/10",
+        "B": "1/10",
+        "C": "5/10",
+        "D": "4/10"
+      },
+      "ans": "C",
+      "why": "Los pares del 1 al 10 son 2, 4, 6, 8 y 10: 5 casos favorables de 10 posibles. 5/10 es lo mismo que 1/2.",
+      "notes": {
+        "A": "Hay más de dos números pares entre el 1 y el 10.",
+        "B": "1/10 es la probabilidad de sacar un número específico, como el 4.",
+        "C": "",
+        "D": "Revisa de nuevo: el 10 también es par, así que son 5."
+      },
+      "hint": "Escribe los números del 1 al 10 y marca los pares. ¿Cuántos son?"
+    },
+    {
+      "id": "q17",
+      "tema": "Promedio",
+      "q": "🐶 Los perritos de tres amigos pesan 4 kg, 7 kg y 10 kg. ¿Cuál es su peso promedio?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "6 kg",
+        "B": "7 kg",
+        "C": "10 kg",
+        "D": "21 kg"
+      },
+      "ans": "B",
+      "why": "(4 + 7 + 10) ÷ 3 = 21 ÷ 3 = 7 kg.",
+      "notes": {
+        "A": "Revisa la suma: 4 + 7 + 10 = 21, y 21 ÷ 3 = 7.",
+        "B": "",
+        "C": "10 kg es el perrito más pesado, no el promedio.",
+        "D": "21 kg es lo que pesan los tres juntos: falta dividir por 3."
+      },
+      "hint": "Suma los tres pesos y divide por 3."
+    },
+    {
+      "id": "q18",
+      "tema": "Gráficos",
+      "q": "📊 En un gráfico de barras, ¿qué significa que una barra sea la más alta?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Que ese dato tiene la mayor frecuencia",
+        "B": "Que ese dato es el número más grande",
+        "C": "Que ese dato fue el primero en anotarse",
+        "D": "Que ese dato tiene el menor valor"
+      },
+      "ans": "A",
+      "why": "La altura de cada barra es la frecuencia: cuántas veces se repite ese dato. Por eso la barra más alta muestra la moda.",
+      "notes": {
+        "A": "",
+        "B": "El valor del dato está en el eje horizontal; la altura muestra cuántas veces aparece.",
+        "C": "El orden en que se anotaron los datos no se ve en el gráfico.",
+        "D": "La altura no indica si el valor es grande o pequeño, sino cuántas veces aparece."
+      },
+      "hint": "Pág. 125: en el gráfico de calzado, ¿qué se mide en el eje vertical?"
+    },
+    {
+      "id": "q19",
+      "tema": "Probabilidad",
+      "q": "En una bolsa hay solo bolitas rojas. Si sacas una sin mirar, ¿cuál es la probabilidad de que sea azul?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "1 (es seguro)",
+        "B": "1/2 (una de dos)",
+        "C": "0 (es imposible)",
+        "D": "1/4 (poco probable)"
+      },
+      "ans": "C",
+      "why": "Si no hay bolitas azules, los casos favorables son 0. Un evento imposible tiene probabilidad 0.",
+      "notes": {
+        "A": "1 sería si todas las bolitas fueran azules.",
+        "B": "1/2 sería si la mitad de las bolitas fueran azules.",
+        "C": "",
+        "D": "Poco probable no es lo mismo que imposible: aquí no hay ninguna azul."
+      },
+      "hint": "¿Cuántas bolitas azules hay en la bolsa?"
+    },
+    {
+      "id": "q20",
+      "tema": "Mediana",
+      "q": "Para encontrar la mediana de un grupo de datos, ¿qué es lo primero que debes hacer?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Sumar los datos y dividir por cuántos son",
+        "B": "Buscar el dato que más se repite",
+        "C": "Restar el dato mayor menos el menor",
+        "D": "Ordenar los datos de menor a mayor"
+      },
+      "ans": "D",
+      "why": "La mediana es el dato central, y el centro solo se puede encontrar con los datos ordenados. El libro lo hace así con las marcas de salto alto (pág. 131).",
+      "notes": {
+        "A": "Eso es para calcular el promedio.",
+        "B": "Eso es para encontrar la moda.",
+        "C": "Eso calcula el rango: qué tan separados están los datos.",
+        "D": ""
+      },
+      "hint": "Pág. 131, paso 1 del ejemplo del salto alto."
+    },
+    {
+      "id": "q21",
+      "tema": "Gráficos",
+      "q": "🥟 Un gráfico circular muestra que el 50 % de un curso de 30 estudiantes prefiere las empanadas de pino. ¿Cuántos estudiantes son?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "50 estudiantes",
+        "B": "15 estudiantes",
+        "C": "30 estudiantes",
+        "D": "20 estudiantes"
+      },
+      "ans": "B",
+      "why": "50 % es la mitad. La mitad de 30 es 15 (0,5 · 30 = 15).",
+      "notes": {
+        "A": "50 es el porcentaje, no la cantidad de estudiantes.",
+        "B": "",
+        "C": "30 es todo el curso; el 50 % es solo la mitad.",
+        "D": "Revisa: la mitad de 30 es 15."
+      },
+      "hint": "Pág. 127: 50 % es lo mismo que la mitad."
+    },
+    {
+      "id": "q22",
+      "tema": "Probabilidad",
+      "q": "🎡 Una ruleta tiene 4 partes iguales: 2 rojas, 1 azul y 1 verde. ¿Cuál es la probabilidad de que salga rojo?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "2/4",
+        "B": "1/4",
+        "C": "3/4",
+        "D": "4/4"
+      },
+      "ans": "A",
+      "why": "Hay 2 partes rojas de 4 en total: 2/4, que es lo mismo que 1/2.",
+      "notes": {
+        "A": "",
+        "B": "Esa es la probabilidad del azul o del verde, que tienen 1 parte cada uno.",
+        "C": "3/4 sería si hubiera 3 partes rojas.",
+        "D": "4/4 = 1 significaría que toda la ruleta es roja."
+      },
+      "hint": "Cuenta las partes rojas y las partes totales de la ruleta."
+    },
+    {
+      "id": "q23",
+      "tema": "Gráficos",
+      "q": "👟 Con esta misma tabla, ¿cuántos estudiantes tiene el curso?",
+      "ctx": {
+        "text": "N° 36: 4 estudiantes\nN° 37: 4 estudiantes\nN° 38: 2 estudiantes\nN° 39: 3 estudiantes\nN° 40: 5 estudiantes\nN° 41: 3 estudiantes\nN° 42: 2 estudiantes",
+        "cite": "Número de calzado de un 8° básico (libro, pág. 125)"
+      },
+      "opts": {
+        "A": "7 estudiantes",
+        "B": "42 estudiantes",
+        "C": "5 estudiantes",
+        "D": "23 estudiantes"
+      },
+      "ans": "D",
+      "why": "Se suman todas las frecuencias: 4 + 4 + 2 + 3 + 5 + 3 + 2 = 23 estudiantes.",
+      "notes": {
+        "A": "7 es la cantidad de números de calzado distintos, no de estudiantes.",
+        "B": "42 es el número de calzado más grande.",
+        "C": "5 es la frecuencia más alta: los que calzan 40.",
+        "D": ""
+      },
+      "hint": "Pág. 125: suma la cantidad de estudiantes de cada número."
+    },
+    {
+      "id": "q24",
+      "tema": "Probabilidad",
+      "q": "🎟️ En una rifa del curso se venden 30 números y tú compraste 1. Si todos tienen la misma posibilidad de salir, ¿cuál es la probabilidad de que ganes?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "30/30",
+        "B": "1/2",
+        "C": "1/30",
+        "D": "0"
+      },
+      "ans": "C",
+      "why": "Hay 30 números (casos posibles) y solo 1 es tuyo (caso favorable): 1/30.",
+      "notes": {
+        "A": "30/30 = 1 sería un evento seguro: ganarías siempre.",
+        "B": "1/2 sería si en la rifa hubiera solo dos números.",
+        "C": "",
+        "D": "0 sería imposible, y tú sí tienes un número en la rifa."
+      },
+      "hint": "Casos favorables: tu número. Casos posibles: todos los números de la rifa."
+    }
+  ]
+}

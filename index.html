@@ -610,7 +610,7 @@ function renderLibrary(){
       ${Store.mode === 'local' ? (IN_CLAUDE ? `<p class="notice">Esta vista no tiene acceso a la biblioteca en línea, así que los juegos se guardan solo en este navegador. Abre la página desde Claude con tu cuenta para guardarlos en tu biblioteca.</p>` : `<p class="notice">Tus juegos se guardan en este navegador. Para usarlos en otro computador, usa «Descargar respaldo» y cárgalo allá con «Cargar respaldo».</p>`) : ''}
       ${ro ? `<p class="notice">Puedes jugar los juegos de esta biblioteca, pero no editarlos.</p>` : ''}
       ${body}
-      ${Store.builtin.length ? `<div class="sec-title"><h3>Juegos incluidos</h3><p class="example">Listos para jugar. Si quieres modificar uno, cópialo a tus juegos.</p></div><div class="lib-grid">${Store.builtin.map(builtinCardHTML).join('')}</div>` : ''}
+      ${Store.builtin.length ? `<div class="sec-title"><h3>Juegos incluidos</h3><p class="example">Listos para jugar. Si quieres modificar uno, cópialo a tus juegos. «Para la casa» abre la versión individual para el celular: comparte ese link con las familias.</p></div><div class="lib-grid">${Store.builtin.map(builtinCardHTML).join('')}</div>` : ''}
       <div class="helpgrid">
         <div class="box"><h3>1 · Escribe o pega</h3><p>Crea las preguntas en el editor o pégalas desde Word con un formato simple: la correcta va marcada con un asterisco.</p></div>
         <div class="box"><h3>2 · Revisa</h3><p>El editor avisa si falta algo o si la correcta es mucho más larga que las demás, para que no se adivine sin leer.</p></div>
@@ -649,6 +649,7 @@ function builtinCardHTML(g){
     <div class="row">
       <button class="btn small" data-act="playGame" data-v="${g.id}" ${ready ? '' : 'disabled'}>Jugar</button>
       ${Store.readOnly ? '' : `<button class="btn ghost small" data-act="copyBuiltin" data-v="${g.id}">Copiar a mis juegos</button>`}
+      <a class="btn ghost small" href="individual.html?juego=${encodeURIComponent(g.id.replace(/^inc-/, ''))}" target="_blank" rel="noopener" title="Versión individual para responder desde el celular">Para la casa</a>
     </div>
   </article>`;
 }

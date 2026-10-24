@@ -53,6 +53,22 @@ Los juegos de la carpeta [`juegos/`](juegos/) aparecen para cualquier persona qu
 
 Quien abra un juego incluido puede jugarlo o copiarlo a sus juegos para modificarlo.
 
+## Para la casa: modo individual
+
+Cada juego incluido tiene una versión para responder solo, desde el celular y en familia, sin equipos ni tómbola:
+
+```
+https://<usuario>.github.io/<repositorio>/individual.html?juego=dados-y-datos
+```
+
+Cambia `dados-y-datos` por el nombre del archivo del juego (sin `.json`). En la plataforma, el botón «Para la casa» de cada juego incluido abre este link. `individual.html` sin `?juego=` muestra la lista de juegos disponibles.
+
+- El estudiante escribe su nombre y curso, y responde una pregunta por pantalla, con un solo intento.
+- Puede pedir una pista y, después de responder, ve la respuesta correcta con su explicación.
+- Si cierra el navegador, continúa donde quedó.
+- Al final aparece una tarjeta con su puntaje, las preguntas acertadas, la fecha, las pistas usadas y el número de intento. La idea es que le tome una captura de pantalla y se la envíe al profesor.
+- Nada se envía a un servidor: el nombre y las respuestas quedan solo en ese celular.
+
 ## Publicar con GitHub Pages
 
 En el repositorio: **Settings → Pages → Build and deployment → Source: Deploy from a branch**, rama `main`, carpeta `/ (root)`. La página queda en `https://<usuario>.github.io/<repositorio>/`.
@@ -60,5 +76,6 @@ En el repositorio: **Settings → Pages → Build and deployment → Source: Dep
 ## Archivos
 
 - `index.html`: la plataforma completa (HTML, CSS y JavaScript en un solo archivo).
+- `individual.html`: el modo individual para el celular.
 - `juegos/index.json`: lista de juegos incluidos.
 - `juegos/*.json`: cada juego incluido, en el mismo formato que «Descargar respaldo».
