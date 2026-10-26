@@ -1,0 +1,731 @@
+{
+  "formato": "tombola-de-repaso",
+  "version": 1,
+  "title": "Ensayo PAES: Economía y Sociedad",
+  "course": "4° medio",
+  "unit": "Economía y Sociedad · El mercado y sus fallas",
+  "createdAt": "2026-10-26T13:17:50.736Z",
+  "updatedAt": "2026-10-26T13:17:50.736Z",
+  "questions": [
+    {
+      "id": "q01",
+      "tema": "Equilibrio de mercado",
+      "q": "De acuerdo con la tabla, ¿cuál es el precio de equilibrio del kilo de palta?",
+      "ctx": {
+        "text": "Precio por kilo | Cantidad demandada | Cantidad ofrecida\n$2.000 | 900 kg | 300 kg\n$3.000 | 700 kg | 500 kg\n$4.000 | 500 kg | 500 kg\n$5.000 | 300 kg | 700 kg",
+        "cite": "Mercado de la palta en una feria (datos ficticios)"
+      },
+      "opts": {
+        "A": "$2.000, porque a ese precio se demanda la mayor cantidad",
+        "B": "$4.000, porque ahí la cantidad demandada iguala a la ofrecida",
+        "C": "$5.000, porque a ese precio se ofrece la mayor cantidad",
+        "D": "$3.000, porque es el precio intermedio entre los extremos"
+      },
+      "ans": "B",
+      "why": "El equilibrio está donde la cantidad demandada es igual a la ofrecida: a $4.000 ambas son 500 kg.",
+      "notes": {
+        "A": "A $2.000 se demandan 900 kg, pero solo se ofrecen 300: hay escasez.",
+        "B": "",
+        "C": "A $5.000 se ofrecen 700 kg, pero solo se demandan 300: hay excedente.",
+        "D": "El equilibrio no es un promedio: a $3.000 todavía faltan 200 kg."
+      },
+      "hint": "Busca la fila donde coinciden las dos cantidades."
+    },
+    {
+      "id": "q02",
+      "tema": "Fijación de precios",
+      "q": "Si la autoridad fijara un precio máximo de $3.000 por kilo, ¿qué ocurriría en este mercado?",
+      "ctx": {
+        "text": "Precio por kilo | Cantidad demandada | Cantidad ofrecida\n$2.000 | 900 kg | 300 kg\n$3.000 | 700 kg | 500 kg\n$4.000 | 500 kg | 500 kg\n$5.000 | 300 kg | 700 kg",
+        "cite": "Mercado de la palta en una feria (datos ficticios)"
+      },
+      "opts": {
+        "A": "Excedente de 200 kg, porque se ofrece más de lo que se demanda",
+        "B": "Escasez de 200 kg, porque se demanda más de lo que se ofrece",
+        "C": "Ningún efecto, porque el precio máximo supera al de equilibrio",
+        "D": "Un aumento de la cantidad ofrecida, que llegaría a 700 kg"
+      },
+      "ans": "B",
+      "why": "Un precio máximo bajo el equilibrio genera escasez: 700 kg demandados − 500 kg ofrecidos = 200 kg de demanda insatisfecha.",
+      "notes": {
+        "A": "Al revés: a $3.000 se demandan 700 kg y se ofrecen 500.",
+        "B": "",
+        "C": "$3.000 está bajo el equilibrio de $4.000, así que sí tiene efecto.",
+        "D": "A $3.000 los productores ofrecen 500 kg; 700 kg se ofrecen a $5.000."
+      },
+      "hint": "Lee la fila de $3.000 y compara ambas cantidades."
+    },
+    {
+      "id": "q03",
+      "tema": "Demanda",
+      "q": "Un estudio difundido en los medios afirma que la palta ayuda a reducir el colesterol. Si todo lo demás se mantiene constante, lo esperable es que…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "la oferta se desplace a la derecha y baje el precio de equilibrio",
+        "B": "haya solo un movimiento a lo largo de la curva de demanda",
+        "C": "baje la cantidad de equilibrio debido al alza del precio",
+        "D": "la demanda se desplace a la derecha y suba el precio"
+      },
+      "ans": "D",
+      "why": "Un cambio en los gustos o preferencias desplaza la curva de demanda. Si la demanda aumenta, suben el precio y la cantidad de equilibrio.",
+      "notes": {
+        "A": "El estudio cambia las preferencias de los consumidores, no los costos de los productores.",
+        "B": "Un movimiento sobre la curva lo causa solo el propio precio; un cambio en los gustos desplaza la curva.",
+        "C": "Cuando la demanda crece, suben tanto el precio como la cantidad de equilibrio.",
+        "D": ""
+      },
+      "hint": "¿El estudio afecta a quienes compran o a quienes producen?"
+    },
+    {
+      "id": "q04",
+      "tema": "Oferta",
+      "q": "Una sequía prolongada reduce la cosecha de paltas en la zona central. ¿Qué efecto predice el modelo de oferta y demanda?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Se contrae la demanda: bajan el precio y la cantidad transada",
+        "B": "Aumenta la oferta: baja el precio y sube la cantidad transada",
+        "C": "Se contrae la oferta: sube el precio y baja la cantidad",
+        "D": "No hay cambios, porque la demanda de palta sigue siendo igual"
+      },
+      "ans": "C",
+      "why": "Factores como el clima afectan la producción y desplazan la oferta. Menos oferta, con la misma demanda, implica mayor precio y menor cantidad.",
+      "notes": {
+        "A": "La sequía afecta la producción, no las preferencias de los consumidores.",
+        "B": "Una sequía reduce la producción, no la aumenta.",
+        "C": "",
+        "D": "Aunque la demanda no cambie, una menor oferta altera el equilibrio."
+      },
+      "hint": "¿Qué curva se mueve con un problema en la producción?"
+    },
+    {
+      "id": "q05",
+      "tema": "Demanda",
+      "q": "Si el precio de la mantequilla sube fuertemente, ¿qué es esperable en el mercado de la margarina, considerada un bien sustituto?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Disminuye la demanda de margarina",
+        "B": "Aumenta la demanda de margarina",
+        "C": "Disminuye la oferta de margarina",
+        "D": "Baja el precio de la margarina"
+      },
+      "ans": "B",
+      "why": "Si un bien se encarece, parte de los consumidores se cambia a su sustituto: la demanda del sustituto aumenta.",
+      "notes": {
+        "A": "Eso pasaría con un bien complementario, no con un sustituto.",
+        "B": "",
+        "C": "El precio de la mantequilla no cambia los costos de producir margarina.",
+        "D": "Con más demanda, el precio de la margarina tiende a subir."
+      },
+      "hint": "Sustituto = se usa en lugar del otro."
+    },
+    {
+      "id": "q06",
+      "tema": "Demanda",
+      "q": "Si baja el precio de las consolas de videojuegos, ¿qué ocurre con la demanda de videojuegos, bien complementario de las consolas?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Aumenta, porque más personas compran consolas",
+        "B": "Disminuye, porque el gasto se va a las consolas",
+        "C": "No cambia, porque son bienes independientes",
+        "D": "Disminuye la oferta de videojuegos"
+      },
+      "ans": "A",
+      "why": "Los bienes complementarios se consumen juntos. Si uno se abarata y se compra más, también aumenta la demanda del otro.",
+      "notes": {
+        "A": "",
+        "B": "Al bajar el precio de las consolas, quedan más recursos y más jugadores.",
+        "C": "Consolas y videojuegos se usan juntos: son complementarios.",
+        "D": "El precio de las consolas no altera los costos de producir juegos."
+      },
+      "hint": "Complementario = se usa junto con el otro."
+    },
+    {
+      "id": "q07",
+      "tema": "El mercado",
+      "q": "En una economía de mercado, el precio cumple principalmente la función de…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "coordinar a compradores y vendedores, señalando escasez o abundancia",
+        "B": "asegurar que todas las personas accedan a los bienes que necesitan",
+        "C": "establecer el valor justo de cada bien según lo que decida el Estado",
+        "D": "reflejar únicamente el costo de producción de cada bien"
+      },
+      "ans": "A",
+      "why": "El precio funciona como una señal: comunica escasez o abundancia y coordina las decisiones de consumidores y productores sin un planificador central.",
+      "notes": {
+        "A": "",
+        "B": "El mercado no garantiza acceso universal: quien no puede pagar queda fuera.",
+        "C": "En un mercado libre el precio surge de la oferta y la demanda, no del Estado.",
+        "D": "El precio también depende de la demanda, no solo de los costos."
+      },
+      "hint": "Piensa en el precio como un mensaje."
+    },
+    {
+      "id": "q08",
+      "tema": "Elasticidad",
+      "q": "La insulina es un medicamento esencial para las personas con diabetes. Si su precio sube 20%, la cantidad demandada casi no varía. Esto indica que su demanda es…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "elástica, porque los consumidores reaccionan mucho al precio",
+        "B": "unitaria, porque precio y cantidad cambian en igual proporción",
+        "C": "elástica, porque existen muchos medicamentos sustitutos",
+        "D": "inelástica, porque es de primera necesidad y sin sustitutos"
+      },
+      "ans": "D",
+      "why": "La demanda es inelástica cuando la cantidad responde poco al precio. Es típico de bienes de primera necesidad y sin sustitutos.",
+      "notes": {
+        "A": "Si la cantidad casi no varía, los consumidores reaccionan poco.",
+        "B": "El precio subió 20% y la cantidad casi no cambió: no es la misma proporción.",
+        "C": "Un medicamento esencial no tiene sustitutos cercanos.",
+        "D": ""
+      },
+      "hint": "¿Reaccionan mucho o poco los consumidores al alza?"
+    },
+    {
+      "id": "q09",
+      "tema": "Elasticidad",
+      "q": "Si el precio de las entradas al cine sube 10% y la cantidad demandada baja 25%, ¿cómo es la demanda?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Inelástica, porque Ed = 0,4 es menor que 1",
+        "B": "Unitaria, porque Ed es igual a 1",
+        "C": "Elástica, porque Ed = 2,5 es mayor que 1",
+        "D": "Inelástica, porque la cantidad bajó"
+      },
+      "ans": "C",
+      "why": "Ed = 25% ÷ 10% = 2,5. Como es mayor que 1, la demanda es elástica: los consumidores reaccionan bastante al precio.",
+      "notes": {
+        "A": "Se calculó al revés: Ed = % cambio de la cantidad ÷ % cambio del precio.",
+        "B": "Sería unitaria si la cantidad bajara también 10%.",
+        "C": "",
+        "D": "Que la cantidad baje es normal; lo que importa es cuánto baja."
+      },
+      "hint": "Ed = % de variación de la cantidad ÷ % de variación del precio."
+    },
+    {
+      "id": "q10",
+      "tema": "Elasticidad",
+      "q": "¿Por qué la oferta de productos agrícolas suele ser inelástica en el corto plazo?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Porque los consumidores no cambian sus hábitos de compra",
+        "B": "Porque el Estado fija el precio de todos los alimentos",
+        "C": "Porque los agricultores no buscan obtener ganancias extra",
+        "D": "Porque la producción depende de ciclos de cosecha"
+      },
+      "ans": "D",
+      "why": "Para producir más fruta hay que esperar la siguiente cosecha. En el corto plazo, la cantidad ofrecida casi no puede ajustarse al precio.",
+      "notes": {
+        "A": "Eso describe la demanda, no la oferta.",
+        "B": "En Chile los precios de los alimentos los fija el mercado.",
+        "C": "Los agricultores sí buscan ganancias; el límite es el tiempo de producción.",
+        "D": ""
+      },
+      "hint": "¿Cuánto se demora en crecer una cosecha?"
+    },
+    {
+      "id": "q11",
+      "tema": "Inflación",
+      "q": "Una familia recibió exactamente el mismo sueldo durante esos cuatro años. ¿Qué se puede afirmar?",
+      "ctx": {
+        "text": "Año 1: 3 %\nAño 2: 7 %\nAño 3: 12 %\nAño 4: 4 %",
+        "cite": "Variación anual del IPC en un país (datos ficticios)"
+      },
+      "opts": {
+        "A": "Su poder adquisitivo disminuyó todos los años",
+        "B": "Su poder adquisitivo aumentó en el año 4",
+        "C": "Los precios bajaron entre el año 3 y el año 4",
+        "D": "Su sueldo real se mantuvo igual"
+      },
+      "ans": "A",
+      "why": "Con inflación positiva, cada año el mismo sueldo compra menos. Que la inflación baje de 12% a 4% solo significa que los precios suben más lento.",
+      "notes": {
+        "A": "",
+        "B": "La inflación bajó, pero los precios igual subieron 4%: siguió perdiendo.",
+        "C": "Bajó el ritmo de alza, no los precios: eso sería una inflación negativa.",
+        "D": "El sueldo nominal fue igual, pero con precios más altos compra menos."
+      },
+      "hint": "Inflación de 4% también es inflación."
+    },
+    {
+      "id": "q12",
+      "tema": "Inflación",
+      "q": "¿Quiénes se ven más perjudicados por una inflación alta?\nI. Pensionados con ingresos fijos que no se reajustan.\nII. Personas que ahorran en dinero en efectivo.\nIII. Deudores con créditos en pesos a tasa fija.",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Solo I",
+        "B": "Solo III",
+        "C": "Solo I y II",
+        "D": "I, II y III"
+      },
+      "ans": "C",
+      "why": "La inflación erosiona los ingresos fijos y el dinero guardado. En cambio, quien debe una suma fija en pesos paga con dinero que vale menos.",
+      "notes": {
+        "A": "Los ahorros en efectivo también pierden poder de compra.",
+        "B": "Los deudores en pesos a tasa fija suelen beneficiarse: su deuda pierde valor real.",
+        "C": "",
+        "D": "La afirmación III es incorrecta: la inflación reduce el valor real de esas deudas."
+      },
+      "hint": "Pregúntate quién recibe o guarda una cantidad fija de pesos."
+    },
+    {
+      "id": "q13",
+      "tema": "Inflación",
+      "q": "Para reducir una inflación alta, el Banco Central de Chile suele…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "bajar la tasa de interés para estimular el consumo",
+        "B": "emitir más dinero para financiar el gasto del gobierno",
+        "C": "fijar por ley los precios de los alimentos básicos",
+        "D": "subir la tasa de interés para encarecer el crédito"
+      },
+      "ans": "D",
+      "why": "Subir la tasa de política monetaria encarece el crédito, enfría el gasto y ayuda a que los precios suban más lento. La meta del Banco Central es una inflación de 3% anual.",
+      "notes": {
+        "A": "Eso aumentaría el gasto y presionaría aún más los precios.",
+        "B": "Más dinero circulando tiende a aumentar la inflación.",
+        "C": "El Banco Central no fija precios; usa la tasa de interés.",
+        "D": ""
+      },
+      "hint": "¿Qué herramienta controla el Banco Central?"
+    },
+    {
+      "id": "q14",
+      "tema": "Inflación",
+      "q": "¿Qué tipo de inflación describe el texto?",
+      "ctx": {
+        "text": "El alza del precio internacional del petróleo encareció el transporte y la energía. Para no perder, muchas empresas traspasaron esos mayores gastos a los precios de sus productos.",
+        "cite": "Texto elaborado para esta pregunta"
+      },
+      "opts": {
+        "A": "Inflación de costos",
+        "B": "Inflación de demanda",
+        "C": "Inflación por expectativas",
+        "D": "Deflación"
+      },
+      "ans": "A",
+      "why": "Cuando suben los costos de producción (energía, insumos, salarios) y las empresas los traspasan al precio final, se habla de inflación de costos.",
+      "notes": {
+        "A": "",
+        "B": "Sería de demanda si el gasto de los consumidores creciera más que la producción.",
+        "C": "Sería por expectativas si se subieran precios por anticipado, pensando en alzas futuras.",
+        "D": "La deflación es una baja generalizada de precios."
+      },
+      "hint": "¿Qué subió primero: el gasto o los costos?"
+    },
+    {
+      "id": "q15",
+      "tema": "Fijación de precios",
+      "q": "Según el modelo de oferta y demanda, ¿qué podría ocurrir si el salario mínimo se fija muy por sobre el salario de equilibrio?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Un excedente de personas que buscan trabajo",
+        "B": "Una escasez de trabajadores dispuestos a trabajar en empresas",
+        "C": "La eliminación del desempleo en toda la economía",
+        "D": "Ningún efecto, porque el salario lo fija el mercado"
+      },
+      "ans": "A",
+      "why": "Un precio mínimo sobre el equilibrio genera excedente: en el mercado laboral, más personas ofrecen trabajo que puestos demandados. Ojo: los efectos reales del salario mínimo son un debate empírico y dependen de cuánto supere al equilibrio.",
+      "notes": {
+        "A": "",
+        "B": "Con un salario mayor, más personas quieren trabajar, no menos.",
+        "C": "El modelo predice lo contrario: más oferta que demanda de trabajo.",
+        "D": "Un salario mínimo legal es justamente una intervención sobre el mercado."
+      },
+      "hint": "Precio mínimo sobre el equilibrio → ¿excedente o escasez?"
+    },
+    {
+      "id": "q16",
+      "tema": "Fijación de precios",
+      "q": "Una autoridad fija un precio máximo para los arriendos, por debajo del precio de equilibrio. ¿Qué efecto predice el modelo?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Aumentará la cantidad de viviendas ofrecidas en arriendo",
+        "B": "Disminuirá el número de personas que quieren arrendar",
+        "C": "El mercado volverá solo al equilibrio en pocas semanas",
+        "D": "Habrá más personas buscando arriendo que viviendas"
+      },
+      "ans": "D",
+      "why": "Un precio máximo bajo el equilibrio genera escasez: la cantidad demandada supera a la ofrecida.",
+      "notes": {
+        "A": "Con un precio más bajo, a los dueños les conviene menos arrendar.",
+        "B": "Con un arriendo más barato, más personas quieren arrendar.",
+        "C": "El precio no puede subir por sobre el tope legal.",
+        "D": ""
+      },
+      "hint": "Precio máximo bajo el equilibrio → ¿excedente o escasez?"
+    },
+    {
+      "id": "q17",
+      "tema": "Rol del Estado",
+      "q": "¿Cuáles de las siguientes son herramientas del Estado para intervenir en el mercado?\nI. Impuestos que encarecen el consumo de un bien.\nII. Subsidios que abaratan un bien o servicio.\nIII. Normas de etiquetado, calidad y seguridad.",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Solo I",
+        "B": "Solo I y II",
+        "C": "Solo II y III",
+        "D": "I, II y III"
+      },
+      "ans": "D",
+      "why": "El Estado puede intervenir con impuestos (tabaco, alcohol), subsidios (vivienda, transporte) y regulación (etiquetado, normas sanitarias).",
+      "notes": {
+        "A": "Los subsidios y las normas también son herramientas del Estado.",
+        "B": "La regulación (normas) también es una forma de intervenir.",
+        "C": "Los impuestos también son una herramienta, por ejemplo al tabaco.",
+        "D": ""
+      },
+      "hint": "Las tres afirmaciones describen acciones que has visto en Chile."
+    },
+    {
+      "id": "q18",
+      "tema": "Rol del Estado",
+      "q": "El alumbrado público es difícil de proveer a través del mercado porque…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "su instalación no requiere ninguna inversión",
+        "B": "no se puede impedir que lo use quien no paga",
+        "C": "las personas no valoran tener calles iluminadas",
+        "D": "solo lo usan las personas de mayores ingresos"
+      },
+      "ans": "B",
+      "why": "Es un bien público: nadie puede ser excluido y su uso por una persona no impide el de otra. Como no se puede cobrar a cada usuario, el mercado no lo provee bien y lo hace el Estado.",
+      "notes": {
+        "A": "Requiere inversión; el problema es cobrar a cada usuario.",
+        "B": "",
+        "C": "Sí lo valoran, pero pueden usarlo sin pagar.",
+        "D": "Lo usa cualquiera que pase por la calle."
+      },
+      "hint": "¿Se puede cobrar por pasar bajo un farol?"
+    },
+    {
+      "id": "q19",
+      "tema": "Rol del Estado",
+      "q": "Si el Estado entrega un subsidio a los productores de pan, ¿qué se espera en ese mercado?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "La demanda baja y el precio tiende a subir",
+        "B": "La oferta baja y el precio tiende a subir",
+        "C": "La oferta aumenta y el precio tiende a bajar",
+        "D": "Nada cambia, porque los costos son los mismos"
+      },
+      "ans": "C",
+      "why": "El subsidio abarata la producción: la oferta se desplaza a la derecha, el precio baja y la cantidad aumenta.",
+      "notes": {
+        "A": "El subsidio va a los productores, no reduce las ganas de comprar.",
+        "B": "Un subsidio reduce costos: la oferta aumenta.",
+        "C": "",
+        "D": "El subsidio sí baja el costo efectivo de producir."
+      },
+      "hint": "Un subsidio actúa como una rebaja de costos."
+    },
+    {
+      "id": "q20",
+      "tema": "Estructuras de mercado",
+      "q": "La distribución de agua potable en una ciudad suele estar a cargo de una sola empresa. Esto se explica porque…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "es un caso de competencia perfecta con un solo vendedor",
+        "B": "es un oligopolio en que varias empresas se coordinan",
+        "C": "es un monopolio natural: duplicar las redes sería muy costoso",
+        "D": "es un mercado sin barreras de entrada para competir"
+      },
+      "ans": "C",
+      "why": "En un monopolio natural, una sola empresa produce de forma más eficiente que varias por sus altos costos fijos. Por eso estos servicios se regulan: en Chile, las tarifas de las sanitarias las fija la autoridad.",
+      "notes": {
+        "A": "La competencia perfecta requiere muchos vendedores.",
+        "B": "En este caso hay una sola empresa, no varias.",
+        "C": "",
+        "D": "Construir otra red de cañerías es una barrera enorme."
+      },
+      "hint": "¿Tendría sentido construir dos redes de cañerías en la misma calle?"
+    },
+    {
+      "id": "q21",
+      "tema": "Estructuras de mercado",
+      "q": "¿Qué estructura de mercado describe el texto?",
+      "ctx": {
+        "text": "Pocas empresas grandes concentran las ventas. Entrar al mercado exige grandes inversiones. Antes de cambiar sus precios, cada empresa estima cómo reaccionarán las demás.",
+        "cite": "Descripción de un mercado"
+      },
+      "opts": {
+        "A": "Monopolio",
+        "B": "Oligopolio",
+        "C": "Competencia perfecta",
+        "D": "Competencia monopolística"
+      },
+      "ans": "B",
+      "why": "Pocas empresas, altas barreras de entrada e interdependencia estratégica son los rasgos del oligopolio.",
+      "notes": {
+        "A": "En el monopolio hay una sola empresa, no varias.",
+        "B": "",
+        "C": "La competencia perfecta tiene muchas empresas y sin barreras.",
+        "D": "En ella hay muchas empresas y barreras bajas."
+      },
+      "hint": "Cuenta las empresas y mira las barreras de entrada."
+    },
+    {
+      "id": "q22",
+      "tema": "Estructuras de mercado",
+      "q": "Las cafeterías de un barrio compiten entre sí con productos parecidos pero distintos en ambiente, marca y sabor. Es fácil abrir una nueva. ¿Qué estructura es?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Monopolio natural regulado",
+        "B": "Competencia monopolística",
+        "C": "Oligopolio de cafeterías",
+        "D": "Competencia perfecta"
+      },
+      "ans": "B",
+      "why": "Muchas empresas, barreras bajas y productos diferenciados: eso es competencia monopolística.",
+      "notes": {
+        "A": "Hay muchas cafeterías, no una sola.",
+        "B": "",
+        "C": "No son pocas empresas grandes con barreras altas.",
+        "D": "Los productos no son idénticos: se diferencian."
+      },
+      "hint": "Muchas empresas, pero cada una se diferencia."
+    },
+    {
+      "id": "q23",
+      "tema": "Estructuras de mercado",
+      "q": "En comparación con un mercado competitivo, un monopolio tiende a…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "producir más y cobrar un precio más bajo",
+        "B": "producir lo mismo y cobrar el mismo precio",
+        "C": "producir menos y cobrar un precio más alto",
+        "D": "producir más y cobrar también más caro"
+      },
+      "ans": "C",
+      "why": "Sin competencia, el monopolio restringe la cantidad para cobrar más. Eso genera una pérdida de bienestar para los consumidores.",
+      "notes": {
+        "A": "Eso se parece más a lo que logra la competencia.",
+        "B": "Sin competidores, el monopolio puede restringir la producción.",
+        "C": "",
+        "D": "Para cobrar más caro, el monopolio necesita producir menos."
+      },
+      "hint": "¿Qué haría una empresa sin competidores para ganar más?"
+    },
+    {
+      "id": "q24",
+      "tema": "Colusión",
+      "q": "Esta práctica se denomina…",
+      "ctx": {
+        "text": "En 2015 se conoció que las dos principales productoras de papel tissue del país se habían coordinado durante años para fijar precios y repartirse el mercado.",
+        "cite": "Caso del papel tissue en Chile"
+      },
+      "opts": {
+        "A": "colusión, y la investiga la FNE",
+        "B": "competencia monopolística, y la regula el SERNAC",
+        "C": "monopolio natural, y lo fija la autoridad sanitaria",
+        "D": "dumping, y lo sanciona el Banco Central"
+      },
+      "ans": "A",
+      "why": "La colusión es un acuerdo entre competidores para fijar precios o repartirse el mercado. En Chile la investiga la Fiscalía Nacional Económica (FNE) y la sanciona el Tribunal de Defensa de la Libre Competencia.",
+      "notes": {
+        "A": "",
+        "B": "Coordinarse para fijar precios no es competir: es colusión.",
+        "C": "Eran dos empresas que se pusieron de acuerdo, no un monopolio natural.",
+        "D": "El dumping es vender bajo el costo; el Banco Central no ve estos casos."
+      },
+      "hint": "Empresas que deberían competir se ponen de acuerdo."
+    },
+    {
+      "id": "q25",
+      "tema": "Colusión",
+      "q": "¿Cuál es la función del Tribunal de Defensa de la Libre Competencia (TDLC)?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Investigar los casos de colusión y presentar las acusaciones",
+        "B": "Proteger a los consumidores en sus compras y contratos",
+        "C": "Fijar la tasa de interés para controlar la inflación",
+        "D": "Juzgar y sancionar las conductas contra la libre competencia"
+      },
+      "ans": "D",
+      "why": "La FNE investiga y acusa; el TDLC juzga y sanciona. El SERNAC protege a los consumidores y el Banco Central se encarga de la inflación.",
+      "notes": {
+        "A": "Esa es la función de la Fiscalía Nacional Económica (FNE).",
+        "B": "Esa es la función del SERNAC.",
+        "C": "Esa es una función del Banco Central.",
+        "D": ""
+      },
+      "hint": "Es un tribunal: ¿qué hacen los tribunales?"
+    },
+    {
+      "id": "q26",
+      "tema": "Colusión",
+      "q": "¿Qué busca la «delación compensada» en la legislación chilena de libre competencia?",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "Que los consumidores denuncien precios altos ante el SERNAC",
+        "B": "una externalidad negativa que asumen terceros",
+        "C": "Que el Estado compense a las empresas que bajen sus precios",
+        "D": "Que las empresas acuerden precios con permiso del Estado"
+      },
+      "ans": "B",
+      "why": "La delación compensada ofrece reducir o eliminar la sanción a la empresa que confiesa la colusión y entrega pruebas. Rompe la confianza entre los coludidos y ha permitido descubrir varios casos.",
+      "notes": {
+        "A": "La delación compensada es para empresas que participan de la colusión.",
+        "B": "",
+        "C": "No es un pago: es un beneficio por confesar y entregar pruebas.",
+        "D": "Acordar precios entre competidores está prohibido."
+      },
+      "hint": "Delatar = confesar y denunciar a los demás."
+    },
+    {
+      "id": "q27",
+      "tema": "Externalidades",
+      "q": "Una fundición contamina el aire de una localidad y sus habitantes sufren enfermedades respiratorias. En términos económicos, esto corresponde a…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "una externalidad negativa: un costo que asumen terceros",
+        "B": "una externalidad positiva para los habitantes del lugar",
+        "C": "un costo privado que la fundición ya paga en su precio",
+        "D": "una falla de la demanda causada por los propios vecinos"
+      },
+      "ans": "A",
+      "why": "Una externalidad negativa es un costo que la producción impone a terceros que no participan en la transacción, y que el precio no refleja.",
+      "notes": {
+        "A": "",
+        "B": "Una externalidad positiva sería un beneficio, no un daño.",
+        "C": "El daño a la salud de los vecinos no está incluido en los costos de la empresa.",
+        "D": "Los vecinos no participan en la compra ni en la venta."
+      },
+      "hint": "¿Quién paga el daño: la empresa o otras personas?"
+    },
+    {
+      "id": "q28",
+      "tema": "Externalidades",
+      "q": "Desde la teoría económica, el objetivo de este impuesto es…",
+      "ctx": {
+        "text": "Desde 2017, Chile aplica un «impuesto verde» a las emisiones de dióxido de carbono de fuentes fijas, como las centrales termoeléctricas.",
+        "cite": "Ley 20.780 (reforma tributaria de 2014)"
+      },
+      "opts": {
+        "A": "aumentar la producción de energía con fuentes contaminantes",
+        "B": "prohibir por completo el funcionamiento de las termoeléctricas",
+        "C": "que el costo privado de contaminar se acerque a su costo social",
+        "D": "bajar el precio de la electricidad para los hogares"
+      },
+      "ans": "C",
+      "why": "Es un impuesto correctivo (pigouviano): hace que quien contamina pague parte del daño que causa, para que el precio refleje mejor el costo social.",
+      "notes": {
+        "A": "El impuesto encarece contaminar, así que desincentiva esa producción.",
+        "B": "Un impuesto no prohíbe: encarece la actividad.",
+        "C": "",
+        "D": "El impuesto no busca abaratar la electricidad."
+      },
+      "hint": "Costo privado vs. costo social."
+    },
+    {
+      "id": "q29",
+      "tema": "Externalidades",
+      "q": "Cuando existe una externalidad negativa y nadie interviene, el mercado tiende a producir…",
+      "ctx": {
+        "text": "",
+        "cite": ""
+      },
+      "opts": {
+        "A": "menos de lo que sería socialmente óptimo",
+        "B": "más de lo que sería socialmente óptimo",
+        "C": "exactamente la cantidad socialmente óptima",
+        "D": "nada del bien que provoca el daño"
+      },
+      "ans": "B",
+      "why": "Como el precio no incluye el daño a terceros, producir parece más barato de lo que realmente es para la sociedad. Por eso se produce de más.",
+      "notes": {
+        "A": "Eso ocurre con las externalidades positivas.",
+        "B": "",
+        "C": "El precio no incluye el daño a terceros, así que no hay óptimo.",
+        "D": "El mercado sigue produciéndolo, y en exceso."
+      },
+      "hint": "Si un costo no se paga, ¿se produce más o menos?"
+    },
+    {
+      "id": "q30",
+      "tema": "Ética y debate",
+      "q": "¿Qué afirmación describe correctamente la relación entre ambas posturas?",
+      "ctx": {
+        "text": "Postura 1: «El Estado debe regular con fuerza los mercados para proteger a consumidores y comunidades de los abusos».\nPostura 2: «La regulación excesiva desincentiva la inversión y la innovación; es mejor confiar en la competencia».",
+        "cite": "Dos posturas sobre el rol del Estado"
+      },
+      "opts": {
+        "A": "Discrepan sobre cuánto debe intervenir el Estado en el mercado",
+        "B": "Coinciden en que el Estado nunca debe intervenir en el mercado",
+        "C": "Ambas rechazan que exista una economía de mercado",
+        "D": "La postura 2 propone eliminar la competencia entre empresas"
+      },
+      "ans": "A",
+      "why": "Ninguna niega el mercado ni el Estado: discuten el grado de intervención. Es una tensión permanente entre proteger de abusos y no desincentivar la inversión.",
+      "notes": {
+        "A": "",
+        "B": "La postura 1 pide expresamente que el Estado regule.",
+        "C": "Las dos aceptan el mercado; discuten cuánto regularlo.",
+        "D": "La postura 2 confía justamente en la competencia."
+      },
+      "hint": "¿En qué se diferencian: en si debe haber Estado o en cuánto?"
+    }
+  ]
+}
